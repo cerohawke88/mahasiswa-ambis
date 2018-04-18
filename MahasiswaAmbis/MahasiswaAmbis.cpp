@@ -14,7 +14,7 @@ MahasiswaAmbis::MahasiswaAmbis()
 	MahasiswaAmbis::jump = false;
 	MahasiswaAmbis::doublejump = false;
 	MahasiswaAmbis::jumpSpeed = 15;
-	MahasiswaAmbis::jumpSpeedDouble = 20;
+	MahasiswaAmbis::jumpSpeedDouble = 25;
 	MahasiswaAmbis::velocityX = MahasiswaAmbis::velocityY = 0;
 	MahasiswaAmbis::gravity = 1;
 	MahasiswaAmbis::nyawa = 1;
@@ -150,13 +150,13 @@ float MahasiswaAmbis::getSourceX()
 
 void MahasiswaAmbis::cekGorengan(vector<Gorengan*> *gr)
 {
-	if (this->x>70 && this->x<120 && this->y> 290 && this->y< 310) {
+	if (this->x>1490 && this->x<1510 && this->y> 220 && this->y< 280) {
 		cout << "gor1\n";
 		if (gr->at(0)->getValidasi() == true) {
 			sound.playEat();
 		}
 		gr->at(0)->setValidasi(false);
-	} else if (this->x>270 && this->x<320 && this->y> 340 && this->y< 360) {
+	} else if (this->x>2890 && this->x<2910 && this->y> 120 && this->y< 180) {
 		cout << "gor2\n";
 		if (gr->at(1)->getValidasi() == true) {
 			sound.playEat();
@@ -164,6 +164,156 @@ void MahasiswaAmbis::cekGorengan(vector<Gorengan*> *gr)
 		gr->at(1)->setValidasi(false);
 		cout << "gor3\n";
 	}
+}
+
+void MahasiswaAmbis::cekKoin(vector<Koin*> *koin) 
+{
+	if (this->x>1290 && this->x<1310 && this->y> 270 && this->y< 330) {
+		if (koin->at(0)->getValidasi() == true) {
+			//sound.playEat();
+		}
+		koin->at(0)->setValidasi(false);
+	}
+	else if (this->x>1790 && this->x<1810 && this->y> 270 && this->y< 330) {
+		if (koin->at(1)->getValidasi() == true) {
+			//sound.playEat();
+		}
+		koin->at(1)->setValidasi(false);
+	}
+	else if (this->x>3290 && this->x<3310 && this->y> 270 && this->y< 330) {
+		if (koin->at(2)->getValidasi() == true) {
+			//sound.playEat();
+		}
+		koin->at(2)->setValidasi(false);
+	}
+	else if (this->x>390 && this->x<410 && this->y> 180 && this->y< 240) {
+		if (koin->at(3)->getValidasi() == true) {
+			//sound.playEat();
+		}
+		koin->at(3)->setValidasi(false);
+	}
+
+}
+void MahasiswaAmbis::cekBuku(vector<Buku*> *buku)
+{
+	if (this->x>90 && this->x<110 && this->y> 270 && this->y< 330) {
+		cout << "buku\n";
+		if (buku->at(0)->getValidasi() == true) {
+			//sound.playEat();
+		}
+		buku->at(0)->setValidasi(false);
+	}
+	else if (this->x>130 && this->x<150 && this->y> 270 && this->y< 330) {
+		cout << "buku\n";
+		if (buku->at(1)->getValidasi() == true) {
+			//sound.playEat();
+		}
+		buku->at(1)->setValidasi(false);
+	}
+	else if (this->x>170 && this->x<190 && this->y> 270 && this->y< 330) {
+		cout << "buku\n";
+		if (buku->at(2)->getValidasi() == true) {
+			//sound.playEat();
+		}
+		buku->at(2)->setValidasi(false);
+	}
+	else if (this->x>990 && this->x<1010 && this->y> 240 && this->y< 300) {
+		cout << "buku\n";
+		if (buku->at(3)->getValidasi() == true) {
+			//sound.playEat();
+		}
+		buku->at(3)->setValidasi(false);
+	}
+	else if (this->x>1030 && this->x<1050 && this->y> 240 && this->y< 300) {
+		cout << "buku\n";
+		if (buku->at(4)->getValidasi() == true) {
+			//sound.playEat();
+		}
+		buku->at(4)->setValidasi(false);
+	}
+	else if (this->x>1070 && this->x<1090 && this->y> 240 && this->y< 300) {
+		cout << "buku\n";
+		if (buku->at(5)->getValidasi() == true) {
+			//sound.playEat();
+		}
+		buku->at(5)->setValidasi(false);
+	}
+	else if (this->x>2090 && this->x<2110 && this->y> 170 && this->y< 230) {
+		cout << "buku\n";
+		if (buku->at(6)->getValidasi() == true) {
+			//sound.playEat();
+		}
+		buku->at(6)->setValidasi(false);
+	}
+	else if (this->x>2190 && this->x<2210 && this->y> 170 && this->y< 230) {
+		cout << "buku\n";
+		if (buku->at(7)->getValidasi() == true) {
+			//sound.playEat();
+		}
+		buku->at(7)->setValidasi(false);
+	}
+	else if (this->x>2270 && this->x<2310 && this->y> 170 && this->y< 230) {
+		cout << "buku\n";
+		if (buku->at(8)->getValidasi() == true) {
+			//sound.playEat();
+		}
+		buku->at(8)->setValidasi(false);
+	}
+	else if (this->x>2390 && this->x<2410 && this->y> 170 && this->y< 230) {
+		cout << "buku\n";
+		if (buku->at(9)->getValidasi() == true) {
+			//sound.playEat();
+		}
+		buku->at(9)->setValidasi(false);
+	}
+	else if (this->x>2990 && this->x<3010 && this->y> 220 && this->y< 280) {
+		cout << "buku\n";
+		if (buku->at(10)->getValidasi() == true) {
+			//sound.playEat();
+		}
+		buku->at(10)->setValidasi(false);
+	}
+	else if (this->x>3030 && this->x<3050 && this->y> 220 && this->y< 280) {
+		cout << "buku\n";
+		if (buku->at(11)->getValidasi() == true) {
+			//sound.playEat();
+		}
+		buku->at(11)->setValidasi(false);
+	}
+	else if (this->x>3070 && this->x<3090 && this->y> 220 && this->y< 280) {
+		cout << "buku\n";
+		if (buku->at(12)->getValidasi() == true) {
+			//sound.playEat();
+		}
+		buku->at(12)->setValidasi(false);
+	}
+	else if (this->x>3490 && this->x<3510 && this->y> 270 && this->y< 330) {
+		cout << "buku\n";
+		if (buku->at(13)->getValidasi() == true) {
+			//sound.playEat();
+		}
+		buku->at(13)->setValidasi(false);
+	}
+	else if (this->x>3530 && this->x<3550 && this->y> 270 && this->y< 330) {
+		cout << "buku\n";
+		if (buku->at(14)->getValidasi() == true) {
+			//sound.playEat();
+		}
+		buku->at(14)->setValidasi(false);
+	}
+}
+
+void MahasiswaAmbis::cekMusuh(vector<MahasiswaMusuh*> *musuh)
+{
+
+}
+
+void MahasiswaAmbis::cekKucing(vector<Kucing*> *kucing) 
+{
+	if (this->x>468 && this->x<532 && this->y> 351 && this->y< 479) { 
+		cout << "gameover";
+	}
+
 }
 
 void MahasiswaAmbis::cekFinish()
