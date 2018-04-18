@@ -14,13 +14,15 @@ MahasiswaAmbis::MahasiswaAmbis()
 	MahasiswaAmbis::jump = false;
 	MahasiswaAmbis::doublejump = false;
 	MahasiswaAmbis::jumpSpeed = 15;
-	MahasiswaAmbis::jumpSpeedDouble = 20;
+	MahasiswaAmbis::jumpSpeedDouble = 23
+		;
 	MahasiswaAmbis::velocityX = MahasiswaAmbis::velocityY = 0;
 	MahasiswaAmbis::gravity = 1;
 	MahasiswaAmbis::nyawa = 1;
 }
 
-void MahasiswaAmbis::drawReg(int n) {
+void MahasiswaAmbis::drawReg(int n) 
+{
 	al_draw_bitmap_region(image, sourceX, sourceY * al_get_bitmap_height(image) / 2, 64, 64, x, y, n);
 }
 
