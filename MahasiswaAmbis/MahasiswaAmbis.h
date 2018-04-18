@@ -20,6 +20,8 @@ public:
 
 	float getY();
 	float getX();
+	void setY(float x);
+	void setX(float y);
 	float getVel();
 	bool getJump();
 	void lompat();

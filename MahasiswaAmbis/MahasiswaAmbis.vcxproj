@@ -183,6 +183,7 @@
     <ClInclude Include="Mahasiswa.h" />
     <ClInclude Include="MahasiswaAmbis.h" />
     <ClInclude Include="MahasiswaMusuh.h" />
+    <ClInclude Include="PostGame.h" />
     <ClInclude Include="Rintangan.h" />
     <ClInclude Include="SoundManager.h" />
     <ClInclude Include="stdafx.h" />
@@ -206,6 +207,7 @@
     <ClCompile Include="MahasiswaAmbis.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MahasiswaMusuh.cpp" />
+    <ClCompile Include="PostGame.cpp" />
     <ClCompile Include="Rintangan.cpp" />
     <ClCompile Include="SoundManager.cpp" />
     <ClCompile Include="stdafx.cpp">

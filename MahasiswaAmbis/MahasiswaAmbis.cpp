@@ -112,6 +112,16 @@ void MahasiswaAmbis::setSourceX(float x)
 	MahasiswaAmbis::sourceX = x;
 }
 
+void MahasiswaAmbis::setX(float plus)
+{
+	MahasiswaAmbis::x = plus;
+}
+
+void MahasiswaAmbis::setY(float plus)
+{
+	MahasiswaAmbis::y = plus;
+}
+
 void MahasiswaAmbis::addSourceX(float x)
 {
 	MahasiswaAmbis::sourceX += x;

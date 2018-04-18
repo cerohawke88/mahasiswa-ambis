@@ -66,6 +66,9 @@
     <ClInclude Include="Koin.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="PostGame.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -126,6 +129,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Koin.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PostGame.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
