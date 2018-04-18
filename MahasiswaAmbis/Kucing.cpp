@@ -24,9 +24,8 @@ void Kucing::drawReg() {
 
 void Kucing::draw(int gorX, int gorY)
 {
-	if (Kucing::validasi) {
-		al_draw_bitmap(algif_get_bitmap(gif, al_get_time()), gorX, gorY, NULL);
-	}
+	al_draw_bitmap(algif_get_bitmap(gif, al_get_time()), gorX, gorY, NULL);
+	
 }
 
 

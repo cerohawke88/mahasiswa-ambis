@@ -49,5 +49,6 @@ public:
 	void cekFinish();
 	int getNyawa();
 	void plusNyawa(int a);
+	void minNyawa(int a);
 };
 

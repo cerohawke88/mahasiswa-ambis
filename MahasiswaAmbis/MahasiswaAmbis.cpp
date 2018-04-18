@@ -14,7 +14,7 @@ MahasiswaAmbis::MahasiswaAmbis()
 	MahasiswaAmbis::jump = false;
 	MahasiswaAmbis::doublejump = false;
 	MahasiswaAmbis::jumpSpeed = 15;
-	MahasiswaAmbis::jumpSpeedDouble = 20;
+	MahasiswaAmbis::jumpSpeedDouble = 23;
 	MahasiswaAmbis::velocityX = MahasiswaAmbis::velocityY = 0;
 	MahasiswaAmbis::gravity = 1;
 	MahasiswaAmbis::nyawa = 1;
@@ -327,7 +327,26 @@ void MahasiswaAmbis::cekMusuh(vector<MahasiswaMusuh*> *musuh)
 void MahasiswaAmbis::cekKucing(vector<Kucing*> *kucing) 
 {
 	if (this->x>468 && this->x<532 && this->y> 351 && this->y< 479) { 
-		cout << "gameover";
+		if (kucing->at(0)->getValidasi() == true) {
+
+			if (getNyawa() > 0)
+			{
+
+				minNyawa(1);
+
+				cout << "NYAWA " << getNyawa() << endl;
+			}
+
+			else
+			{
+				cout << "gameover";
+			}
+			kucing->at(0)->setValidasi(false);
+		}
+		
+	}
+	else {
+		kucing->at(0)->setValidasi(true);
 	}
 
 }
@@ -345,6 +364,11 @@ int MahasiswaAmbis::getNyawa()
 void MahasiswaAmbis::plusNyawa(int a)
 {
 	MahasiswaAmbis::nyawa += a;
+}
+
+void MahasiswaAmbis::minNyawa(int a)
+{
+	MahasiswaAmbis::nyawa -= a;
 }
 
 MahasiswaAmbis::~MahasiswaAmbis()
