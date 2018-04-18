@@ -36,7 +36,7 @@ public:
 	int getWidth();
 	int getMoveSpeed();
 	void drawReg(int);
-	void cekItem(vector<Gorengan*> *gr);
+	void cekGorengan(vector<Gorengan*> *gr);
 	void cekJatuh();
 	void cekFinish();
 	int getNyawa();
