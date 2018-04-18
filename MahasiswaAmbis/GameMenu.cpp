@@ -30,7 +30,8 @@ void GameMenu::main_menu(bool &menu, ALLEGRO_EVENT_QUEUE *queue, bool& stop, boo
 		if (!stop)
 		{
 			if (gameover) {
-				al_draw_text(font, color.menu, 450, ScreenHeight / 2 - 110, ALLEGRO_ALIGN_CENTRE, "Game Over");
+				al_draw_text(font, color.menu, 350, 200, ALLEGRO_ALIGN_CENTRE, "Game Over");
+				
 			}
 			else {
 				if (cekmenu == 0) {

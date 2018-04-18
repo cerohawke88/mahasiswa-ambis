@@ -24,9 +24,11 @@ public:
 	float getSourceX();
 	int getWidth();
 	int getMoveSpeed();
+	void setValidasi(bool);
+	bool getValidasi();
 	//void draw();
 	void draw(int gorX, int gorY);
 private:
-	int nyawa;
+	bool validasi;
 };
 

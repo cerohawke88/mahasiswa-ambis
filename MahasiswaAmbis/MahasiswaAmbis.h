@@ -1,6 +1,8 @@
 #pragma once
 #include "Mahasiswa.h"
 #include "SoundManager.h"
+#include "Gorengan.h"
+#include <vector>
 #include <iostream>
 using namespace std;
 
@@ -30,7 +32,7 @@ public:
 	int getWidth();
 	int getMoveSpeed();
 	void drawReg(int);
-	int cekItem();
+	void cekItem(vector<Gorengan*> *gr);
 	void cekJatuh();
 	void cekFinish();
 

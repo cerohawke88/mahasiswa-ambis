@@ -8,6 +8,7 @@ Gorengan::Gorengan()
 	gif = algif_load_animation("Gor.gif");
 	Gorengan::x = 10;
 	Gorengan::y = 402;
+	Gorengan::validasi = true;
 }
 
 
@@ -21,8 +22,9 @@ void Gorengan::drawReg() {
 
 void Gorengan::draw(int gorX, int gorY)
 {
-	//al_draw_bitmap(Gorengan::image, gorX, gorY, NULL);
-	al_draw_bitmap(algif_get_bitmap(gif, al_get_time()), gorX, gorY, NULL);
+	if (Gorengan::validasi) {
+		al_draw_bitmap(algif_get_bitmap(gif, al_get_time()), gorX, gorY, NULL);
+	}
 }
 
 
@@ -107,5 +109,15 @@ void Gorengan::addSourceX(float x)
 float Gorengan::getSourceX()
 {
 	return Gorengan::sourceX;
+}
+
+void Gorengan::setValidasi(bool x)
+{
+	Gorengan::validasi = x;
+}
+
+bool Gorengan::getValidasi()
+{
+	return Gorengan::validasi;
 }
 
