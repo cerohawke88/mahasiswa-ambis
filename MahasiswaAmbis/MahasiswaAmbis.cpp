@@ -138,6 +138,16 @@ int MahasiswaAmbis::cekItem()
 		cout << "gor3\n";
 		return 3;
 	}
+	else if (this->x > 770 && this->x < 820 && this->y > 290 && this->y < 310) {
+		sound.playCoin();
+		cout << "koin1\n";
+		return 4;
+	}
+	else if (this->x > 970 && this->x < 1020 && this->y > 290 && this->y < 310) {
+		sound.playCoin();
+		cout << "koin2\n";
+		return 5;
+	}
 	else {
 		return 0;
 	}
