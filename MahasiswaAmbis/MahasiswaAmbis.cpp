@@ -12,9 +12,12 @@ MahasiswaAmbis::MahasiswaAmbis()
 	MahasiswaAmbis::sourceX = 64;
 	MahasiswaAmbis::sourceY = 0;
 	MahasiswaAmbis::jump = false;
+	MahasiswaAmbis::doublejump = false;
 	MahasiswaAmbis::jumpSpeed = 15;
+	MahasiswaAmbis::jumpSpeedDouble = 20;
 	MahasiswaAmbis::velocityX = MahasiswaAmbis::velocityY = 0;
 	MahasiswaAmbis::gravity = 1;
+	MahasiswaAmbis::nyawa = 1;
 }
 
 void MahasiswaAmbis::drawReg(int n) {
@@ -45,6 +48,13 @@ void MahasiswaAmbis::lompat()
 {
 	velocityY = -jumpSpeed;
 	jump = false;	
+	sound.playJump();
+}
+
+void MahasiswaAmbis::doubleJump()
+{
+	velocityY = -jumpSpeedDouble;
+	jump = false;
 	sound.playJump();
 }
 
@@ -92,8 +102,14 @@ void MahasiswaAmbis::cekLompat()
 	else {
 		//cout << "hush" << endl;
 		jump = (y + 64 >= 466);
+		doublejump = (y + 64 >= 466);
 
 		if (jump) {
+			y = 466 - 64;
+			//sound.playJump();
+		}
+
+		if (doublejump) {
 			y = 466 - 64;
 			//sound.playJump();
 		}
@@ -146,6 +162,7 @@ void MahasiswaAmbis::cekGorengan(vector<Gorengan*> *gr)
 			sound.playEat();
 		}
 		gr->at(1)->setValidasi(false);
+		cout << "gor3\n";
 	}
 }
 

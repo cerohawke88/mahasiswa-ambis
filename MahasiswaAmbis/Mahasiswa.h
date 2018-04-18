@@ -9,6 +9,9 @@ protected:
 	int dir;
 	bool jump;
 	float jumpSpeed;
+	float jumpSpeedDouble;
+	bool doublejump;
+
 public:
 	Mahasiswa();
 	~Mahasiswa();

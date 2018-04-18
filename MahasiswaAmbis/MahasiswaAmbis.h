@@ -24,6 +24,8 @@ public:
 	void setX(float y);
 	float getVel();
 	bool getJump();
+	bool getDoubleJump();
+	void doubleJump();
 	void lompat();
 	void maju();
 	void mundur();
@@ -37,6 +39,7 @@ public:
 	void cekGorengan(vector<Gorengan*> *gr);
 	void cekJatuh();
 	void cekFinish();
-
+	int getNyawa();
+	void plusNyawa(int a);
 };
 
