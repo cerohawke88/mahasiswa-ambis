@@ -2,6 +2,10 @@
 #include "Mahasiswa.h"
 #include "SoundManager.h"
 #include "Gorengan.h"
+#include "Koin.h"
+#include "Buku.h"
+#include "Kucing.h"
+#include "MahasiswaMusuh.h"
 #include <vector>
 #include <iostream>
 using namespace std;
@@ -37,6 +41,10 @@ public:
 	int getMoveSpeed();
 	void drawReg(int);
 	void cekGorengan(vector<Gorengan*> *gr);
+	void cekKoin(vector<Koin*> *koin);
+	void cekBuku(vector<Buku*> *buku);
+	void cekMusuh(vector<MahasiswaMusuh*> *musuh);
+	void cekKucing(vector<Kucing*> *kucing);
 	void cekJatuh();
 	void cekFinish();
 	int getNyawa();
