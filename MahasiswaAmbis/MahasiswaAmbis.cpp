@@ -153,7 +153,8 @@ void MahasiswaAmbis::cekItem(vector<Gorengan*> *gr)
 	if (this->x>70 && this->x<120 && this->y> 290 && this->y< 310) {
 		sound.playEat();
 		cout << "gor1\n";
-		if (gr->at(0)->getValidasi() == true) {
+		if (gr->at(0)->getValidasi() == true)
+		{
 
 		}
 		gr->at(0)->setValidasi(false);
