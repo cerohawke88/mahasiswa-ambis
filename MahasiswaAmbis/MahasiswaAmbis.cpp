@@ -152,7 +152,15 @@ void MahasiswaAmbis::cekGorengan(vector<Gorengan*> *gr)
 {
 	if (this->x>70 && this->x<120 && this->y> 290 && this->y< 310) {
 		cout << "gor1\n";
-		if (gr->at(0)->getValidasi() == true) {
+		if (gr->at(0)->getValidasi() == true)
+		{
+			if (getNyawa() < 3)
+			{
+
+				plusNyawa(1);
+
+				cout << "NYAWA " << getNyawa() << endl;
+			}
 			sound.playEat();
 		}
 		gr->at(0)->setValidasi(false);
@@ -160,6 +168,13 @@ void MahasiswaAmbis::cekGorengan(vector<Gorengan*> *gr)
 		cout << "gor2\n";
 		if (gr->at(1)->getValidasi() == true) {
 			sound.playEat();
+			if (getNyawa() < 3)
+			{
+
+				plusNyawa(1);
+				 
+				cout <<"NYAWA "<< getNyawa() << endl;
+			}
 		}
 		gr->at(1)->setValidasi(false);
 		cout << "gor3\n";
@@ -169,6 +184,16 @@ void MahasiswaAmbis::cekGorengan(vector<Gorengan*> *gr)
 void MahasiswaAmbis::cekFinish()
 {
 	
+}
+
+int MahasiswaAmbis::getNyawa()
+{
+	return MahasiswaAmbis::nyawa;
+}
+
+void MahasiswaAmbis::plusNyawa(int a)
+{
+	MahasiswaAmbis::nyawa += a;
 }
 
 MahasiswaAmbis::~MahasiswaAmbis()
