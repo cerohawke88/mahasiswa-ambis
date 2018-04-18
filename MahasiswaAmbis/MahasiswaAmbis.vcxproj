@@ -180,6 +180,7 @@
     <ClInclude Include="Gorengan.h" />
     <ClInclude Include="InputManager.h" />
     <ClInclude Include="Koin.h" />
+    <ClInclude Include="Kucing.h" />
     <ClInclude Include="Mahasiswa.h" />
     <ClInclude Include="MahasiswaAmbis.h" />
     <ClInclude Include="MahasiswaMusuh.h" />
@@ -202,6 +203,7 @@
     <ClCompile Include="Gorengan.cpp" />
     <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="Koin.cpp" />
+    <ClCompile Include="Kucing.cpp" />
     <ClCompile Include="lzw.c" />
     <ClCompile Include="Mahasiswa.cpp" />
     <ClCompile Include="MahasiswaAmbis.cpp" />

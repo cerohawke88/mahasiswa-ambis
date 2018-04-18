@@ -132,24 +132,20 @@ float MahasiswaAmbis::getSourceX()
 	return MahasiswaAmbis::sourceX;
 }
 
-void MahasiswaAmbis::cekItem(vector<Gorengan*> *gr)
+void MahasiswaAmbis::cekGorengan(vector<Gorengan*> *gr)
 {
 	if (this->x>70 && this->x<120 && this->y> 290 && this->y< 310) {
-		sound.playEat();
 		cout << "gor1\n";
 		if (gr->at(0)->getValidasi() == true) {
-
+			sound.playEat();
 		}
 		gr->at(0)->setValidasi(false);
 	} else if (this->x>270 && this->x<320 && this->y> 340 && this->y< 360) {
-		sound.playEat();
 		cout << "gor2\n";
+		if (gr->at(1)->getValidasi() == true) {
+			sound.playEat();
+		}
 		gr->at(1)->setValidasi(false);
-	}
-	else if (this->x>570 && this->x<620 && this->y> 290 && this->y< 310) {
-		sound.playEat();
-		cout << "gor3\n";
-		gr->at(2)->setValidasi(false);
 	}
 }
 
