@@ -3,10 +3,9 @@
 #include <allegro5\allegro_image.h>
 #include <allegro5\allegro_native_dialog.h>
 #include <allegro5\allegro_primitives.h>
-#include <allegro5\allegro_font.h>pg
+#include <allegro5\allegro_font.h>
 #include <stdio.h>
 #include <allegro5\allegro_ttf.h>
-#include "PostGame.h"
 
 class GameMenu
 {
@@ -18,7 +17,6 @@ public:
 	}COLOURS;
 
 	COLOURS color;
-	PostGame *pg = new PostGame;
 
 	GameMenu();
 	~GameMenu();
