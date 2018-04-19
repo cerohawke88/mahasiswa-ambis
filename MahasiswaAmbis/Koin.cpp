@@ -4,10 +4,11 @@
 
 Koin::Koin()
 {
-	//Gorengan::image = al_load_bitmap("Gorengan-fix.png");
+	//image = Koin::image = al_load_bitmap("Koin-fix.png");
 	gif = algif_load_animation("Coin.gif");
 	Koin::x = 10;
 	Koin::y = 402;
+	Koin::validasi = true;
 }
 
 
@@ -21,8 +22,9 @@ void Koin::drawReg() {
 
 void Koin::draw(int gorX, int gorY)
 {
-	//al_draw_bitmap(Gorengan::image, gorX, gorY, NULL);
-	al_draw_bitmap(algif_get_bitmap(gif, al_get_time()), gorX, gorY, NULL);
+	if (Koin::validasi) {
+		al_draw_bitmap(algif_get_bitmap(gif, al_get_time()), gorX, gorY, NULL);
+	}
 }
 
 
@@ -76,7 +78,7 @@ void Koin::maju()
 
 void Koin::mundur()
 {
-	Koin::y = -y;
+	velocityX = -y;
 }
 
 void Koin::minX(float x)
@@ -107,5 +109,15 @@ void Koin::addSourceX(float x)
 float Koin::getSourceX()
 {
 	return Koin::sourceX;
+}
+
+void Koin::setValidasi(bool x)
+{
+	Koin::validasi = x;
+}
+
+bool Koin::getValidasi()
+{
+	return Koin::validasi;
 }
 

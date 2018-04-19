@@ -4,10 +4,11 @@
 
 Buku::Buku()
 {
-	//Gorengan::image = al_load_bitmap("Gorengan-fix.png");
-	gif = algif_load_animation("Coin.gif");
+	//Buku::image = al_load_bitmap("Buku-fix.png");
+	gif = algif_load_animation("Book.gif");
 	Buku::x = 10;
 	Buku::y = 402;
+	Buku::validasi = true;
 }
 
 
@@ -21,8 +22,9 @@ void Buku::drawReg() {
 
 void Buku::draw(int gorX, int gorY)
 {
-	//al_draw_bitmap(Gorengan::image, gorX, gorY, NULL);
-	al_draw_bitmap(algif_get_bitmap(gif, al_get_time()), gorX, gorY, NULL);
+	if (Buku::validasi) {
+		al_draw_bitmap(algif_get_bitmap(gif, al_get_time()), gorX, gorY, NULL);
+	}
 }
 
 
@@ -76,7 +78,7 @@ void Buku::maju()
 
 void Buku::mundur()
 {
-	Buku::y = -y;
+	velocityX = -y;
 }
 
 void Buku::minX(float x)
@@ -108,3 +110,14 @@ float Buku::getSourceX()
 {
 	return Buku::sourceX;
 }
+
+void Buku::setValidasi(bool x)
+{
+	Buku::validasi = x;
+}
+
+bool Buku::getValidasi()
+{
+	return Buku::validasi;
+}
+
