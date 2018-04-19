@@ -18,6 +18,7 @@ private:
 	int score;
 	int nyawa;
 	int pointBuku;
+	int koin;
 	int totalscore1;
 	SoundManager sound;
 	PostGame *pg = new PostGame();
@@ -56,6 +57,8 @@ public:
 	void minNyawa(int a);
 	int  getScore();
 	void plusScore(int b);
+	int getCoin();
+	void plusCoin(int c);
 	void totalScore1();
 	void totalScore2();
 	void totalScore3();
