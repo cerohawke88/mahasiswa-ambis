@@ -20,7 +20,8 @@ MahasiswaAmbis::MahasiswaAmbis()
 	MahasiswaAmbis::gravity = 1;
 	MahasiswaAmbis::nyawa = 1;
 	MahasiswaAmbis::score = 0;
-	MahasiswaAmbis::totalscore1 = 0;
+	MahasiswaAmbis::totalscorestage1 = 0;
+	MahasiswaAmbis::bestscore = 0;
 }
 
 void MahasiswaAmbis::drawReg(int n)
@@ -212,6 +213,7 @@ void MahasiswaAmbis::cekKoin(vector<Koin*> *koin)
 		koin->at(0)->setValidasi(false);
 	}
 	else if (this->x>1790 && this->x<1810 && this->y> 270 && this->y< 330) {
+	
 		if (koin->at(1)->getValidasi() == true) {
 			sound.playCoin();
 			plusCoin(1);
@@ -237,6 +239,7 @@ void MahasiswaAmbis::cekKoin(vector<Koin*> *koin)
 	}
 
 }
+
 void MahasiswaAmbis::cekBuku(vector<Buku*> *buku)
 {
 	if (this->x>90 && this->x<110 && this->y> 270 && this->y< 330) {
@@ -521,17 +524,44 @@ float MahasiswaAmbis::getScore()
 	return  MahasiswaAmbis::score;
 }
 
+
+int MahasiswaAmbis::getCoin()
+{
+	return koin;
+}
+
+void MahasiswaAmbis::plusCoin(int c)
+{
+	koin + c;
+}
+
+
 void MahasiswaAmbis::plusScore(float b)
 {
 	MahasiswaAmbis::score += b;
 }
 
-void MahasiswaAmbis::totalScore1()
+void MahasiswaAmbis::totalScore1(float a)
 {
-	MahasiswaAmbis::totalscore1 = MahasiswaAmbis::score / 15;
-	return  MahasiswaAmbis::totalscore1;
+	MahasiswaAmbis::totalscorestage1 = MahasiswaAmbis::score / a;
+
+}
+
+float MahasiswaAmbis::getTotalscore1()
+{
+	return MahasiswaAmbis::totalscorestage1;
 }
 
 MahasiswaAmbis::~MahasiswaAmbis()
 {
+}
+
+float MahasiswaAmbis::getTotalscore4()
+{
+	return 0.0f;
+}
+
+float MahasiswaAmbis::highscore()
+{
+	return 0.0f;
 }

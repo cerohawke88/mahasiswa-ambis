@@ -18,9 +18,10 @@ private:
 	float score;
 	int nyawa;
 	int pointBuku;
-	float totalscore1;
+	float totalscorestage1;
 	int koin;
-	int totalscore1;
+	float bestscore;
+
 	SoundManager sound;
 	PostGame *pg = new PostGame();
 public:
@@ -60,8 +61,6 @@ public:
 	void plusScore(float b);
 	void totalScore1(float a);
 	float getTotalscore1();
-	int  getScore();
-	void plusScore(int b);
 	int getCoin();
 	void plusCoin(int c);
 	void totalScore1();
@@ -71,5 +70,6 @@ public:
 	float getTotalscore3();
 	void totalScore4();
 	float getTotalscore4();
+	float highscore();
 };
 
