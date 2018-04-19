@@ -96,7 +96,22 @@ void MahasiswaAmbis::cekLompat()
 			cout << y << endl;
 			cout << "jatuh\n";
 	}
-	else if (x > 1790 && x < 1820 && y >= 402) {
+	else if (x > 1711 && x < 1852 && y >= 402) {
+			y += 15;
+			cout << y << endl;
+			cout << "jatuh\n";
+	}
+	else if (x > 2270 && x < 2450 && y >= 402) {
+			y += 15;
+			cout << y << endl;
+			cout << "jatuh\n";
+	}
+	else if (x > 2850 && x < 2935 && y >= 402) {
+			y += 15;
+			cout << y << endl;
+			cout << "jatuh\n";
+	}
+	else if (x > 3530 && x < 3690 && y >= 402) {
 			y += 15;
 			cout << y << endl;
 			cout << "jatuh\n";
