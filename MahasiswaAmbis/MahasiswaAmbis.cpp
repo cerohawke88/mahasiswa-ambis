@@ -435,8 +435,8 @@ void MahasiswaAmbis::plusScore(int b)
 
 void MahasiswaAmbis::totalScore1()
 {
-	MahasiswaAmbis::totalscore1 = MahasiswaAmbis::score / 15;
-	return  MahasiswaAmbis::totalscore1;
+	/*MahasiswaAmbis::totalscore1 = MahasiswaAmbis::score / 15;
+	return  MahasiswaAmbis::totalscore1;*/
 }
 
 MahasiswaAmbis::~MahasiswaAmbis()
