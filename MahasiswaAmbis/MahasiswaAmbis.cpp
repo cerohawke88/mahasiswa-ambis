@@ -3,6 +3,7 @@
 #include "SoundManager.h"
 
 
+
 MahasiswaAmbis::MahasiswaAmbis()
 {
 	MahasiswaAmbis::image = al_load_bitmap("Mahasiswa.png");
@@ -18,9 +19,11 @@ MahasiswaAmbis::MahasiswaAmbis()
 	MahasiswaAmbis::velocityX = MahasiswaAmbis::velocityY = 0;
 	MahasiswaAmbis::gravity = 1;
 	MahasiswaAmbis::nyawa = 1;
+	MahasiswaAmbis::score = 0;
+	MahasiswaAmbis::totalscore1 = 0;
 }
 
-void MahasiswaAmbis::drawReg(int n) 
+void MahasiswaAmbis::drawReg(int n)
 {
 	al_draw_bitmap_region(image, sourceX, sourceY * al_get_bitmap_height(image) / 2, 64, 64, x, y, n);
 }
@@ -90,7 +93,7 @@ void MahasiswaAmbis::cekLompat()
 	x += velocityX;
 	y += velocityY;
 
-	if (x > 400 && x < 450 && y >= 402) {
+	if (x > 328 && x < 440 && y >= 402) {
 			y += 15;
 			cout << y << endl;
 			cout << "jatuh\n";
@@ -216,6 +219,8 @@ void MahasiswaAmbis::cekBuku(vector<Buku*> *buku)
 		cout << "buku\n";
 		if (buku->at(0)->getValidasi() == true) {
 			//sound.playEat();
+			plusScore(4);
+			cout << "score" << getScore();
 		}
 		buku->at(0)->setValidasi(false);
 	}
@@ -223,6 +228,8 @@ void MahasiswaAmbis::cekBuku(vector<Buku*> *buku)
 		cout << "buku\n";
 		if (buku->at(1)->getValidasi() == true) {
 			//sound.playEat();
+			plusScore(4);
+			cout << "score" << getScore();
 		}
 		buku->at(1)->setValidasi(false);
 	}
@@ -230,6 +237,8 @@ void MahasiswaAmbis::cekBuku(vector<Buku*> *buku)
 		cout << "buku\n";
 		if (buku->at(2)->getValidasi() == true) {
 			//sound.playEat();
+			plusScore(4);
+			cout << "score" << getScore();
 		}
 		buku->at(2)->setValidasi(false);
 	}
@@ -237,6 +246,8 @@ void MahasiswaAmbis::cekBuku(vector<Buku*> *buku)
 		cout << "buku\n";
 		if (buku->at(3)->getValidasi() == true) {
 			//sound.playEat();
+			plusScore(4);
+			cout << "score" << getScore();
 		}
 		buku->at(3)->setValidasi(false);
 	}
@@ -244,6 +255,8 @@ void MahasiswaAmbis::cekBuku(vector<Buku*> *buku)
 		cout << "buku\n";
 		if (buku->at(4)->getValidasi() == true) {
 			//sound.playEat();
+			plusScore(4);
+			cout << "score" << getScore();
 		}
 		buku->at(4)->setValidasi(false);
 	}
@@ -251,6 +264,8 @@ void MahasiswaAmbis::cekBuku(vector<Buku*> *buku)
 		cout << "buku\n";
 		if (buku->at(5)->getValidasi() == true) {
 			//sound.playEat();
+			plusScore(4);
+			cout << "score" << getScore();
 		}
 		buku->at(5)->setValidasi(false);
 	}
@@ -258,6 +273,8 @@ void MahasiswaAmbis::cekBuku(vector<Buku*> *buku)
 		cout << "buku\n";
 		if (buku->at(6)->getValidasi() == true) {
 			//sound.playEat();
+			plusScore(4);
+			cout << "score" << getScore();
 		}
 		buku->at(6)->setValidasi(false);
 	}
@@ -265,6 +282,8 @@ void MahasiswaAmbis::cekBuku(vector<Buku*> *buku)
 		cout << "buku\n";
 		if (buku->at(7)->getValidasi() == true) {
 			//sound.playEat();
+			plusScore(4);
+			cout << "score" << getScore();
 		}
 		buku->at(7)->setValidasi(false);
 	}
@@ -272,6 +291,8 @@ void MahasiswaAmbis::cekBuku(vector<Buku*> *buku)
 		cout << "buku\n";
 		if (buku->at(8)->getValidasi() == true) {
 			//sound.playEat();
+			plusScore(4);
+			cout << "score" << getScore();
 		}
 		buku->at(8)->setValidasi(false);
 	}
@@ -279,6 +300,8 @@ void MahasiswaAmbis::cekBuku(vector<Buku*> *buku)
 		cout << "buku\n";
 		if (buku->at(9)->getValidasi() == true) {
 			//sound.playEat();
+			plusScore(4);
+			cout << "score" << getScore();
 		}
 		buku->at(9)->setValidasi(false);
 	}
@@ -286,6 +309,8 @@ void MahasiswaAmbis::cekBuku(vector<Buku*> *buku)
 		cout << "buku\n";
 		if (buku->at(10)->getValidasi() == true) {
 			//sound.playEat();
+			plusScore(4);
+			cout << "score" << getScore();
 		}
 		buku->at(10)->setValidasi(false);
 	}
@@ -293,6 +318,8 @@ void MahasiswaAmbis::cekBuku(vector<Buku*> *buku)
 		cout << "buku\n";
 		if (buku->at(11)->getValidasi() == true) {
 			//sound.playEat();
+			plusScore(4);
+			cout << "score" << getScore();
 		}
 		buku->at(11)->setValidasi(false);
 	}
@@ -300,6 +327,8 @@ void MahasiswaAmbis::cekBuku(vector<Buku*> *buku)
 		cout << "buku\n";
 		if (buku->at(12)->getValidasi() == true) {
 			//sound.playEat();
+			plusScore(4);
+			cout << "score" << getScore();
 		}
 		buku->at(12)->setValidasi(false);
 	}
@@ -307,6 +336,8 @@ void MahasiswaAmbis::cekBuku(vector<Buku*> *buku)
 		cout << "buku\n";
 		if (buku->at(13)->getValidasi() == true) {
 			//sound.playEat();
+			plusScore(4);
+			cout << "score" << getScore();
 		}
 		buku->at(13)->setValidasi(false);
 	}
@@ -314,6 +345,8 @@ void MahasiswaAmbis::cekBuku(vector<Buku*> *buku)
 		cout << "buku\n";
 		if (buku->at(14)->getValidasi() == true) {
 			//sound.playEat();
+			plusScore(4);
+			cout << "score" << getScore();
 		}
 		buku->at(14)->setValidasi(false);
 	}
@@ -351,9 +384,13 @@ void MahasiswaAmbis::cekKucing(vector<Kucing*> *kucing)
 
 }
 
-void MahasiswaAmbis::cekFinish()
+void MahasiswaAmbis::cekFinish(bool& menu, ALLEGRO_EVENT_QUEUE *queue)
 {
-	
+	if (MahasiswaAmbis::x > 3954) {
+		pg->post_game(menu, queue);
+		cout << "Finish\n";
+		
+	}
 }
 
 int MahasiswaAmbis::getNyawa()
@@ -370,6 +407,22 @@ void MahasiswaAmbis::minNyawa(int a)
 {
 	MahasiswaAmbis::nyawa -= a;
 }
+
+int MahasiswaAmbis::getScore()
+{
+	return  MahasiswaAmbis::score;
+}
+
+void MahasiswaAmbis::plusScore(int b)
+{
+	MahasiswaAmbis::score += b;
+}
+
+/*void MahasiswaAmbis::totalScore1()
+{
+	MahasiswaAmbis::totalscore1 = MahasiswaAmbis::score / 15;
+	return  MahasiswaAmbis::totalscore1;
+}*/
 
 MahasiswaAmbis::~MahasiswaAmbis()
 {

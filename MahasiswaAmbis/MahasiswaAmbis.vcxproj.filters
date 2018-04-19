@@ -66,10 +66,10 @@
     <ClInclude Include="Koin.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="PostGame.h">
+    <ClInclude Include="Kucing.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Kucing.h">
+    <ClInclude Include="PostGame.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Saveload.h">
@@ -137,10 +137,10 @@
     <ClCompile Include="Koin.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="PostGame.cpp">
+    <ClCompile Include="Kucing.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Kucing.cpp">
+    <ClCompile Include="PostGame.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Saveload.cpp">
