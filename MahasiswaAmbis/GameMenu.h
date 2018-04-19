@@ -6,6 +6,7 @@
 #include <allegro5\allegro_font.h>
 #include <stdio.h>
 #include <allegro5\allegro_ttf.h>
+#include "algif.h"
 
 class GameMenu
 {
@@ -14,18 +15,21 @@ public:
 	{
 		ALLEGRO_COLOR menu;
 		ALLEGRO_COLOR enter;
+		ALLEGRO_COLOR post;
 	}COLOURS;
 
-	COLOURS color;
+	COLOURS color, black;
 
 	GameMenu();
 	~GameMenu();
 
 	bool main_menu(bool& menu, ALLEGRO_EVENT_QUEUE *queue, bool stop, bool gameover);
+	void post_game(bool& menu);
 
 private:
 	ALLEGRO_BITMAP * background;
 	ALLEGRO_FONT * font;
+	ALGIF_ANIMATION *coin, *life, *book;
 	int cekmenu;
 	bool resume;
 };
