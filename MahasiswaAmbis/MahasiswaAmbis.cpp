@@ -14,7 +14,7 @@ MahasiswaAmbis::MahasiswaAmbis()
 	MahasiswaAmbis::jump = false;
 	MahasiswaAmbis::doublejump = false;
 	MahasiswaAmbis::jumpSpeed = 15;
-	MahasiswaAmbis::jumpSpeedDouble = 20;
+	MahasiswaAmbis::jumpSpeedDouble = 23;
 	MahasiswaAmbis::velocityX = MahasiswaAmbis::velocityY = 0;
 	MahasiswaAmbis::gravity = 1;
 	MahasiswaAmbis::nyawa = 1;

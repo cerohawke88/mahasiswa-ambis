@@ -36,23 +36,28 @@ bool GameMenu::main_menu(bool &menu, ALLEGRO_EVENT_QUEUE *queue, bool stop, bool
 				if (!al_init()) //returns a value of -1 if
 					return -1;
 				if (cekmenu == 0) {
-					al_draw_text(font, color.enter, ScreenWidth / 2, ScreenHeight / 2 - 110, ALLEGRO_ALIGN_CENTRE, "Start");
+					al_draw_text(font, color.enter, ScreenWidth / 2, ScreenHeight / 2 - 150, ALLEGRO_ALIGN_CENTRE, "Start");
 				}
 				else {
-					al_draw_text(font, color.menu, ScreenWidth / 2, ScreenHeight / 2 - 110, ALLEGRO_ALIGN_CENTRE, "Start");
+					al_draw_text(font, color.menu, ScreenWidth / 2, ScreenHeight / 2 - 150, ALLEGRO_ALIGN_CENTRE, "Start");
 				}
 				if (cekmenu == 1) {
-					al_draw_text(font, color.enter, ScreenWidth / 2, ScreenHeight / 2 - 40, ALLEGRO_ALIGN_CENTRE, "Credits");
+					al_draw_text(font, color.enter, ScreenWidth / 2, ScreenHeight / 2 - 80, ALLEGRO_ALIGN_CENTRE, "Highscore");
 				}
 				else {
-					al_draw_text(font, color.menu, ScreenWidth / 2, ScreenHeight / 2 - 40, ALLEGRO_ALIGN_CENTRE, "Credits");
+					al_draw_text(font, color.menu, ScreenWidth / 2, ScreenHeight / 2 - 80, ALLEGRO_ALIGN_CENTRE, "Highscore");
 				}
-
 				if (cekmenu == 2) {
-					al_draw_text(font, color.enter, ScreenWidth / 2, ScreenHeight / 2 + 30, ALLEGRO_ALIGN_CENTRE, "Exit");
+					al_draw_text(font, color.enter, ScreenWidth / 2, ScreenHeight / 2 - 10, ALLEGRO_ALIGN_CENTRE, "Credits");
 				}
 				else {
-					al_draw_text(font, color.menu, ScreenWidth / 2, ScreenHeight / 2 + 30, ALLEGRO_ALIGN_CENTRE, "Exit");
+					al_draw_text(font, color.menu, ScreenWidth / 2, ScreenHeight / 2 - 10, ALLEGRO_ALIGN_CENTRE, "Credits");
+				}
+				if (cekmenu == 3) {
+					al_draw_text(font, color.enter, ScreenWidth / 2, ScreenHeight / 2 + 60, ALLEGRO_ALIGN_CENTRE, "Exit");
+				}
+				else {
+					al_draw_text(font, color.menu, ScreenWidth / 2, ScreenHeight / 2 + 60, ALLEGRO_ALIGN_CENTRE, "Exit");
 				}
 			}
 		
@@ -106,11 +111,16 @@ bool GameMenu::main_menu(bool &menu, ALLEGRO_EVENT_QUEUE *queue, bool stop, bool
 							menu = false;
 						}
 						else if (cekmenu == 1) {
+							//highscore
+							stop = false;
+							resume = true;
+						}
+						else if (cekmenu == 2) {
 							//credit
 							stop = true;
 							resume = true;
 						}
-						else if (cekmenu == 2) {
+						else if (cekmenu == 3) {
 							//exit game
 							return true;
 						}
@@ -137,7 +147,7 @@ bool GameMenu::main_menu(bool &menu, ALLEGRO_EVENT_QUEUE *queue, bool stop, bool
 				break;
 			case ALLEGRO_KEY_DOWN:
 				cekmenu++;
-				if (cekmenu == 3) {
+				if (cekmenu == 4) {
 					cekmenu = 0;
 				}
 				cout << cekmenu << endl;
@@ -145,7 +155,7 @@ bool GameMenu::main_menu(bool &menu, ALLEGRO_EVENT_QUEUE *queue, bool stop, bool
 			case ALLEGRO_KEY_UP:
 				cekmenu--;
 				if (cekmenu == -1) {
-					cekmenu = 2;
+					cekmenu = 3;
 				}
 				cout << cekmenu << endl;
 				break;
