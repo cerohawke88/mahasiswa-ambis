@@ -186,6 +186,7 @@
     <ClInclude Include="MahasiswaMusuh.h" />
     <ClInclude Include="PostGame.h" />
     <ClInclude Include="Rintangan.h" />
+    <ClInclude Include="Saveload.h" />
     <ClInclude Include="SoundManager.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
@@ -211,6 +212,7 @@
     <ClCompile Include="MahasiswaMusuh.cpp" />
     <ClCompile Include="PostGame.cpp" />
     <ClCompile Include="Rintangan.cpp" />
+    <ClCompile Include="Saveload.cpp" />
     <ClCompile Include="SoundManager.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
