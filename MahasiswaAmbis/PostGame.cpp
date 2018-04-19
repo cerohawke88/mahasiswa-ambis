@@ -16,7 +16,7 @@ PostGame::~PostGame()
 {
 }
 
-void PostGame::post_game(bool& menu, ALLEGRO_EVENT_QUEUE *queue)
+void PostGame::post_game(bool& menu)
 {
 	color.post = al_map_rgb(122, 113, 143);
 	black.post = al_map_rgb(0, 0, 0);
@@ -26,9 +26,6 @@ void PostGame::post_game(bool& menu, ALLEGRO_EVENT_QUEUE *queue)
 
 	while (menu)
 	{
-		ALLEGRO_EVENT ev;
-		al_wait_for_event(queue, &ev);
-
 		al_draw_text(font, black.post, ScreenWidth / 2, ScreenHeight / 2 - 200, ALLEGRO_ALIGN_CENTRE, "STAGE COMPLETED!");
 
 		//al_draw_text(font, color.post, ScreenWidth / 3, ScreenHeight / 2 - 110, ALLEGRO_ALIGN_CENTRE, "COINS");

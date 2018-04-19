@@ -399,13 +399,18 @@ void MahasiswaAmbis::cekKucing(vector<Kucing*> *kucing)
 
 }
 
-void MahasiswaAmbis::cekFinish(bool& menu, ALLEGRO_EVENT_QUEUE *queue)
+void MahasiswaAmbis::cekFinish(ALLEGRO_EVENT_QUEUE *queue)
 {
+	bool menu;
 	if (MahasiswaAmbis::x > 3954) {
-		pg->post_game(menu, queue);
+		menu = true;
 		cout << "Finish\n";
-		
 	}
+	else {
+		menu = false;
+	}
+	pg->post_game(menu);
+		
 }
 
 int MahasiswaAmbis::getNyawa()
