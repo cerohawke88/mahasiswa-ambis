@@ -14,8 +14,10 @@ class MahasiswaAmbis :
 	public Mahasiswa
 {
 private:
+	int score;
 	int nyawa;
 	int pointBuku;
+	int totalscore1;
 	SoundManager sound;
 public:
 	MahasiswaAmbis();
@@ -50,5 +52,11 @@ public:
 	int getNyawa();
 	void plusNyawa(int a);
 	void minNyawa(int a);
+	int  getScore();
+	void plusScore(int b);
+	void totalScore1();
+	void totalScore2();
+	void totalScore3();
+	void totalScore4();
 };
 
