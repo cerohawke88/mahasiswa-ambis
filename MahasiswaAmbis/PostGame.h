@@ -21,7 +21,7 @@ public:
 	PostGame();
 	~PostGame();
 
-	void post_game(bool& menu, ALLEGRO_EVENT_QUEUE *queue);
+	void post_game(bool& menu);
 private:
 	ALLEGRO_BITMAP * background;
 	ALLEGRO_FONT * font;
