@@ -14,8 +14,7 @@ Saveload::~Saveload()
 
 void Saveload::Save()
 {
-	cin >> newscore;
-	newscore = score;
+	cin >> score;
 	ofstream writeFile;
 	writeFile.open("savedata.txt");
 	if (writeFile.is_open()) {

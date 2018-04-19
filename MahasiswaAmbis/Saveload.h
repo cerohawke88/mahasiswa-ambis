@@ -10,6 +10,5 @@ private:
 	void Load();
 	int score;
 	int highscore;
-	int newscore;
 };
 
