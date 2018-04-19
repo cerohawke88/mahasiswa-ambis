@@ -6,6 +6,7 @@
 #include "Buku.h"
 #include "Kucing.h"
 #include "MahasiswaMusuh.h"
+#include "PostGame.h"
 #include <vector>
 #include <iostream>
 using namespace std;
@@ -17,6 +18,7 @@ private:
 	int nyawa;
 	int pointBuku;
 	SoundManager sound;
+	PostGame *pg = new PostGame();
 public:
 	MahasiswaAmbis();
 	~MahasiswaAmbis();
@@ -46,7 +48,7 @@ public:
 	void cekMusuh(vector<MahasiswaMusuh*> *musuh);
 	void cekKucing(vector<Kucing*> *kucing);
 	void cekJatuh();
-	void cekFinish();
+	void cekFinish(bool& menu, ALLEGRO_EVENT_QUEUE *queue);
 	int getNyawa();
 	void plusNyawa(int a);
 	void minNyawa(int a);
