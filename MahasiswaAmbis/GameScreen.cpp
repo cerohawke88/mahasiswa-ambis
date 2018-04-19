@@ -3,7 +3,7 @@
 
 GameScreen::GameScreen()
 {
-	background = al_load_bitmap("map.png");
+	background = al_load_bitmap("mapp.png");
 }
 
 

@@ -3,6 +3,7 @@
 #include "SoundManager.h"
 
 
+
 MahasiswaAmbis::MahasiswaAmbis()
 {
 	MahasiswaAmbis::image = al_load_bitmap("Mahasiswa.png");
@@ -92,7 +93,7 @@ void MahasiswaAmbis::cekLompat()
 	x += velocityX;
 	y += velocityY;
 
-	if (x > 400 && x < 450 && y >= 402) {
+	if (x > 328 && x < 440 && y >= 402) {
 			y += 15;
 			cout << y << endl;
 			cout << "jatuh\n";
@@ -383,9 +384,13 @@ void MahasiswaAmbis::cekKucing(vector<Kucing*> *kucing)
 
 }
 
-void MahasiswaAmbis::cekFinish()
+void MahasiswaAmbis::cekFinish(bool& menu, ALLEGRO_EVENT_QUEUE *queue)
 {
-	
+	if (MahasiswaAmbis::x > 3954) {
+		pg->post_game(menu, queue);
+		cout << "Finish\n";
+		
+	}
 }
 
 int MahasiswaAmbis::getNyawa()

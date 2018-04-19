@@ -23,9 +23,9 @@ public:
 
 	void post_game(bool& menu, ALLEGRO_EVENT_QUEUE *queue);
 private:
-	ALLEGRO_BITMAP * background;
+	ALLEGRO_BITMAP * background, *life;
 	ALLEGRO_FONT * font;
-	ALGIF_ANIMATION *coin, *life, *book;
+	ALGIF_ANIMATION *coin;
 
 
 };
