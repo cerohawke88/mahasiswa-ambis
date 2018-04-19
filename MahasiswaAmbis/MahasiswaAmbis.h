@@ -50,7 +50,7 @@ public:
 	void cekMusuh(vector<MahasiswaMusuh*> *musuh);
 	void cekKucing(vector<Kucing*> *kucing);
 	void cekJatuh();
-	void cekFinish(bool& menu, ALLEGRO_EVENT_QUEUE *queue);
+	void cekFinish(ALLEGRO_EVENT_QUEUE *queue);
 	int getNyawa();
 	void plusNyawa(int a);
 	void minNyawa(int a);
