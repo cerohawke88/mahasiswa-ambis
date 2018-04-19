@@ -243,7 +243,7 @@ void MahasiswaAmbis::cekBuku(vector<Buku*> *buku)
 		cout << "buku\n";
 		if (buku->at(1)->getValidasi() == true) {
 			//sound.playEat();
-			plusScore(4);
+			plusScore(4.0);
 			cout << "score" << getScore();
 		}
 		buku->at(1)->setValidasi(false);
@@ -252,7 +252,7 @@ void MahasiswaAmbis::cekBuku(vector<Buku*> *buku)
 		cout << "buku\n";
 		if (buku->at(2)->getValidasi() == true) {
 			//sound.playEat();
-			plusScore(4);
+			plusScore(4.0);
 			cout << "score" << getScore();
 		}
 		buku->at(2)->setValidasi(false);
@@ -261,7 +261,7 @@ void MahasiswaAmbis::cekBuku(vector<Buku*> *buku)
 		cout << "buku\n";
 		if (buku->at(3)->getValidasi() == true) {
 			//sound.playEat();
-			plusScore(4);
+			plusScore(4.0);
 			cout << "score" << getScore();
 		}
 		buku->at(3)->setValidasi(false);
@@ -270,7 +270,7 @@ void MahasiswaAmbis::cekBuku(vector<Buku*> *buku)
 		cout << "buku\n";
 		if (buku->at(4)->getValidasi() == true) {
 			//sound.playEat();
-			plusScore(4);
+			plusScore(4.0);
 			cout << "score" << getScore();
 		}
 		buku->at(4)->setValidasi(false);
@@ -279,7 +279,7 @@ void MahasiswaAmbis::cekBuku(vector<Buku*> *buku)
 		cout << "buku\n";
 		if (buku->at(5)->getValidasi() == true) {
 			//sound.playEat();
-			plusScore(4);
+			plusScore(4.0);
 			cout << "score" << getScore();
 		}
 		buku->at(5)->setValidasi(false);
@@ -288,7 +288,7 @@ void MahasiswaAmbis::cekBuku(vector<Buku*> *buku)
 		cout << "buku\n";
 		if (buku->at(6)->getValidasi() == true) {
 			//sound.playEat();
-			plusScore(4);
+			plusScore(4.0);
 			cout << "score" << getScore();
 		}
 		buku->at(6)->setValidasi(false);
@@ -297,7 +297,7 @@ void MahasiswaAmbis::cekBuku(vector<Buku*> *buku)
 		cout << "buku\n";
 		if (buku->at(7)->getValidasi() == true) {
 			//sound.playEat();
-			plusScore(4);
+			plusScore(4.0);
 			cout << "score" << getScore();
 		}
 		buku->at(7)->setValidasi(false);
@@ -306,7 +306,7 @@ void MahasiswaAmbis::cekBuku(vector<Buku*> *buku)
 		cout << "buku\n";
 		if (buku->at(8)->getValidasi() == true) {
 			//sound.playEat();
-			plusScore(4);
+			plusScore(4.0);
 			cout << "score" << getScore();
 		}
 		buku->at(8)->setValidasi(false);
@@ -315,7 +315,7 @@ void MahasiswaAmbis::cekBuku(vector<Buku*> *buku)
 		cout << "buku\n";
 		if (buku->at(9)->getValidasi() == true) {
 			//sound.playEat();
-			plusScore(4);
+			plusScore(4.0);
 			cout << "score" << getScore();
 		}
 		buku->at(9)->setValidasi(false);
@@ -324,7 +324,7 @@ void MahasiswaAmbis::cekBuku(vector<Buku*> *buku)
 		cout << "buku\n";
 		if (buku->at(10)->getValidasi() == true) {
 			//sound.playEat();
-			plusScore(4);
+			plusScore(4.0);
 			cout << "score" << getScore();
 		}
 		buku->at(10)->setValidasi(false);
@@ -333,7 +333,7 @@ void MahasiswaAmbis::cekBuku(vector<Buku*> *buku)
 		cout << "buku\n";
 		if (buku->at(11)->getValidasi() == true) {
 			//sound.playEat();
-			plusScore(4);
+			plusScore(4.0);
 			cout << "score" << getScore();
 		}
 		buku->at(11)->setValidasi(false);
@@ -342,7 +342,7 @@ void MahasiswaAmbis::cekBuku(vector<Buku*> *buku)
 		cout << "buku\n";
 		if (buku->at(12)->getValidasi() == true) {
 			//sound.playEat();
-			plusScore(4);
+			plusScore(4.0);
 			cout << "score" << getScore();
 		}
 		buku->at(12)->setValidasi(false);
@@ -351,7 +351,7 @@ void MahasiswaAmbis::cekBuku(vector<Buku*> *buku)
 		cout << "buku\n";
 		if (buku->at(13)->getValidasi() == true) {
 			//sound.playEat();
-			plusScore(4);
+			plusScore(4.0);
 			cout << "score" << getScore();
 		}
 		buku->at(13)->setValidasi(false);
@@ -360,11 +360,14 @@ void MahasiswaAmbis::cekBuku(vector<Buku*> *buku)
 		cout << "buku\n";
 		if (buku->at(14)->getValidasi() == true) {
 			//sound.playEat();
-			plusScore(4);
+			plusScore(4.0);
 			cout << "score" << getScore();
 		}
 		buku->at(14)->setValidasi(false);
+		
+
 	}
+
 }
 
 void MahasiswaAmbis::cekMusuh(vector<MahasiswaMusuh*> *musuh)
@@ -428,21 +431,26 @@ void MahasiswaAmbis::minNyawa(int a)
 	MahasiswaAmbis::nyawa -= a;
 }
 
-int MahasiswaAmbis::getScore()
+float MahasiswaAmbis::getScore()
 {
 	return  MahasiswaAmbis::score;
 }
 
-void MahasiswaAmbis::plusScore(int b)
+void MahasiswaAmbis::plusScore(float b)
 {
 	MahasiswaAmbis::score += b;
 }
 
-/*void MahasiswaAmbis::totalScore1()
+void MahasiswaAmbis::totalScore1(float a)
 {
-	MahasiswaAmbis::totalscore1 = MahasiswaAmbis::score / 15;
+	MahasiswaAmbis::totalscore1 = MahasiswaAmbis::score / a ;
+	
+}
+
+float MahasiswaAmbis::getTotalscore1()
+{
 	return  MahasiswaAmbis::totalscore1;
-}*/
+}
 
 MahasiswaAmbis::~MahasiswaAmbis()
 {

@@ -15,10 +15,10 @@ class MahasiswaAmbis :
 	public Mahasiswa
 {
 private:
-	int score;
+	float score;
 	int nyawa;
 	int pointBuku;
-	int totalscore1;
+	float totalscore1;
 	SoundManager sound;
 	PostGame *pg = new PostGame();
 public:
@@ -54,11 +54,15 @@ public:
 	int getNyawa();
 	void plusNyawa(int a);
 	void minNyawa(int a);
-	int  getScore();
-	void plusScore(int b);
-	void totalScore1();
+	float getScore();
+	void plusScore(float b);
+	void totalScore1(float a);
+	float getTotalscore1();
 	void totalScore2();
+	float getTotalscore2();
 	void totalScore3();
+	float getTotalscore3();
 	void totalScore4();
+	float getTotalscore4();
 };
 
