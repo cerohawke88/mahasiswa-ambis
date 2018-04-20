@@ -6,12 +6,13 @@ SoundManager::SoundManager()
 {
 	al_install_audio();
 	al_init_acodec_addon();	
-	al_reserve_samples(5);
+	al_reserve_samples(6);
 	menu = al_load_sample("sound_menu.wav");
 	jump = al_load_sample("jump.ogg");
 	eat = al_load_sample("eat.ogg");
 	coin = al_load_sample("coin.ogg");
 	cat = al_load_sample("cat.ogg");
+	book = al_load_sample("book.ogg");
 
 	menu_inst = al_create_sample_instance(menu);
 	al_set_sample_instance_playmode(menu_inst, ALLEGRO_PLAYMODE_LOOP);
@@ -20,6 +21,10 @@ SoundManager::SoundManager()
 	eat_inst = al_create_sample_instance(eat);
 	al_set_sample_instance_playmode(eat_inst, ALLEGRO_PLAYMODE_ONCE);
 	al_attach_sample_instance_to_mixer(eat_inst, al_get_default_mixer());
+	
+	book_inst = al_create_sample_instance(book);
+	al_set_sample_instance_playmode(book_inst, ALLEGRO_PLAYMODE_ONCE);
+	al_attach_sample_instance_to_mixer(book_inst, al_get_default_mixer());
 }
 
 
@@ -32,6 +37,10 @@ void SoundManager::playMenu() {
 	//al_play_sample(menu, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_LOOP, 0);
 	
 	al_play_sample_instance(menu_inst);
+}
+
+void SoundManager::playBook() {
+	al_play_sample_instance(book_inst);
 }
 
 void SoundManager::playJump() {

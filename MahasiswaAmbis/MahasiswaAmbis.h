@@ -21,6 +21,7 @@ private:
 	int koin;
 	int totalscore1;
 	SoundManager sound;
+	MahasiswaMusuh *mu;
 	PostGame *pg = new PostGame();
 public:
 	MahasiswaAmbis();
@@ -36,9 +37,9 @@ public:
 	bool getDoubleJump();
 	void doubleJump();
 	void lompat();
-	void maju();
-	void mundur();
-	void cekLompat();
+	void maju(vector<MahasiswaMusuh*> *musuh);
+	void mundur(vector<MahasiswaMusuh*> *musuh);
+	void cekLompat(vector<MahasiswaMusuh*> *musuh);
 	void setSourceX(float x);
 	void addSourceX(float x);
 	float getSourceX();
@@ -63,5 +64,6 @@ public:
 	void totalScore2();
 	void totalScore3();
 	void totalScore4();
+	void isDead();
 };
 

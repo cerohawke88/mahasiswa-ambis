@@ -27,7 +27,7 @@ public:
 	void setValidasi(bool);
 	bool getValidasi();
 	//void draw();
-	void draw(int gorX, int gorY);
+	void draw(int x, int y);
 private:
 	bool validasi;
 };

@@ -1,13 +1,14 @@
 #pragma once
 #include "Mahasiswa.h"
 #include "Rintangan.h"
+#include "algif.h"
 class MahasiswaMusuh :
 	public Mahasiswa
 {
 public:
 	MahasiswaMusuh();
 	~MahasiswaMusuh();
-	void diinjak();
+	void diinjak(int x, int y);
 	void maju();
 	void mundur();
 	float getY();
@@ -17,8 +18,13 @@ public:
 	float getSourceX();
 	int getWidth();
 	int getMoveSpeed();
-	void drawReg(int x, int y, int n);
+	void draw(int x, int y);
 	void cekJatuh();
 	void cekLompat();
+	void setValidasi(bool x);
+	bool getValidasi();
+private:
+	bool validasi;
+	ALLEGRO_BITMAP *mati;
 };
 
