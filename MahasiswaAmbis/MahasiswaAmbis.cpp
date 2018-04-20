@@ -402,13 +402,14 @@ void MahasiswaAmbis::cekKucing(vector<Kucing*> *kucing)
 void MahasiswaAmbis::cekFinish(ALLEGRO_EVENT_QUEUE *queue)
 {
 	bool menu;
-	if (MahasiswaAmbis::x > 3954) {
+	if (MahasiswaAmbis::x > 100) {
 		menu = true;
 		cout << "Finish\n";
 	}
 	else {
 		menu = false;
 	}
+	al_destroy_event_queue(queue);
 	pg->post_game(menu);
 		
 }
@@ -440,8 +441,8 @@ void MahasiswaAmbis::plusScore(int b)
 
 void MahasiswaAmbis::totalScore1()
 {
-	MahasiswaAmbis::totalscore1 = MahasiswaAmbis::score / 15;
-	return  MahasiswaAmbis::totalscore1;
+	//MahasiswaAmbis::totalscore1 = MahasiswaAmbis::score / 15;
+	//return  MahasiswaAmbis::totalscore1;
 }
 
 MahasiswaAmbis::~MahasiswaAmbis()
