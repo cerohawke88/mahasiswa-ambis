@@ -3,14 +3,14 @@
 
 GameMenu::GameMenu()
 {
-	background = al_load_bitmap("map.png");
+	background_gameover = al_load_bitmap("GameOver.png");
+	background_menu = al_load_bitmap("main_menu.png");
 	GameMenu::cekmenu = 0;
 	resume = false;
 	font = al_load_font("font.ttf", 50, 0);
 	al_init_ttf_addon();
 	color.menu = al_map_rgb(122, 113, 143);
 	color.enter = al_map_rgb(0, 0, 0);
-	color.putih = al_map_rgb(255, 255, 255);
 }
 
 
@@ -36,11 +36,8 @@ bool GameMenu::main_menu(bool &menu, ALLEGRO_EVENT_QUEUE *queue, bool& stop, boo
 		else {
 			al_draw_bitmap(GameMenu::background_menu, 0, 0, NULL);
 		}
-		
-		if (gameover) {
-			al_draw_text(font, color.putih, ScreenWidth / 2, ScreenHeight / 2 - 40, ALLEGRO_ALIGN_CENTRE, "Game Over");
-		} 
-		else if (!stop)
+
+		if (!stop)
 		{
 			if (cekmenu == 0) {
 				al_draw_text(font, color.enter, ScreenWidth / 2, ScreenHeight / 2 - 150, ALLEGRO_ALIGN_CENTRE, "Start");
@@ -181,9 +178,7 @@ bool GameMenu::main_menu(bool &menu, ALLEGRO_EVENT_QUEUE *queue, bool& stop, boo
 
 void GameMenu::post_game(bool& menu)
 {
-	color.post = al_map_rgb(122, 113, 143);
-	black.post = al_map_rgb(0, 0, 0);
-	font = al_load_font("font.ttf", 60, 0);
+	/*font = al_load_font("font.ttf", 60, 0);
 	al_draw_bitmap(background, 0, 0, NULL);
 
 
@@ -200,5 +195,5 @@ void GameMenu::post_game(bool& menu)
 		al_draw_bitmap(algif_get_bitmap(book, al_get_time()), 170, 225, NULL);
 
 		al_flip_display();
-	}
+	}*/
 }

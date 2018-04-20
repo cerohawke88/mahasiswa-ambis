@@ -550,8 +550,8 @@ void MahasiswaAmbis::totalScore1(float a)
 
 float MahasiswaAmbis::getTotalscore1()
 {
-	MahasiswaAmbis::totalscore1 = MahasiswaAmbis::score / 15;
-	return  MahasiswaAmbis::totalscore1;
+	//MahasiswaAmbis::totalscore1 = MahasiswaAmbis::score / 15;
+	//return  MahasiswaAmbis::totalscore1;
 }
 
 MahasiswaAmbis::~MahasiswaAmbis()
