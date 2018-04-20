@@ -20,7 +20,8 @@ MahasiswaAmbis::MahasiswaAmbis()
 	MahasiswaAmbis::gravity = 1;
 	MahasiswaAmbis::nyawa = 1;
 	MahasiswaAmbis::score = 0;
-	MahasiswaAmbis::totalscore1 = 0;
+	MahasiswaAmbis::totalscorestage1 = 0;
+	MahasiswaAmbis::bestscore = 0;
 }
 
 void MahasiswaAmbis::drawReg(int n)
@@ -169,6 +170,7 @@ float MahasiswaAmbis::getSourceX()
 
 void MahasiswaAmbis::cekGorengan(vector<Gorengan*> *gr)
 {
+	//cout << "NYAWA " << getNyawa() << endl;
 	if (this->x>1490 && this->x<1510 && this->y> 220 && this->y< 280) {
 		cout << "gor1\n";
 		if (gr->at(0)->getValidasi() == true)
@@ -204,30 +206,40 @@ void MahasiswaAmbis::cekKoin(vector<Koin*> *koin)
 {
 	if (this->x>1290 && this->x<1310 && this->y> 270 && this->y< 330) {
 		if (koin->at(0)->getValidasi() == true) {
-			//sound.playEat();
+			sound.playCoin();
+			plusCoin(1);
+			cout << "koin: " << getCoin() << endl;
 		}
 		koin->at(0)->setValidasi(false);
 	}
 	else if (this->x>1790 && this->x<1810 && this->y> 270 && this->y< 330) {
+	
 		if (koin->at(1)->getValidasi() == true) {
-			//sound.playEat();
+			sound.playCoin();
+			plusCoin(1);
+			cout << "koin: " << getCoin() << endl;
 		}
 		koin->at(1)->setValidasi(false);
 	}
 	else if (this->x>3290 && this->x<3310 && this->y> 270 && this->y< 330) {
 		if (koin->at(2)->getValidasi() == true) {
-			//sound.playEat();
+			sound.playCoin();
+			plusCoin(1);
+			cout << "koin: " << getCoin() << endl;
 		}
 		koin->at(2)->setValidasi(false);
 	}
 	else if (this->x>390 && this->x<410 && this->y> 180 && this->y< 240) {
 		if (koin->at(3)->getValidasi() == true) {
-			//sound.playEat();
+			sound.playCoin();
+			plusCoin(1);
+			cout << "koin: " << getCoin() << endl;
 		}
 		koin->at(3)->setValidasi(false);
 	}
 
 }
+
 void MahasiswaAmbis::cekBuku(vector<Buku*> *buku)
 {
 	if (this->x>90 && this->x<110 && this->y> 270 && this->y< 330) {
@@ -235,7 +247,7 @@ void MahasiswaAmbis::cekBuku(vector<Buku*> *buku)
 		if (buku->at(0)->getValidasi() == true) {
 			//sound.playEat();
 			plusScore(4);
-			cout << "score" << getScore();
+			cout << "score: " << getScore() << endl;
 		}
 		buku->at(0)->setValidasi(false);
 	}
@@ -364,7 +376,10 @@ void MahasiswaAmbis::cekBuku(vector<Buku*> *buku)
 			cout << "score" << getScore();
 		}
 		buku->at(14)->setValidasi(false);
+		
+
 	}
+
 }
 
 void MahasiswaAmbis::cekMusuh(vector<MahasiswaMusuh*> *musuh)
@@ -374,7 +389,7 @@ void MahasiswaAmbis::cekMusuh(vector<MahasiswaMusuh*> *musuh)
 
 void MahasiswaAmbis::cekKucing(vector<Kucing*> *kucing) 
 {
-	if (this->x>468 && this->x<532 && this->y> 351 && this->y< 479) { 
+	if (this->x>468 && this->x<535 && this->y> 351 && this->y< 479) { 
 		if (kucing->at(0)->getValidasi() == true) {
 
 			if (getNyawa() > 0)
@@ -382,12 +397,88 @@ void MahasiswaAmbis::cekKucing(vector<Kucing*> *kucing)
 
 				minNyawa(1);
 
-				cout << "NYAWA " << getNyawa() << endl;
+				cout << "NYAWA: " << getNyawa() << endl;
 			}
 
 			else
 			{
-				cout << "gameover";
+				cout << "GAMEOVER\n";
+			}
+			kucing->at(0)->setValidasi(false);
+		}
+		
+	} 
+	else if (this->x>1070 && this->x<1140 && this->y> 351 && this->y< 479) { 
+		if (kucing->at(0)->getValidasi() == true) {
+
+			if (getNyawa() > 0)
+			{
+
+				minNyawa(1);
+
+				cout << "NYAWA: " << getNyawa() << endl;
+			}
+
+			else
+			{
+				cout << "GAMEOVER\n";
+			}
+			kucing->at(0)->setValidasi(false);
+		}
+		
+	}
+	else if (this->x>1920 && this->x<1990 && this->y> 351 && this->y< 479) { 
+		if (kucing->at(0)->getValidasi() == true) {
+
+			if (getNyawa() > 0)
+			{
+
+				minNyawa(1);
+
+				cout << "NYAWA: " << getNyawa() << endl;
+			}
+
+			else
+			{
+				cout << "GAMEOVER\n";
+			}
+			kucing->at(0)->setValidasi(false);
+		}
+		
+	}
+	else if (this->x>2070 && this->x<2135 && this->y> 351 && this->y< 479) { 
+		if (kucing->at(0)->getValidasi() == true) {
+
+			if (getNyawa() > 0)
+			{
+
+				minNyawa(1);
+
+				cout << "NYAWA: " << getNyawa() << endl;
+			}
+
+			else
+			{
+				cout << "GAMEOVER\n";
+			}
+			kucing->at(0)->setValidasi(false);
+		}
+		
+	}
+	else if (this->x>2220 && this->x<2270 && this->y> 351 && this->y< 479) { 
+		if (kucing->at(0)->getValidasi() == true) {
+
+			if (getNyawa() > 0)
+			{
+
+				minNyawa(1);
+
+				cout << "NYAWA: " << getNyawa() << endl;
+			}
+
+			else
+			{
+				cout << "GAMEOVER\n";
 			}
 			kucing->at(0)->setValidasi(false);
 		}
@@ -429,22 +520,50 @@ void MahasiswaAmbis::minNyawa(int a)
 	MahasiswaAmbis::nyawa -= a;
 }
 
-int MahasiswaAmbis::getScore()
+float MahasiswaAmbis::getScore()
 {
 	return  MahasiswaAmbis::score;
 }
 
-void MahasiswaAmbis::plusScore(int b)
+
+int MahasiswaAmbis::getCoin()
+{
+	return koin;
+}
+
+void MahasiswaAmbis::plusCoin(int c)
+{
+	koin + c;
+}
+
+
+void MahasiswaAmbis::plusScore(float b)
 {
 	MahasiswaAmbis::score += b;
 }
 
-void MahasiswaAmbis::totalScore1()
+void MahasiswaAmbis::totalScore1(float a)
 {
-	//MahasiswaAmbis::totalscore1 = MahasiswaAmbis::score / 15;
-	//return  MahasiswaAmbis::totalscore1;
+	MahasiswaAmbis::totalscorestage1 = MahasiswaAmbis::score / a;
+
+}
+
+float MahasiswaAmbis::getTotalscore1()
+{
+	MahasiswaAmbis::totalscore1 = MahasiswaAmbis::score / 15;
+	return  MahasiswaAmbis::totalscore1;
 }
 
 MahasiswaAmbis::~MahasiswaAmbis()
 {
+}
+
+float MahasiswaAmbis::getTotalscore4()
+{
+	return 0.0f;
+}
+
+float MahasiswaAmbis::highscore()
+{
+	return 0.0f;
 }
