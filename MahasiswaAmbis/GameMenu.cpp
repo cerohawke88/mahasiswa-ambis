@@ -142,8 +142,7 @@ void GameMenu::main_menu(bool &menu, ALLEGRO_EVENT_QUEUE *queue, int& returnmenu
 						else if (cekmenu == 1) {
 							//highscore
 							cout << "highscore" << endl;
-
-
+							
 						}
 						else if (cekmenu == 2) {
 							//credit
