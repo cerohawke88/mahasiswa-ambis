@@ -23,6 +23,7 @@ private:
 	float bestscore;
 
 	SoundManager sound;
+	MahasiswaMusuh *mu;
 	PostGame *pg = new PostGame();
 public:
 	MahasiswaAmbis();
@@ -38,9 +39,9 @@ public:
 	bool getDoubleJump();
 	void doubleJump();
 	void lompat();
-	void maju();
-	void mundur();
-	void cekLompat();
+	void maju(vector<MahasiswaMusuh*> *musuh);
+	void mundur(vector<MahasiswaMusuh*> *musuh);
+	void cekLompat(vector<MahasiswaMusuh*> *musuh);
 	void setSourceX(float x);
 	void addSourceX(float x);
 	float getSourceX();
@@ -69,7 +70,5 @@ public:
 	void totalScore3();
 	float getTotalscore3();
 	void totalScore4();
-	float getTotalscore4();
-	float highscore();
 };
 

@@ -4,7 +4,9 @@
 
 MahasiswaMusuh::MahasiswaMusuh()
 {
-	image = al_load_bitmap("musuh.png");
+	//image = al_load_bitmap("musuh.png");
+	gif = algif_load_animation("musuh.gif");
+	mati = al_load_bitmap("musuh_mati.png");
 	moveSpeed = 2.5;
 	x = 10;
 	y = 402;
@@ -14,15 +16,20 @@ MahasiswaMusuh::MahasiswaMusuh()
 	jumpSpeed = 15;
 	velocityX = velocityY = 0;
 	gravity = 1;
+	MahasiswaMusuh::validasi = true;
 }
 
 
 MahasiswaMusuh::~MahasiswaMusuh()
 {
+	algif_destroy_animation(gif);
 }
 
-void MahasiswaMusuh::diinjak() {
-
+void MahasiswaMusuh::diinjak(int x, int y) {
+//	algif_destroy_animation(gif);
+	if (MahasiswaMusuh::validasi) {
+		al_draw_bitmap(mati, x, y, NULL);
+	}
 }
 
 void MahasiswaMusuh::maju()
@@ -70,9 +77,12 @@ int MahasiswaMusuh::getMoveSpeed()
 	return moveSpeed;
 }
 
-void MahasiswaMusuh::drawReg(int x, int y, int n)
+void MahasiswaMusuh::draw(int x, int y)
 {
-	al_draw_bitmap_region(image, sourceX, sourceY * al_get_bitmap_height(image) / 2, 64, 64, x, y, n);
+	if (MahasiswaMusuh::validasi) {
+		al_draw_bitmap(algif_get_bitmap(gif, al_get_time()), x, y, NULL);
+		//al_draw_bitmap(mati, x, y, NULL);
+	}
 }
 
 
@@ -110,6 +120,16 @@ void MahasiswaMusuh::cekLompat()
 			//sound.playJump();
 		}
 	}
+}
+
+void MahasiswaMusuh::setValidasi(bool x)
+{
+	MahasiswaMusuh::validasi = x;
+}
+
+bool MahasiswaMusuh::getValidasi()
+{
+	return MahasiswaMusuh::validasi;
 }
 
 

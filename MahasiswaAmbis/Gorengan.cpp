@@ -20,10 +20,10 @@ void Gorengan::drawReg() {
 	//al_draw_bitmap_region(image, al_get_bitmap_width(image)/4, al_get_bitmap_height(image), 64, 64, x, y, null);
 }
 
-void Gorengan::draw(int gorX, int gorY)
+void Gorengan::draw(int x, int y)
 {
 	if (Gorengan::validasi) {
-		al_draw_bitmap(algif_get_bitmap(gif, al_get_time()), gorX, gorY, NULL);
+		al_draw_bitmap(algif_get_bitmap(gif, al_get_time()), x, y, NULL);
 	}
 }
 

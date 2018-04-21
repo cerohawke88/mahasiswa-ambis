@@ -9,11 +9,13 @@ private:
 	ALLEGRO_SAMPLE * coin = NULL;
 	ALLEGRO_SAMPLE * eat = NULL;
 	ALLEGRO_SAMPLE * cat = NULL;
+	ALLEGRO_SAMPLE * book = NULL;
 	ALLEGRO_SAMPLE_INSTANCE *menu_inst;
 	ALLEGRO_SAMPLE_INSTANCE *jump_inst;
 	ALLEGRO_SAMPLE_INSTANCE *coin_inst;
 	ALLEGRO_SAMPLE_INSTANCE *eat_inst;
 	ALLEGRO_SAMPLE_INSTANCE *cat_inst;
+	ALLEGRO_SAMPLE_INSTANCE *book_inst;
 public:
 	SoundManager();
 	~SoundManager();
@@ -22,5 +24,6 @@ public:
 	void playCoin();
 	void playEat();
 	void playCat();
+	void playBook();
 };
 
