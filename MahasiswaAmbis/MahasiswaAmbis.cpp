@@ -599,11 +599,11 @@ void MahasiswaAmbis::cekKucing(vector<Kucing*> *kucing, bool& menu, int& validas
 		kucing->at(0)->setValidasi(true);
 	}
 
-	/*if (cek == 1) {
+	if (cek == 1) {
 		menu = true;
 		validasi_menu = 2;
 		xcu = 0;
-	}*/
+	}
 
 }
 
