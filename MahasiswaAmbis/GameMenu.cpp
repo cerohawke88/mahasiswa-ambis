@@ -11,6 +11,7 @@ GameMenu::GameMenu()
 	al_init_ttf_addon();
 	color.menu = al_map_rgb(122, 113, 143);
 	color.enter = al_map_rgb(0, 0, 0);
+	color.white = al_map_rgb(255, 255, 255);
 }
 
 
@@ -20,24 +21,25 @@ GameMenu::~GameMenu()
 }
 
 
-bool GameMenu::main_menu(bool &menu, ALLEGRO_EVENT_QUEUE *queue, bool& stop, bool& gameover)
+void GameMenu::main_menu(bool &menu, ALLEGRO_EVENT_QUEUE *queue, int& returnmenu, int validasi)
 {
-	if (!al_init()) //returns a value of -1 if
-		return -1;
-
+	int bekasgameover = 0;
+	
 	while (menu)
 	{
+		//cout << "menu : " << menu;
 		ALLEGRO_EVENT ev;
 
 		al_wait_for_event(queue, &ev);
-		if (gameover) {
+		if (validasi==2) { //gameover
 			al_draw_bitmap(GameMenu::background_gameover, 0, 0, NULL);
+			al_draw_text(font, color.white, ScreenWidth / 2, ScreenHeight / 2 - 50, ALLEGRO_ALIGN_CENTRE, "Game Over");
 		}
 		else {
 			al_draw_bitmap(GameMenu::background_menu, 0, 0, NULL);
 		}
 
-		if (!stop)
+		if (validasi==0) //menu awal
 		{
 			if (cekmenu == 0) {
 				al_draw_text(font, color.enter, ScreenWidth / 2, ScreenHeight / 2 - 150, ALLEGRO_ALIGN_CENTRE, "Start");
@@ -64,7 +66,7 @@ bool GameMenu::main_menu(bool &menu, ALLEGRO_EVENT_QUEUE *queue, bool& stop, boo
 				al_draw_text(font, color.menu, ScreenWidth / 2, ScreenHeight / 2 + 60, ALLEGRO_ALIGN_CENTRE, "Exit");
 			}
 		}
-		else if (stop && !resume)
+		else if (validasi == 1) //resume
 		{
 			if (cekmenu == 0) {
 				al_draw_text(font, color.enter, ScreenWidth / 2, ScreenHeight / 2 - 170, ALLEGRO_ALIGN_CENTRE, "New Game");
@@ -86,7 +88,7 @@ bool GameMenu::main_menu(bool &menu, ALLEGRO_EVENT_QUEUE *queue, bool& stop, boo
 			}
 
 		}
-		else if (stop && resume) 
+		else if (validasi == 3)  //credits
 		{
 			al_draw_text(font, color.menu, ScreenWidth / 2, ScreenHeight / 2 - 170, ALLEGRO_ALIGN_CENTRE, "This game created by: ");
 			al_draw_text(font, color.menu, ScreenWidth / 2, ScreenHeight / 2 - 100, ALLEGRO_ALIGN_CENTRE, "1. Megandi");
@@ -101,49 +103,53 @@ bool GameMenu::main_menu(bool &menu, ALLEGRO_EVENT_QUEUE *queue, bool& stop, boo
 			switch (ev.keyboard.keycode)
 			{
 			case ALLEGRO_KEY_ENTER:
-				//stop = false;
-				//menu = true;
 				if (ev.keyboard.keycode == ALLEGRO_KEY_ENTER)
 				{
-				if (gameover) {
-					stop = false;
-					menu = false;
-					gameover = false;
-				}
-					else if (!stop) {
+					if (validasi == 2) {
+						menu = true;
+						validasi = 0;
+						bekasgameover = 1;
+					}
+					else if (validasi == 0) {
 						if (cekmenu == 0) {
 							//start game
-							stop = false;
 							menu = false;
+							if (bekasgameover == 1) {
+								returnmenu = 0;
+							}
 						}
 						else if (cekmenu == 1) {
 							//highscore
-							stop = false;
-							resume = true;
+							cout << "highscore" << endl;
 						}
 						else if (cekmenu == 2) {
 							//credit
-							stop = true;
-							resume = true;
+							validasi = 3;
 						}
 						else if (cekmenu == 3) {
 							//exit game
-							return true;
+							cout << "exit game" << endl;
+							returnmenu = 3;
+							menu = false;
 						}
 					}
-					else if(stop){
+					else if(validasi == 1){
 						if (cekmenu == 0) {
 							//start game lagi
+							cout << "start game" << endl;
+							returnmenu = 0;
+							menu = false;
 						}
 						else if (cekmenu == 1) {
 							//resume
-							stop = false;
 							menu = false;
-
+							cout << "resume" << endl;
 						}
 						else if (cekmenu == 2) {
 							//exit game
-							return true;
+							cout << "exit game" << endl;
+							returnmenu = 3;
+							menu = false;
 
 						}
 					}
@@ -165,9 +171,8 @@ bool GameMenu::main_menu(bool &menu, ALLEGRO_EVENT_QUEUE *queue, bool& stop, boo
 				cout << cekmenu << endl;
 				break;
 			case ALLEGRO_KEY_ESCAPE:
-				if (stop && resume) {
-					stop = false;
-					resume = false;
+				if (validasi = 3) {
+					validasi = 0;
 				}
 				break;
 			}

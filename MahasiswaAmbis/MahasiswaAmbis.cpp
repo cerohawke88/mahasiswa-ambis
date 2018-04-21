@@ -533,7 +533,7 @@ int MahasiswaAmbis::getCoin()
 
 void MahasiswaAmbis::plusCoin(int c)
 {
-	koin + c;
+	koin += c;
 }
 
 
@@ -551,7 +551,7 @@ void MahasiswaAmbis::totalScore1(float a)
 float MahasiswaAmbis::getTotalscore1()
 {
 	//MahasiswaAmbis::totalscore1 = MahasiswaAmbis::score / 15;
-	//return  MahasiswaAmbis::totalscore1;
+	return  MahasiswaAmbis::totalscorestage1;
 }
 
 MahasiswaAmbis::~MahasiswaAmbis()

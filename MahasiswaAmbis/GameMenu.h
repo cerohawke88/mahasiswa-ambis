@@ -15,6 +15,7 @@ public:
 	{
 		ALLEGRO_COLOR menu;
 		ALLEGRO_COLOR enter;
+		ALLEGRO_COLOR white;
 	}COLOURS;
 
 	COLOURS color, black;
@@ -22,7 +23,8 @@ public:
 	GameMenu();
 	~GameMenu();
 
-	bool main_menu(bool& menu, ALLEGRO_EVENT_QUEUE *queue, bool stop, bool gameover);
+	void main_menu(bool& menu, ALLEGRO_EVENT_QUEUE *queue, int& returnmenu, int validasi);
+	void post_game(bool& menu);
 
 private:
 	ALLEGRO_BITMAP * background_post;
