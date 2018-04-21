@@ -19,6 +19,7 @@ private:
 	int nyawa;
 	int pointBuku;
 	float totalscorestage1;
+	int totalscore1;
 	int koin;
 	float bestscore;
 
@@ -64,11 +65,13 @@ public:
 	float getTotalscore1();
 	int getCoin();
 	void plusCoin(int c);
+	void isDead();
 	void totalScore1();
 	void totalScore2();
 	float getTotalscore2();
 	void totalScore3();
 	float getTotalscore3();
 	void totalScore4();
+	float getTotalscore4();
+	float highscore();
 };
-
