@@ -1,6 +1,8 @@
 #include "stdafx.h"
 #include "GameScreen.h"
 
+
+
 GameScreen::GameScreen()
 {
 	background = al_load_bitmap("mapp.png");
@@ -28,10 +30,15 @@ void GameScreen::init()
 	al_install_keyboard();
 }
 
-void GameScreen::showKoin(int x, int width)
+void GameScreen::showKoin(int x, int width, MahasiswaAmbis *ma)
 {
+
 	int xx;
 	xx = -(ScreenWidth / 2) + (x + 300 / 2);
+	int score,koin,nyawa;
+	score = (int)ma->getScore();
+	koin = ma->getCoin();
+	nyawa = ma->getNyawa();
 
 	if (xx < 100) {
 		xx = 100;
@@ -39,23 +46,23 @@ void GameScreen::showKoin(int x, int width)
 
 	if (x > 3695) {
 		al_draw_bitmap(algif_get_bitmap(gif_koin, al_get_time()), 3515, 5, NULL);
-		al_draw_text(font, color.enter, 3575, 30, ALLEGRO_ALIGN_CENTRE, "10");
+		al_draw_text(font, color.enter, 3575, 30, ALLEGRO_ALIGN_CENTRE, "");
 
 		al_draw_bitmap(algif_get_bitmap(gif_buku, al_get_time()), 3605, 5, NULL);
-		al_draw_text(font, color.enter, 3665, 30, ALLEGRO_ALIGN_CENTRE, "5");
+		al_draw_text(font, color.enter, 3665, 30, ALLEGRO_ALIGN_CENTRE, "");
 
 		al_draw_bitmap(algif_get_bitmap(gif_gorengan, al_get_time()), 3695, 20, NULL);
-		al_draw_text(font, color.enter, 3755, 30, ALLEGRO_ALIGN_CENTRE, "3");
+		al_draw_text(font, color.enter, 3755, 30, ALLEGRO_ALIGN_CENTRE, "");
 	}
 	else {
 		al_draw_bitmap(algif_get_bitmap(gif_koin, al_get_time()), xx - 60, 5, NULL);
-		al_draw_text(font, color.enter, xx, 30, ALLEGRO_ALIGN_CENTRE, "10");
-
+		al_draw_textf(font, color.enter, xx, 30, 0, "%d ", koin);
+			
 		al_draw_bitmap(algif_get_bitmap(gif_buku, al_get_time()), xx + 30, 5, NULL);
-		al_draw_text(font, color.enter, xx + 90, 30, ALLEGRO_ALIGN_CENTRE, "5");
+		al_draw_textf(font, color.enter, xx + 90, 30, 0, "%d ", score);
 
 		al_draw_bitmap(algif_get_bitmap(gif_gorengan, al_get_time()), xx + 120, 20, NULL);
-		al_draw_text(font, color.enter, xx + 170, 30, ALLEGRO_ALIGN_CENTRE, "3");
+		al_draw_textf(font, color.enter, xx + 170, 30, 0, "%d ", nyawa );
 	}
 
 	
