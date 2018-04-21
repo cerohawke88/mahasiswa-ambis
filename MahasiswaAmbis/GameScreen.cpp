@@ -12,7 +12,7 @@ GameScreen::GameScreen()
 	color.enter = al_map_rgb(0, 0, 0);
 	color.white = al_map_rgb(255, 255, 255);
 	gif_koin = algif_load_animation("Coin.gif");
-	gif_gorengan = algif_load_animation("Gor.gif");
+	gif_gorengan = algif_load_animation("gor.gif");
 	gif_buku = algif_load_animation("Book.gif");
 }
 

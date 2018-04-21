@@ -459,7 +459,7 @@ void MahasiswaAmbis::cekMusuh(vector<MahasiswaMusuh*> *musuh)
 		
 		if (musuh->at(0)->getValidasi() == true) {
 
-			if (getNyawa() > 0)
+			if (getNyawa() > 1)
 			{
 
 				minNyawa(1);
@@ -488,7 +488,7 @@ void MahasiswaAmbis::cekKucing(vector<Kucing*> *kucing, bool& menu, int& validas
 			//x += moveSpeed;
 		if (kucing->at(0)->getValidasi() == true) {
 
-			if (getNyawa() > 0)
+			if (getNyawa() > 1)
 			{
 
 				minNyawa(1);
@@ -510,7 +510,7 @@ void MahasiswaAmbis::cekKucing(vector<Kucing*> *kucing, bool& menu, int& validas
 	else if (this->x>1070 && this->x<1140 && this->y> 351 && this->y< 479) { 
 		if (kucing->at(0)->getValidasi() == true) {
 
-			if (getNyawa() > 0)
+			if (getNyawa() > 1)
 			{
 
 				minNyawa(1);
@@ -532,7 +532,7 @@ void MahasiswaAmbis::cekKucing(vector<Kucing*> *kucing, bool& menu, int& validas
 	else if (this->x>1920 && this->x<1990 && this->y> 351 && this->y< 479) { 
 		if (kucing->at(0)->getValidasi() == true) {
 
-			if (getNyawa() > 0)
+			if (getNyawa() > 1)
 			{
 
 				minNyawa(1);
@@ -554,7 +554,7 @@ void MahasiswaAmbis::cekKucing(vector<Kucing*> *kucing, bool& menu, int& validas
 	else if (this->x>2070 && this->x<2135 && this->y> 351 && this->y< 479) { 
 		if (kucing->at(0)->getValidasi() == true) {
 
-			if (getNyawa() > 0)
+			if (getNyawa() > 1)
 			{
 
 				minNyawa(1);
@@ -576,7 +576,7 @@ void MahasiswaAmbis::cekKucing(vector<Kucing*> *kucing, bool& menu, int& validas
 	else if (this->x>2220 && this->x<2270 && this->y> 351 && this->y< 479) { 
 		if (kucing->at(0)->getValidasi() == true) {
 
-			if (getNyawa() > 0)
+			if (getNyawa() > 1)
 			{
 
 				minNyawa(1);

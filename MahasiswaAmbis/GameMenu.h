@@ -7,6 +7,7 @@
 #include <stdio.h>
 #include <allegro5\allegro_ttf.h>
 #include "algif.h"
+#include "MahasiswaAmbis.h"
 
 class GameMenu
 {
@@ -23,7 +24,7 @@ public:
 	GameMenu();
 	~GameMenu();
 
-	void main_menu(bool& menu, ALLEGRO_EVENT_QUEUE *queue, int& returnmenu, int validasi);
+	void main_menu(bool& menu, ALLEGRO_EVENT_QUEUE *queue, int& returnmenu, int validasi, MahasiswaAmbis* ma);
 	void post_game(bool& menu);
 
 private:

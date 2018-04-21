@@ -26,9 +26,13 @@ GameMenu::~GameMenu()
 }
 
 
-void GameMenu::main_menu(bool &menu, ALLEGRO_EVENT_QUEUE *queue, int& returnmenu, int validasi)
+void GameMenu::main_menu(bool &menu, ALLEGRO_EVENT_QUEUE *queue, int& returnmenu, int validasi, MahasiswaAmbis* ma)
 {
 	int bekasgameover = 0;
+	int score, koin, nyawa;
+	score = (int)ma->getScore();
+	koin = ma->getCoin();
+	nyawa = ma->getNyawa();
 	
 	while (menu)
 	{
@@ -112,11 +116,14 @@ void GameMenu::main_menu(bool &menu, ALLEGRO_EVENT_QUEUE *queue, int& returnmenu
 
 			//al_draw_text(font, color.post, ScreenWidth / 3, ScreenHeight / 2 - 110, ALLEGRO_ALIGN_CENTRE, "COINS");
 			al_draw_bitmap(algif_get_bitmap(coin, al_get_time()), 170, 85, NULL);
+			al_draw_textf(font, color.enter, 400 , 140, 0, "%d ", koin);
 			//al_draw_text(font, color.post, ScreenWidth / 3, ScreenHeight / 2 - 40, ALLEGRO_ALIGN_CENTRE, "LIVES");
 			//al_draw_bitmap_region(life, 50, 0 * al_get_bitmap_height(life) / 2, 64, 64, 380, 10, NULL);
 			al_draw_bitmap(algif_get_bitmap(life, al_get_time()), 170, 168, NULL);
+			al_draw_textf(font, color.enter, 400, 210, 0, "%d ", nyawa);
 			//al_draw_text(font, color.post, ScreenWidth / 3, ScreenHeight / 2 + 30, ALLEGRO_ALIGN_CENTRE, "SCORE");
 			al_draw_bitmap(algif_get_bitmap(book, al_get_time()), 170, 225, NULL);
+			al_draw_textf(font, color.enter, 400, 280, 0, "%d ", score);
 		}
 
 		if (ev.type == ALLEGRO_EVENT_KEY_DOWN)
