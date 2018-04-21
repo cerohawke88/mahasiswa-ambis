@@ -127,9 +127,11 @@ void GameMenu::main_menu(bool &menu, ALLEGRO_EVENT_QUEUE *queue, int& returnmenu
 				if (ev.keyboard.keycode == ALLEGRO_KEY_ENTER)
 				{
 					if (validasi == 2) {
+						//gameover
 						menu = true;
 						validasi = 0;
 						bekasgameover = 1;
+						//sound->stopGameover();
 					}
 					else if (validasi == 0) {
 						if (cekmenu == 0) {

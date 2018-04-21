@@ -4,9 +4,8 @@
 
 MahasiswaMusuh::MahasiswaMusuh()
 {
-	//image = al_load_bitmap("musuh.png");
 	gif = algif_load_animation("musuh.gif");
-	mati = al_load_bitmap("musuh_mati.png");
+	gif_mati = algif_load_animation("musuh_mati.gif");
 	moveSpeed = 2.5;
 	x = 10;
 	y = 402;
@@ -26,10 +25,7 @@ MahasiswaMusuh::~MahasiswaMusuh()
 }
 
 void MahasiswaMusuh::diinjak(int x, int y) {
-//	algif_destroy_animation(gif);
-	if (MahasiswaMusuh::validasi) {
-		al_draw_bitmap(mati, x, y, NULL);
-	}
+
 }
 
 void MahasiswaMusuh::maju()
@@ -81,7 +77,10 @@ void MahasiswaMusuh::draw(int x, int y)
 {
 	if (MahasiswaMusuh::validasi) {
 		al_draw_bitmap(algif_get_bitmap(gif, al_get_time()), x, y, NULL);
-		//al_draw_bitmap(mati, x, y, NULL);
+	}
+	else {
+		///al_draw_bitmap(image, x, y, NULL);
+		al_draw_bitmap(algif_get_bitmap(gif_mati, al_get_time()), x, y, NULL);
 	}
 }
 

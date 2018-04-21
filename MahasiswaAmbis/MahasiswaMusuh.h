@@ -1,6 +1,14 @@
 #pragma once
+
+#include <allegro5\allegro5.h>
+#include <allegro5\allegro_native_dialog.h>
+#include <allegro5\allegro_primitives.h>
+#include <allegro5\allegro_font.h>
+#include <stdio.h>
+#include <allegro5\allegro_ttf.h>
 #include "Mahasiswa.h"
 #include "Rintangan.h"
+#include <allegro5\allegro_image.h>
 #include "algif.h"
 class MahasiswaMusuh :
 	public Mahasiswa
@@ -25,6 +33,6 @@ public:
 	bool getValidasi();
 private:
 	bool validasi;
-	ALLEGRO_BITMAP *mati;
+	ALGIF_ANIMATION *gif_mati;
 };
 

@@ -40,8 +40,8 @@ public:
 	bool getDoubleJump();
 	void doubleJump();
 	void lompat();
-	void maju(vector<MahasiswaMusuh*> *musuh);
-	void mundur(vector<MahasiswaMusuh*> *musuh);
+	void maju(vector<MahasiswaMusuh*> *musuh, bool& menu, int& validasi_menu, int& xcu);
+	void mundur(vector<MahasiswaMusuh*> *musuh, bool& menu, int& validasi_menu, int& xcu);
 	void cekLompat(vector<MahasiswaMusuh*> *musuh);
 	void setSourceX(float x);
 	void addSourceX(float x);
@@ -52,7 +52,7 @@ public:
 	void cekGorengan(vector<Gorengan*> *gr);
 	void cekKoin(vector<Koin*> *koin);
 	void cekBuku(vector<Buku*> *buku);
-	void cekMusuh(vector<MahasiswaMusuh*> *musuh);
+	void cekMusuh(vector<MahasiswaMusuh*> *musuh, bool& menu, int& validasi_menu, int& xcu);
 	void cekKucing(vector<Kucing*> *kucing, bool& menu, int& validasi_menu, int& xcu);
 	void cekJatuh();
 	void cekFinish(ALLEGRO_EVENT_QUEUE *queue);
@@ -64,8 +64,8 @@ public:
 	void totalScore1(float a);
 	float getTotalscore1();
 	int getCoin();
+	void minCoin(int c);
 	void plusCoin(int c);
-	void isDead();
 	void totalScore1();
 	void totalScore2();
 	float getTotalscore2();
