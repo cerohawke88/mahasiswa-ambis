@@ -12,9 +12,9 @@ Saveload::~Saveload()
 {
 }
 
-void Saveload::Save()
+void Saveload::Save(float score)
 {
-	cin >> score;
+	Load();
 	ofstream writeFile;
 	writeFile.open("savedata.txt");
 	if (writeFile.is_open()) {
@@ -39,4 +39,19 @@ void Saveload::Load()
 	readFile.close();
 
 	cout << "Highscore : " << highscore << endl;
+}
+
+int Saveload::getLoad()
+{
+	ifstream readFile;
+	readFile.open("savedata.txt");
+	if (readFile.is_open())
+	{
+
+		readFile >> highscore;
+
+	}
+	readFile.close();
+
+	return highscore;
 }

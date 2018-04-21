@@ -17,6 +17,7 @@ GameMenu::GameMenu()
 	life = algif_load_animation("life.gif");
 	coin = algif_load_animation("coins.gif");
 	book = algif_load_animation("Books.gif");
+	sl = new Saveload;
 }
 
 
@@ -26,9 +27,14 @@ GameMenu::~GameMenu()
 }
 
 
-void GameMenu::main_menu(bool &menu, ALLEGRO_EVENT_QUEUE *queue, int& returnmenu, int validasi)
+void GameMenu::main_menu(bool &menu, ALLEGRO_EVENT_QUEUE *queue, int& returnmenu, int validasi, MahasiswaAmbis* ma)
 {
+
 	int bekasgameover = 0;
+	int score, koin, nyawa;
+	score = (int)ma->getScore();
+	koin = ma->getCoin();
+	nyawa = ma->getNyawa();
 	
 	while (menu)
 	{
@@ -98,12 +104,12 @@ void GameMenu::main_menu(bool &menu, ALLEGRO_EVENT_QUEUE *queue, int& returnmenu
 		}
 		else if (validasi == 3)  //credits
 		{
-			al_draw_text(font, color.menu, ScreenWidth / 2, ScreenHeight / 2 - 170, ALLEGRO_ALIGN_CENTRE, "This game created by: ");
-			al_draw_text(font, color.menu, ScreenWidth / 2, ScreenHeight / 2 - 100, ALLEGRO_ALIGN_CENTRE, "1. Megandi");
-			al_draw_text(font, color.menu, ScreenWidth / 2, ScreenHeight / 2 - 30, ALLEGRO_ALIGN_CENTRE, "2. Arab si tampan");
-			al_draw_text(font, color.menu, ScreenWidth / 2, ScreenHeight / 2 + 40, ALLEGRO_ALIGN_CENTRE, "3. Cleo");
-			al_draw_text(font, color.menu, ScreenWidth / 2, ScreenHeight / 2 + 110, ALLEGRO_ALIGN_CENTRE, "4. Vicky");
-			al_draw_text(font, color.menu, ScreenWidth / 2, ScreenHeight / 2 + 180, ALLEGRO_ALIGN_CENTRE, "5. Daffa putra zeus");
+			al_draw_text(font, color.menu, ScreenWidth / 2, ScreenHeight / 2 - 175, ALLEGRO_ALIGN_CENTRE, "Created by: ");
+			al_draw_text(font, color.menu, ScreenWidth / 2, ScreenHeight / 2 - 110, ALLEGRO_ALIGN_CENTRE, "1. Megandi");
+			al_draw_text(font, color.menu, ScreenWidth / 2, ScreenHeight / 2 - 40, ALLEGRO_ALIGN_CENTRE, "2. Adhitya");
+			al_draw_text(font, color.menu, ScreenWidth / 2, ScreenHeight / 2 + 30, ALLEGRO_ALIGN_CENTRE, "3. Cleo");
+			al_draw_text(font, color.menu, ScreenWidth / 2, ScreenHeight / 2 + 100, ALLEGRO_ALIGN_CENTRE, "4. Vicky");
+			al_draw_text(font, color.menu, ScreenWidth / 2, ScreenHeight / 2 + 165, ALLEGRO_ALIGN_CENTRE, "5. Daffa");
 		}
 
 		else if (validasi == 4)  //post game
@@ -112,13 +118,23 @@ void GameMenu::main_menu(bool &menu, ALLEGRO_EVENT_QUEUE *queue, int& returnmenu
 
 			//al_draw_text(font, color.post, ScreenWidth / 3, ScreenHeight / 2 - 110, ALLEGRO_ALIGN_CENTRE, "COINS");
 			al_draw_bitmap(algif_get_bitmap(coin, al_get_time()), 170, 85, NULL);
+			al_draw_textf(font, color.enter, 400 , 140, 0, "%d ", koin);
 			//al_draw_text(font, color.post, ScreenWidth / 3, ScreenHeight / 2 - 40, ALLEGRO_ALIGN_CENTRE, "LIVES");
 			//al_draw_bitmap_region(life, 50, 0 * al_get_bitmap_height(life) / 2, 64, 64, 380, 10, NULL);
 			al_draw_bitmap(algif_get_bitmap(life, al_get_time()), 170, 168, NULL);
+			al_draw_textf(font, color.enter, 400, 210, 0, "%d ", nyawa);
 			//al_draw_text(font, color.post, ScreenWidth / 3, ScreenHeight / 2 + 30, ALLEGRO_ALIGN_CENTRE, "SCORE");
 			al_draw_bitmap(algif_get_bitmap(book, al_get_time()), 170, 225, NULL);
+			al_draw_textf(font, color.enter, 400, 280, 0, "%d ", score);
 		}
 
+		else if (validasi == 5)  //highscore
+		{
+			al_draw_text(font, color.menu, ScreenWidth / 2, ScreenHeight / 2 - 100, ALLEGRO_ALIGN_CENTRE, "Highscore");
+			al_draw_textf(font, color.menu, ScreenWidth / 2, ScreenHeight / 2, ALLEGRO_ALIGN_CENTRE, "%d", sl->getLoad());
+		}
+
+		
 		if (ev.type == ALLEGRO_EVENT_KEY_DOWN)
 		{
 			switch (ev.keyboard.keycode)
@@ -143,7 +159,9 @@ void GameMenu::main_menu(bool &menu, ALLEGRO_EVENT_QUEUE *queue, int& returnmenu
 						}
 						else if (cekmenu == 1) {
 							//highscore
-							cout << "highscore" << endl;
+							cout << "highscore; " << sl->getLoad() << endl;
+							validasi = 5;
+							
 						}
 						else if (cekmenu == 2) {
 							//credit
@@ -194,7 +212,7 @@ void GameMenu::main_menu(bool &menu, ALLEGRO_EVENT_QUEUE *queue, int& returnmenu
 				cout << cekmenu << endl;
 				break;
 			case ALLEGRO_KEY_ESCAPE:
-				if (validasi == 3) {
+				if (validasi == 3 || validasi == 5) {
 					validasi = 0;
 				}
 				else if (validasi == 4) {
