@@ -5,9 +5,11 @@ public:
 	Saveload();
 	~Saveload();
 
-private:
-	void Save();
+	void Save(float score);
 	void Load();
+
+private:
+	
 	int score;
 	int highscore;
 };

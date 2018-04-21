@@ -12,9 +12,9 @@ Saveload::~Saveload()
 {
 }
 
-void Saveload::Save()
+void Saveload::Save(float score)
 {
-	cin >> score;
+	Load();
 	ofstream writeFile;
 	writeFile.open("savedata.txt");
 	if (writeFile.is_open()) {
