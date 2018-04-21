@@ -12,6 +12,11 @@ GameMenu::GameMenu()
 	color.menu = al_map_rgb(122, 113, 143);
 	color.enter = al_map_rgb(0, 0, 0);
 	color.white = al_map_rgb(255, 255, 255);
+
+	background_post = al_load_bitmap("map.png");
+	life = algif_load_animation("life.gif");
+	coin = algif_load_animation("coins.gif");
+	book = algif_load_animation("Books.gif");
 }
 
 
@@ -34,6 +39,9 @@ void GameMenu::main_menu(bool &menu, ALLEGRO_EVENT_QUEUE *queue, int& returnmenu
 		if (validasi==2) { //gameover
 			al_draw_bitmap(GameMenu::background_gameover, 0, 0, NULL);
 			al_draw_text(font, color.white, ScreenWidth / 2, ScreenHeight / 2 - 50, ALLEGRO_ALIGN_CENTRE, "Game Over");
+		}
+		else if (validasi == 4) {
+			al_draw_bitmap(GameMenu::background_post, 0, 0, NULL);
 		}
 		else {
 			al_draw_bitmap(GameMenu::background_menu, 0, 0, NULL);
@@ -96,6 +104,19 @@ void GameMenu::main_menu(bool &menu, ALLEGRO_EVENT_QUEUE *queue, int& returnmenu
 			al_draw_text(font, color.menu, ScreenWidth / 2, ScreenHeight / 2 + 40, ALLEGRO_ALIGN_CENTRE, "3. Cleo");
 			al_draw_text(font, color.menu, ScreenWidth / 2, ScreenHeight / 2 + 110, ALLEGRO_ALIGN_CENTRE, "4. Vicky");
 			al_draw_text(font, color.menu, ScreenWidth / 2, ScreenHeight / 2 + 180, ALLEGRO_ALIGN_CENTRE, "5. Daffa putra zeus");
+		}
+
+		else if (validasi == 4)  //post game
+		{
+			al_draw_text(font, color.enter, ScreenWidth / 2, ScreenHeight / 2 - 200, ALLEGRO_ALIGN_CENTRE, "STAGE COMPLETED!");
+
+			//al_draw_text(font, color.post, ScreenWidth / 3, ScreenHeight / 2 - 110, ALLEGRO_ALIGN_CENTRE, "COINS");
+			al_draw_bitmap(algif_get_bitmap(coin, al_get_time()), 170, 85, NULL);
+			//al_draw_text(font, color.post, ScreenWidth / 3, ScreenHeight / 2 - 40, ALLEGRO_ALIGN_CENTRE, "LIVES");
+			//al_draw_bitmap_region(life, 50, 0 * al_get_bitmap_height(life) / 2, 64, 64, 380, 10, NULL);
+			al_draw_bitmap(algif_get_bitmap(life, al_get_time()), 170, 168, NULL);
+			//al_draw_text(font, color.post, ScreenWidth / 3, ScreenHeight / 2 + 30, ALLEGRO_ALIGN_CENTRE, "SCORE");
+			al_draw_bitmap(algif_get_bitmap(book, al_get_time()), 170, 225, NULL);
 		}
 
 		if (ev.type == ALLEGRO_EVENT_KEY_DOWN)
@@ -171,7 +192,11 @@ void GameMenu::main_menu(bool &menu, ALLEGRO_EVENT_QUEUE *queue, int& returnmenu
 				cout << cekmenu << endl;
 				break;
 			case ALLEGRO_KEY_ESCAPE:
-				if (validasi = 3) {
+				if (validasi == 3) {
+					validasi = 0;
+				}
+				else if (validasi == 4) {
+					menu = true;
 					validasi = 0;
 				}
 				break;
@@ -183,22 +208,4 @@ void GameMenu::main_menu(bool &menu, ALLEGRO_EVENT_QUEUE *queue, int& returnmenu
 
 void GameMenu::post_game(bool& menu)
 {
-	/*font = al_load_font("font.ttf", 60, 0);
-	al_draw_bitmap(background, 0, 0, NULL);
-
-
-	while (menu)
-	{
-		al_draw_text(font, black.post, ScreenWidth / 2, ScreenHeight / 2 - 200, ALLEGRO_ALIGN_CENTRE, "STAGE COMPLETED!");
-
-		//al_draw_text(font, color.post, ScreenWidth / 3, ScreenHeight / 2 - 110, ALLEGRO_ALIGN_CENTRE, "COINS");
-		al_draw_bitmap(algif_get_bitmap(coin, al_get_time()), 170, 85, NULL);
-		//al_draw_text(font, color.post, ScreenWidth / 3, ScreenHeight / 2 - 40, ALLEGRO_ALIGN_CENTRE, "LIVES");
-		//al_draw_bitmap_region(life, 50, 0 * al_get_bitmap_height(life) / 2, 64, 64, 380, 10, NULL);
-		al_draw_bitmap(algif_get_bitmap(life, al_get_time()), 170, 168, NULL);
-		//al_draw_text(font, color.post, ScreenWidth / 3, ScreenHeight / 2 + 30, ALLEGRO_ALIGN_CENTRE, "SCORE");
-		al_draw_bitmap(algif_get_bitmap(book, al_get_time()), 170, 225, NULL);
-
-		al_flip_display();
-	}*/
 }

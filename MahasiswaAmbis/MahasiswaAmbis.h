@@ -53,7 +53,7 @@ public:
 	void cekKoin(vector<Koin*> *koin);
 	void cekBuku(vector<Buku*> *buku);
 	void cekMusuh(vector<MahasiswaMusuh*> *musuh);
-	void cekKucing(vector<Kucing*> *kucing);
+	void cekKucing(vector<Kucing*> *kucing, bool& menu, int& validasi_menu, int& xcu);
 	void cekJatuh();
 	void cekFinish(ALLEGRO_EVENT_QUEUE *queue);
 	int getNyawa();

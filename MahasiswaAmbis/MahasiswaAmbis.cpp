@@ -92,8 +92,10 @@ void MahasiswaAmbis::maju(vector<MahasiswaMusuh*> *musuh)
 		}
 	}
 	else {
-		velocityX = moveSpeed;
-		this->cekJatuh();
+		if (this->x < 4000) {
+			velocityX = moveSpeed;
+			this->cekJatuh();
+		}
 	}
 
 }
@@ -116,6 +118,7 @@ void MahasiswaAmbis::mundur(vector<MahasiswaMusuh*> *musuh)
 				cout << "GAMEOVER\n";
 				if (getNyawa() <= 0)
 					this->isDead();
+				
 			}
 		}
 		else {
@@ -475,8 +478,9 @@ void MahasiswaAmbis::cekMusuh(vector<MahasiswaMusuh*> *musuh)
 
 }
 
-void MahasiswaAmbis::cekKucing(vector<Kucing*> *kucing) 
+void MahasiswaAmbis::cekKucing(vector<Kucing*> *kucing, bool& menu, int& validasi_menu, int& xcu)
 {
+	int cek = 0;
 	if (this->x>468 && this->x<535 && this->y> 351 && this->y< 479) { 
 		//else if (this->x > 535 && this->x < 536)
 			//x += moveSpeed;
@@ -493,6 +497,7 @@ void MahasiswaAmbis::cekKucing(vector<Kucing*> *kucing)
 			else
 			{
 				cout << "GAMEOVER\n";
+				cek = 1;
 				this->isDead();
 			}
 			sound.playCat();
@@ -514,6 +519,7 @@ void MahasiswaAmbis::cekKucing(vector<Kucing*> *kucing)
 			else
 			{
 				cout << "GAMEOVER\n";
+				cek = 1;
 				this->isDead();
 			}
 			sound.playCat();
@@ -535,6 +541,7 @@ void MahasiswaAmbis::cekKucing(vector<Kucing*> *kucing)
 			else
 			{
 				cout << "GAMEOVER\n";
+				cek = 1;
 				this->isDead();
 			}
 			sound.playCat();
@@ -556,6 +563,7 @@ void MahasiswaAmbis::cekKucing(vector<Kucing*> *kucing)
 			else
 			{
 				cout << "GAMEOVER\n";
+				cek = 1;
 				this->isDead();
 			}
 			sound.playCat();
@@ -577,6 +585,7 @@ void MahasiswaAmbis::cekKucing(vector<Kucing*> *kucing)
 			else
 			{
 				cout << "GAMEOVER\n";
+				cek = 1;
 				this->isDead();
 			}
 			sound.playCat();
@@ -587,6 +596,12 @@ void MahasiswaAmbis::cekKucing(vector<Kucing*> *kucing)
 	else {
 		kucing->at(0)->setValidasi(true);
 	}
+
+	/*if (cek == 1) {
+		menu = true;
+		validasi_menu = 2;
+		xcu = 0;
+	}*/
 
 }
 

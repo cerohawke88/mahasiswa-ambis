@@ -37,14 +37,28 @@ void GameScreen::showKoin(int x, int width)
 		xx = 100;
 	}
 
-	al_draw_bitmap(algif_get_bitmap(gif_koin, al_get_time()), xx - 60, 5, NULL);
-	al_draw_text(font, color.enter, xx, 30, ALLEGRO_ALIGN_CENTRE, "10");
+	if (x > 3695) {
+		al_draw_bitmap(algif_get_bitmap(gif_koin, al_get_time()), 3515, 5, NULL);
+		al_draw_text(font, color.enter, 3575, 30, ALLEGRO_ALIGN_CENTRE, "10");
 
-	al_draw_bitmap(algif_get_bitmap(gif_buku, al_get_time()), xx + 30, 5, NULL);
-	al_draw_text(font, color.enter, xx + 90, 30, ALLEGRO_ALIGN_CENTRE, "5");
+		al_draw_bitmap(algif_get_bitmap(gif_buku, al_get_time()), 3605, 5, NULL);
+		al_draw_text(font, color.enter, 3665, 30, ALLEGRO_ALIGN_CENTRE, "5");
 
-	al_draw_bitmap(algif_get_bitmap(gif_gorengan, al_get_time()), xx + 120, 20, NULL);
-	al_draw_text(font, color.enter, xx + 170, 30, ALLEGRO_ALIGN_CENTRE, "3");
+		al_draw_bitmap(algif_get_bitmap(gif_gorengan, al_get_time()), 3695, 20, NULL);
+		al_draw_text(font, color.enter, 3755, 30, ALLEGRO_ALIGN_CENTRE, "3");
+	}
+	else {
+		al_draw_bitmap(algif_get_bitmap(gif_koin, al_get_time()), xx - 60, 5, NULL);
+		al_draw_text(font, color.enter, xx, 30, ALLEGRO_ALIGN_CENTRE, "10");
+
+		al_draw_bitmap(algif_get_bitmap(gif_buku, al_get_time()), xx + 30, 5, NULL);
+		al_draw_text(font, color.enter, xx + 90, 30, ALLEGRO_ALIGN_CENTRE, "5");
+
+		al_draw_bitmap(algif_get_bitmap(gif_gorengan, al_get_time()), xx + 120, 20, NULL);
+		al_draw_text(font, color.enter, xx + 170, 30, ALLEGRO_ALIGN_CENTRE, "3");
+	}
+
+	
 }
 
 void GameScreen::CameraUpdate(float *cameraPosition, float x, float y, int widht, int height)
@@ -57,6 +71,9 @@ void GameScreen::CameraUpdate(float *cameraPosition, float x, float y, int widht
 	}
 	if (cameraPosition[1] < 0) {
 		cameraPosition[1] = 0;
+	}
+	if (x > 3695) {
+		cameraPosition[0] = 4096-700;
 	}
 }
 
