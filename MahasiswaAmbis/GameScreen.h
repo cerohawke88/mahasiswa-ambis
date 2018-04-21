@@ -6,6 +6,7 @@
 #include <allegro5\allegro_font.h>
 #include <allegro5\allegro_ttf.h>
 #include "algif.h"
+#include "MahasiswaAmbis.h"
 
 
 class GameScreen
@@ -27,7 +28,7 @@ public:
 	void draw();
 	void eventkey(ALLEGRO_EVENT events);
 	void init();
-	void showKoin(int x, int width);
+	void showKoin(int x, int width, MahasiswaAmbis* ma);
 	
 private:
 	ALLEGRO_BITMAP *background;

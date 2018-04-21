@@ -18,7 +18,7 @@ MahasiswaAmbis::MahasiswaAmbis()
 	MahasiswaAmbis::jumpSpeedDouble = 23;
 	MahasiswaAmbis::velocityX = MahasiswaAmbis::velocityY = 0;
 	MahasiswaAmbis::gravity = 1;
-	MahasiswaAmbis::nyawa = 1;
+	MahasiswaAmbis::nyawa = 3;
 	MahasiswaAmbis::score = 0;
 	MahasiswaAmbis::totalscorestage1 = 0;
 	MahasiswaAmbis::bestscore = 0;
@@ -317,6 +317,7 @@ void MahasiswaAmbis::cekBuku(vector<Buku*> *buku)
 			sound.playBook();
 			plusScore(4);
 			cout << "score: " << getScore() << endl;
+			cout << "score total : " << getTotalscore1() << endl;
 		}
 		buku->at(0)->setValidasi(false);
 	}
@@ -443,6 +444,7 @@ void MahasiswaAmbis::cekBuku(vector<Buku*> *buku)
 			sound.playBook();
 			plusScore(4);
 			cout << "score" << getScore();
+
 		}
 		buku->at(14)->setValidasi(false);
 		
@@ -597,11 +599,11 @@ void MahasiswaAmbis::cekKucing(vector<Kucing*> *kucing, bool& menu, int& validas
 		kucing->at(0)->setValidasi(true);
 	}
 
-	/*if (cek == 1) {
+	if (cek == 1) {
 		menu = true;
 		validasi_menu = 2;
 		xcu = 0;
-	}*/
+	}
 
 }
 
@@ -665,7 +667,6 @@ void MahasiswaAmbis::totalScore1(float a)
 
 float MahasiswaAmbis::getTotalscore1()
 {
-	//MahasiswaAmbis::totalscore1 = MahasiswaAmbis::score / 15;
 	return  MahasiswaAmbis::totalscorestage1;
 }
 
