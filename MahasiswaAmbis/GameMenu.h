@@ -15,7 +15,6 @@ public:
 	{
 		ALLEGRO_COLOR menu;
 		ALLEGRO_COLOR enter;
-		ALLEGRO_COLOR post;
 	}COLOURS;
 
 	COLOURS color, black;
@@ -24,10 +23,11 @@ public:
 	~GameMenu();
 
 	bool main_menu(bool& menu, ALLEGRO_EVENT_QUEUE *queue, bool stop, bool gameover);
-	void post_game(bool& menu);
 
 private:
-	ALLEGRO_BITMAP * background;
+	ALLEGRO_BITMAP * background_post;
+	ALLEGRO_BITMAP * background_menu;
+	ALLEGRO_BITMAP * background_gameover;
 	ALLEGRO_FONT * font;
 	ALGIF_ANIMATION *coin, *life, *book;
 	int cekmenu;
