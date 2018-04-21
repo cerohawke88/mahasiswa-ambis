@@ -7,6 +7,7 @@ public:
 
 	void Save(float score);
 	void Load();
+	int getLoad();
 
 private:
 	

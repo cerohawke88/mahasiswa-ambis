@@ -40,3 +40,18 @@ void Saveload::Load()
 
 	cout << "Highscore : " << highscore << endl;
 }
+
+int Saveload::getLoad()
+{
+	ifstream readFile;
+	readFile.open("savedata.txt");
+	if (readFile.is_open())
+	{
+
+		readFile >> highscore;
+
+	}
+	readFile.close();
+
+	return highscore;
+}

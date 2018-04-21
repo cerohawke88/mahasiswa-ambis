@@ -8,6 +8,7 @@
 #include <allegro5\allegro_ttf.h>
 #include "algif.h"
 #include "MahasiswaAmbis.h"
+#include "Saveload.h"
 
 class GameMenu
 {
@@ -35,6 +36,7 @@ private:
 	ALGIF_ANIMATION *coin, *life, *book;
 	int cekmenu;
 	bool resume;
+	Saveload *sl;
 };
 
 
