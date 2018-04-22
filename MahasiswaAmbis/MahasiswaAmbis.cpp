@@ -85,7 +85,6 @@ void MahasiswaAmbis::maju(vector<MahasiswaMusuh*> *musuh, bool& menu, int& valid
 			{
 				cout << "GAMEOVER\n";
 				cek = 1;
-				sound.stopMenu();
 			}
 		}
 		else {
@@ -96,7 +95,6 @@ void MahasiswaAmbis::maju(vector<MahasiswaMusuh*> *musuh, bool& menu, int& valid
 			menu = true;
 			validasi_menu = 2;
 			xcu = 0;
-			sound.playGameover();
 		}
 	}
 	else {
@@ -124,7 +122,6 @@ void MahasiswaAmbis::mundur(vector<MahasiswaMusuh*> *musuh, bool& menu, int& val
 			{
 				cout << "GAMEOVER\n";
 				cek = 1;
-				sound.stopMenu();
 			}
 		}
 		else {
@@ -141,7 +138,6 @@ void MahasiswaAmbis::mundur(vector<MahasiswaMusuh*> *musuh, bool& menu, int& val
 		menu = true;
 		validasi_menu = 2;
 		xcu = 0;
-		sound.playGameover();
 	}
 }
 
@@ -252,23 +248,23 @@ float MahasiswaAmbis::getSourceX()
 
 void MahasiswaAmbis::cekGorengan(vector<Gorengan*> *gr)
 {
-	//cout << "NYAWA " << getNyawa() << endl;
 	if (this->x>1490 && this->x<1520 && this->y> 220 && this->y< 280) {
 		cout << "gor1\n";
 		if (gr->at(0)->getValidasi() == true)
 		{
-			if (getNyawa() < 3 && getCoin() >= 2)
+			if (getCoin() >= 2)
 			{
 				sound.playEat();
 				gr->at(0)->setValidasi(false);
 				plusNyawa(1); // +1 nyawa
 				minCoin(2); // -2 koin
-				cout << "NYAWA " << getNyawa() << endl;
+				cout << "DAPAT NYAWA " << getNyawa() << endl;
+				cout << gr->at(0)->getValidasi() << endl;
 			}
-		}
-		if (getCoin() < 2) {
-			gr->at(0)->setValidasi(true);
-			cout << "Koin tidak cukup" << endl;
+			else {
+				gr->at(0)->setValidasi(true);
+				cout << "Koin tidak cukup" << endl;
+			}
 		}
 		
 	} else if (this->x>2890 && this->x<2920 && this->y> 120 && this->y< 180) {
@@ -282,13 +278,11 @@ void MahasiswaAmbis::cekGorengan(vector<Gorengan*> *gr)
 				gr->at(1)->setValidasi(false);
 				cout <<"NYAWA "<< getNyawa() << endl;
 			}
+			else {
+				gr->at(1)->setValidasi(true);
+				cout << "Koin tidak cukup" << endl;
+			}
 		}
-		if (getCoin() < 2) {
-			gr->at(1)->setValidasi(true);
-			cout << "Koin tidak cukup" << endl;
-		}
-		
-	
 	}
 }
 
@@ -518,7 +512,6 @@ void MahasiswaAmbis::cekKucing(vector<Kucing*> *kucing, bool& menu, int& validas
 			{
 				cout << "GAMEOVER\n";
 				cek = 1;
-				sound.stopMenu();
 			}
 			sound.playCat();
 			kucing->at(0)->setValidasi(false);
@@ -540,7 +533,6 @@ void MahasiswaAmbis::cekKucing(vector<Kucing*> *kucing, bool& menu, int& validas
 			{
 				cout << "GAMEOVER\n";
 				cek = 1;
-				sound.stopMenu();
 			}
 			sound.playCat();
 			kucing->at(0)->setValidasi(false);
@@ -562,7 +554,6 @@ void MahasiswaAmbis::cekKucing(vector<Kucing*> *kucing, bool& menu, int& validas
 			{
 				cout << "GAMEOVER\n";
 				cek = 1;
-				sound.stopMenu();
 			}
 			sound.playCat();
 			kucing->at(0)->setValidasi(false);
@@ -584,7 +575,6 @@ void MahasiswaAmbis::cekKucing(vector<Kucing*> *kucing, bool& menu, int& validas
 			{
 				cout << "GAMEOVER\n";
 				cek = 1;
-				sound.stopMenu();
 			}
 			sound.playCat();
 			kucing->at(0)->setValidasi(false);
@@ -606,7 +596,6 @@ void MahasiswaAmbis::cekKucing(vector<Kucing*> *kucing, bool& menu, int& validas
 			{
 				cout << "GAMEOVER\n";
 				cek = 1;
-				sound.stopMenu();
 			}
 			sound.playCat();
 			kucing->at(0)->setValidasi(false);
@@ -618,8 +607,6 @@ void MahasiswaAmbis::cekKucing(vector<Kucing*> *kucing, bool& menu, int& validas
 	}
 
 	if (cek == 1) {
-		sound.stopMenu();
-		sound.playGameover();
 		menu = true;
 		validasi_menu = 2;
 		xcu = 0;

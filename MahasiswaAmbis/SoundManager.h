@@ -20,6 +20,7 @@ private:
 	ALLEGRO_SAMPLE_INSTANCE *book_inst;
 	ALLEGRO_SAMPLE_INSTANCE *gameover_inst;
 	ALLEGRO_SAMPLE_INSTANCE *complete_inst;
+
 public:
 	SoundManager();
 	~SoundManager();
@@ -32,6 +33,7 @@ public:
 	void playBook();
 	void playGameover();
 	void stopGameover();
+	void stopComplete();
 	void playComplete();
 };
 

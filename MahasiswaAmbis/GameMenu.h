@@ -26,7 +26,7 @@ public:
 	GameMenu();
 	~GameMenu();
 
-	void main_menu(bool& menu, ALLEGRO_EVENT_QUEUE *queue, int& returnmenu, int validasi, MahasiswaAmbis* ma);
+	void main_menu(bool& menu, ALLEGRO_EVENT_QUEUE *queue, int& returnmenu, int validasi, MahasiswaAmbis* ma, SoundManager* sound);
 	void post_game(bool& menu);
 
 private:
@@ -36,7 +36,6 @@ private:
 	ALLEGRO_FONT * font;
 	ALGIF_ANIMATION *coin, *life, *book, *life150;
 	MahasiswaAmbis *ma;
-	SoundManager sound;
 	int cekmenu;
 	bool resume;
 	Saveload *sl;

@@ -45,7 +45,6 @@ SoundManager::~SoundManager()
 
 void SoundManager::playMenu() {
 	//al_play_sample(menu, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_LOOP, 0);
-	
 	al_play_sample_instance(menu_inst);
 }
 
@@ -66,6 +65,11 @@ void SoundManager::playGameover()
 void SoundManager::stopGameover()
 {
 	al_stop_sample_instance(gameover_inst);
+}
+
+void SoundManager::stopComplete()
+{
+	al_stop_sample_instance(complete_inst);
 }
 
 void SoundManager::playComplete()
