@@ -42,6 +42,7 @@ private:
 	ALGIF_ANIMATION *gif_koin;
 	ALGIF_ANIMATION *gif_buku;
 	ALGIF_ANIMATION *gif_gorengan;
+	ALGIF_ANIMATION *gif_life;
 
 	const float FPS = 60.0;
 	const float frameFPS = 15.0;

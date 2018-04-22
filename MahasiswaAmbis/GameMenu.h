@@ -7,6 +7,9 @@
 #include <stdio.h>
 #include <allegro5\allegro_ttf.h>
 #include "algif.h"
+#include "MahasiswaAmbis.h"
+#include "SoundManager.h"
+#include "Saveload.h"
 
 class GameMenu
 {
@@ -31,9 +34,9 @@ private:
 	ALLEGRO_BITMAP * background_menu;
 	ALLEGRO_BITMAP * background_gameover;
 	ALLEGRO_FONT * font;
-	ALGIF_ANIMATION *coin, *life, *book;
+	ALGIF_ANIMATION *coin, *life, *book, *life150;
 	MahasiswaAmbis *ma;
-	SoundManager *sound;
+	SoundManager sound;
 	int cekmenu;
 	bool resume;
 	Saveload *sl;

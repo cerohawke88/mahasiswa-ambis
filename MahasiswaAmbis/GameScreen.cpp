@@ -14,6 +14,7 @@ GameScreen::GameScreen()
 	gif_koin = algif_load_animation("Coin.gif");
 	gif_gorengan = algif_load_animation("gor.gif");
 	gif_buku = algif_load_animation("Book.gif");
+	gif_life = algif_load_animation("life.gif");
 }
 
 
@@ -61,7 +62,7 @@ void GameScreen::showKoin(int x, int width, MahasiswaAmbis *ma)
 		al_draw_bitmap(algif_get_bitmap(gif_buku, al_get_time()), xx + 30, 5, NULL);
 		al_draw_textf(font, color.enter, xx + 90, 30, 0, "%d ", score);
 
-		al_draw_bitmap(algif_get_bitmap(gif_gorengan, al_get_time()), xx + 120, 20, NULL);
+		al_draw_bitmap(algif_get_bitmap(gif_life, al_get_time()), xx + 110, 7, NULL);
 		al_draw_textf(font, color.enter, xx + 170, 30, 0, "%d ", nyawa );
 	}
 

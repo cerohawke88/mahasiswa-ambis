@@ -15,6 +15,7 @@ GameMenu::GameMenu()
 
 	background_post = al_load_bitmap("map.png");
 	life = algif_load_animation("life.gif");
+	life150 = algif_load_animation("life x150.gif");
 	coin = algif_load_animation("coins.gif");
 	book = algif_load_animation("Books.gif");
 	sl = new Saveload;
@@ -56,21 +57,27 @@ void GameMenu::main_menu(bool &menu, ALLEGRO_EVENT_QUEUE *queue, int& returnmenu
 		if (validasi==0) //menu awal
 		{
 			if (cekmenu == 0) {
+				sound.stopGameover();
 				al_draw_text(font, color.enter, ScreenWidth / 2, ScreenHeight / 2 - 150, ALLEGRO_ALIGN_CENTRE, "Start");
 			}
 			else {
+				sound.stopGameover();
 				al_draw_text(font, color.menu, ScreenWidth / 2, ScreenHeight / 2 - 150, ALLEGRO_ALIGN_CENTRE, "Start");
 			}
 			if (cekmenu == 1) {
+				sound.stopGameover();
 				al_draw_text(font, color.enter, ScreenWidth / 2, ScreenHeight / 2 - 80, ALLEGRO_ALIGN_CENTRE, "Highscore");
 			}
 			else {
+				sound.stopGameover();
 				al_draw_text(font, color.menu, ScreenWidth / 2, ScreenHeight / 2 - 80, ALLEGRO_ALIGN_CENTRE, "Highscore");
 			}
 			if (cekmenu == 2) {
+				sound.stopGameover();
 				al_draw_text(font, color.enter, ScreenWidth / 2, ScreenHeight / 2 - 10, ALLEGRO_ALIGN_CENTRE, "Credits");
 			}
 			else {
+				sound.stopGameover();
 				al_draw_text(font, color.menu, ScreenWidth / 2, ScreenHeight / 2 - 10, ALLEGRO_ALIGN_CENTRE, "Credits");
 			}
 			if (cekmenu == 3) {
@@ -83,15 +90,19 @@ void GameMenu::main_menu(bool &menu, ALLEGRO_EVENT_QUEUE *queue, int& returnmenu
 		else if (validasi == 1) //resume
 		{
 			if (cekmenu == 0) {
+				sound.stopGameover();
 				al_draw_text(font, color.enter, ScreenWidth / 2, ScreenHeight / 2 - 170, ALLEGRO_ALIGN_CENTRE, "New Game");
 			}
 			else {
+				sound.stopGameover();
 				al_draw_text(font, color.menu, ScreenWidth / 2, ScreenHeight   / 2 - 170, ALLEGRO_ALIGN_CENTRE, "New Game");
 			}
 			if (cekmenu == 1) {
+				sound.stopGameover();
 				al_draw_text(font, color.enter, ScreenWidth / 2, ScreenHeight / 2 - 100, ALLEGRO_ALIGN_CENTRE, "Resume Game");
 			}
 			else {
+				sound.stopGameover();
 				al_draw_text(font, color.menu, ScreenWidth / 2, ScreenHeight / 2 - 100, ALLEGRO_ALIGN_CENTRE, "Resume Game");
 			}
 			if (cekmenu == 2) {
@@ -121,7 +132,7 @@ void GameMenu::main_menu(bool &menu, ALLEGRO_EVENT_QUEUE *queue, int& returnmenu
 			al_draw_textf(font, color.enter, 400 , 140, 0, "%d ", koin);
 			//al_draw_text(font, color.post, ScreenWidth / 3, ScreenHeight / 2 - 40, ALLEGRO_ALIGN_CENTRE, "LIVES");
 			//al_draw_bitmap_region(life, 50, 0 * al_get_bitmap_height(life) / 2, 64, 64, 380, 10, NULL);
-			al_draw_bitmap(algif_get_bitmap(life, al_get_time()), 170, 168, NULL);
+			al_draw_bitmap(algif_get_bitmap(life150, al_get_time()), 170, 168, NULL);
 			al_draw_textf(font, color.enter, 400, 210, 0, "%d ", nyawa);
 			//al_draw_text(font, color.post, ScreenWidth / 3, ScreenHeight / 2 + 30, ALLEGRO_ALIGN_CENTRE, "SCORE");
 			al_draw_bitmap(algif_get_bitmap(book, al_get_time()), 170, 225, NULL);
@@ -147,7 +158,7 @@ void GameMenu::main_menu(bool &menu, ALLEGRO_EVENT_QUEUE *queue, int& returnmenu
 						menu = true;
 						validasi = 0;
 						bekasgameover = 1;
-						//sound->stopGameover();
+						sound.stopGameover();
 					}
 					else if (validasi == 0) {
 						if (cekmenu == 0) {
@@ -155,23 +166,26 @@ void GameMenu::main_menu(bool &menu, ALLEGRO_EVENT_QUEUE *queue, int& returnmenu
 							menu = false;
 							if (bekasgameover == 1) {
 								returnmenu = 0;
+								sound.stopGameover();
 							}
 						}
 						else if (cekmenu == 1) {
 							//highscore
 							cout << "highscore; " << sl->getLoad() << endl;
 							validasi = 5;
-							
+							sound.stopGameover();
 						}
 						else if (cekmenu == 2) {
 							//credit
 							validasi = 3;
+							sound.stopGameover();
 						}
 						else if (cekmenu == 3) {
 							//exit game
 							cout << "exit game" << endl;
 							returnmenu = 3;
 							menu = false;
+							sound.stopGameover();
 						}
 					}
 					else if(validasi == 1){
@@ -180,17 +194,20 @@ void GameMenu::main_menu(bool &menu, ALLEGRO_EVENT_QUEUE *queue, int& returnmenu
 							cout << "start game" << endl;
 							returnmenu = 0;
 							menu = false;
+							sound.stopGameover();
 						}
 						else if (cekmenu == 1) {
 							//resume
 							menu = false;
 							cout << "resume" << endl;
+							sound.stopGameover();
 						}
 						else if (cekmenu == 2) {
 							//exit game
 							cout << "exit game" << endl;
 							returnmenu = 3;
 							menu = false;
+							sound.stopGameover();
 
 						}
 					}
