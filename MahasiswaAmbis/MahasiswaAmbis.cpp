@@ -73,7 +73,8 @@ void MahasiswaAmbis::maju(vector<MahasiswaMusuh*> *musuh, bool& menu, int& valid
 	if (this->x>=1350 && this->x <= 1450 && this->y>= 360) {
 		if (musuh->at(0)->getValidasi() == true) {
 			x -= 130;
-			if (getNyawa() > 0)
+			velocityX -= 40;
+			if (getNyawa() > 1)
 			{
 
 				minNyawa(1);
@@ -112,7 +113,8 @@ void MahasiswaAmbis::mundur(vector<MahasiswaMusuh*> *musuh, bool& menu, int& val
 	if (this->x >= 1350 && this->x <= 1450 && this->y>= 360) {
 		if (musuh->at(0)->getValidasi() == true) {
 			x += 130;
-			if (getNyawa() > 0)
+			velocityX += 40;
+			if (getNyawa() > 1)
 			{
 				minNyawa(1);
 				cout << "NYAWA: " << getNyawa() << endl;

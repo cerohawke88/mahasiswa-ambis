@@ -15,6 +15,11 @@ GameScreen::GameScreen()
 	gif_gorengan = algif_load_animation("gor.gif");
 	gif_buku = algif_load_animation("Book.gif");
 	gif_life = algif_load_animation("life.gif");
+	tooltip = al_load_bitmap("tooltip.png");
+	tooltip2 = al_load_bitmap("tooltip2.png");
+	tooltip3 = al_load_bitmap("tooltip3.png");
+	tooltip4 = al_load_bitmap("tooltip4.png");
+	tooltip5 = al_load_bitmap("tooltip5.png");
 }
 
 
@@ -90,6 +95,30 @@ void GameScreen::draw()
 	al_draw_bitmap(GameScreen::background, 0, 0, NULL);
 }
 
+void GameScreen::drawTooltip(int x, int y)
+{
+	al_draw_bitmap(tooltip, x, y, NULL);
+}
+
+void GameScreen::drawTooltip2(int x, int y)
+{
+	al_draw_bitmap(tooltip2, x, y, NULL);
+}
+
+void GameScreen::drawTooltip3(int x, int y)
+{
+	al_draw_bitmap(tooltip3, x, y, NULL);
+}
+
+void GameScreen::drawTooltip4(int x, int y)
+{
+	al_draw_bitmap(tooltip4, x, y, NULL);
+}
+
+void GameScreen::drawTooltip5(int x, int y)
+{
+	al_draw_bitmap(tooltip5, x, y, NULL);
+}
 
 void GameScreen::eventkey(ALLEGRO_EVENT events)
 {
