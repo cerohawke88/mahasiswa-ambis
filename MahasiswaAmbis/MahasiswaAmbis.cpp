@@ -695,5 +695,11 @@ float MahasiswaAmbis::getTotalscore4()
 
 float MahasiswaAmbis::highscore()
 {
-	return 0.0f;
+	bestscore = getScore() + getCoin( ) + (getNyawa() *2);
+	return bestscore;
+}
+
+float MahasiswaAmbis::getHighscore()
+{
+	return bestscore;
 }
