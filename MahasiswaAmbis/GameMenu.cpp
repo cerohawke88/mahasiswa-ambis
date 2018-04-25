@@ -5,6 +5,7 @@ GameMenu::GameMenu()
 {
 	background_gameover = al_load_bitmap("GameOver.png");
 	background_menu = al_load_bitmap("main_menu.png");
+	logo = al_load_bitmap("logo.png");
 	GameMenu::cekmenu = 0;
 	resume = false;
 	font = al_load_font("font.ttf", 50, 0);
@@ -62,29 +63,30 @@ void GameMenu::main_menu(bool &menu, ALLEGRO_EVENT_QUEUE *queue, int& returnmenu
 			sound->stopGameover();
 			sound->stopComplete();
 			sound->playMenu();
+			al_draw_bitmap(GameMenu::logo, ScreenWidth / 2 - 115, ScreenHeight / 2 - 200, NULL);
 			if (cekmenu == 0) {
-				al_draw_text(font, color.enter, ScreenWidth / 2, ScreenHeight / 2 - 150, ALLEGRO_ALIGN_CENTRE, "Start");
+				al_draw_text(font, color.enter, ScreenWidth / 2, ScreenHeight / 2 - 80, ALLEGRO_ALIGN_CENTRE, "Start");
 			}
 			else {
-				al_draw_text(font, color.menu, ScreenWidth / 2, ScreenHeight / 2 - 150, ALLEGRO_ALIGN_CENTRE, "Start");
+				al_draw_text(font, color.menu, ScreenWidth / 2, ScreenHeight / 2 - 80, ALLEGRO_ALIGN_CENTRE, "Start");
 			}
 			if (cekmenu == 1) {
-				al_draw_text(font, color.enter, ScreenWidth / 2, ScreenHeight / 2 - 80, ALLEGRO_ALIGN_CENTRE, "Highscore");
+				al_draw_text(font, color.enter, ScreenWidth / 2, ScreenHeight / 2 - 10, ALLEGRO_ALIGN_CENTRE, "Highscore");
 			}
 			else {
-				al_draw_text(font, color.menu, ScreenWidth / 2, ScreenHeight / 2 - 80, ALLEGRO_ALIGN_CENTRE, "Highscore");
+				al_draw_text(font, color.menu, ScreenWidth / 2, ScreenHeight / 2 - 10, ALLEGRO_ALIGN_CENTRE, "Highscore");
 			}
 			if (cekmenu == 2) {
-				al_draw_text(font, color.enter, ScreenWidth / 2, ScreenHeight / 2 - 10, ALLEGRO_ALIGN_CENTRE, "Credits");
+				al_draw_text(font, color.enter, ScreenWidth / 2, ScreenHeight / 2 + 60, ALLEGRO_ALIGN_CENTRE, "Credits");
 			}
 			else {
-				al_draw_text(font, color.menu, ScreenWidth / 2, ScreenHeight / 2 - 10, ALLEGRO_ALIGN_CENTRE, "Credits");
+				al_draw_text(font, color.menu, ScreenWidth / 2, ScreenHeight / 2 + 60, ALLEGRO_ALIGN_CENTRE, "Credits");
 			}
 			if (cekmenu == 3) {
-				al_draw_text(font, color.enter, ScreenWidth / 2, ScreenHeight / 2 + 60, ALLEGRO_ALIGN_CENTRE, "Exit");
+				al_draw_text(font, color.enter, ScreenWidth / 2, ScreenHeight / 2 + 130, ALLEGRO_ALIGN_CENTRE, "Exit");
 			}
 			else {
-				al_draw_text(font, color.menu, ScreenWidth / 2, ScreenHeight / 2 + 60, ALLEGRO_ALIGN_CENTRE, "Exit");
+				al_draw_text(font, color.menu, ScreenWidth / 2, ScreenHeight / 2 + 130, ALLEGRO_ALIGN_CENTRE, "Exit");
 			}
 		}
 		else if (validasi == 1) //resume
