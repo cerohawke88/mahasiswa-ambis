@@ -5,6 +5,7 @@ GameMenu::GameMenu()
 {
 	background_gameover = al_load_bitmap("GameOver.png");
 	background_menu = al_load_bitmap("main_menu.png");
+	logo = al_load_bitmap("logo.png");
 	GameMenu::cekmenu = 0;
 	resume = false;
 	font = al_load_font("font.ttf", 50, 0);
@@ -38,10 +39,11 @@ void GameMenu::main_menu(bool &menu, ALLEGRO_EVENT_QUEUE *queue, int& returnmenu
 	al_install_mouse();
 
 	int bekasgameover = 0;
-	int score, koin, nyawa;
+	int score, koin, nyawa,high;
 	score = (int)ma->getScore();
 	koin = ma->getCoin();
-	nyawa = ma->getNyawa();
+	nyawa = ma->getNyawa(); 
+	high = ma->highscore();
 	
 	while (menu)
 	{
@@ -67,29 +69,30 @@ void GameMenu::main_menu(bool &menu, ALLEGRO_EVENT_QUEUE *queue, int& returnmenu
 			sound->stopGameover();
 			sound->stopComplete();
 			sound->playMenu();
+			al_draw_bitmap(GameMenu::logo, ScreenWidth / 2 - 115, ScreenHeight / 2 - 200, NULL);
 			if (cekmenu == 0) {
-				al_draw_text(font, color.enter, ScreenWidth / 2, ScreenHeight / 2 - 150, ALLEGRO_ALIGN_CENTRE, "Start");
+				al_draw_text(font, color.enter, ScreenWidth / 2, ScreenHeight / 2 - 80, ALLEGRO_ALIGN_CENTRE, "Start");
 			}
 			else {
-				al_draw_text(font, color.menu, ScreenWidth / 2, ScreenHeight / 2 - 150, ALLEGRO_ALIGN_CENTRE, "Start");
+				al_draw_text(font, color.menu, ScreenWidth / 2, ScreenHeight / 2 - 80, ALLEGRO_ALIGN_CENTRE, "Start");
 			}
 			if (cekmenu == 1) {
-				al_draw_text(font, color.enter, ScreenWidth / 2, ScreenHeight / 2 - 80, ALLEGRO_ALIGN_CENTRE, "Highscore");
+				al_draw_text(font, color.enter, ScreenWidth / 2, ScreenHeight / 2 - 10, ALLEGRO_ALIGN_CENTRE, "Highscore");
 			}
 			else {
-				al_draw_text(font, color.menu, ScreenWidth / 2, ScreenHeight / 2 - 80, ALLEGRO_ALIGN_CENTRE, "Highscore");
+				al_draw_text(font, color.menu, ScreenWidth / 2, ScreenHeight / 2 - 10, ALLEGRO_ALIGN_CENTRE, "Highscore");
 			}
 			if (cekmenu == 2) {
-				al_draw_text(font, color.enter, ScreenWidth / 2, ScreenHeight / 2 - 10, ALLEGRO_ALIGN_CENTRE, "Credits");
+				al_draw_text(font, color.enter, ScreenWidth / 2, ScreenHeight / 2 + 60, ALLEGRO_ALIGN_CENTRE, "Credits");
 			}
 			else {
-				al_draw_text(font, color.menu, ScreenWidth / 2, ScreenHeight / 2 - 10, ALLEGRO_ALIGN_CENTRE, "Credits");
+				al_draw_text(font, color.menu, ScreenWidth / 2, ScreenHeight / 2 + 60, ALLEGRO_ALIGN_CENTRE, "Credits");
 			}
 			if (cekmenu == 3) {
-				al_draw_text(font, color.enter, ScreenWidth / 2, ScreenHeight / 2 + 60, ALLEGRO_ALIGN_CENTRE, "Exit");
+				al_draw_text(font, color.enter, ScreenWidth / 2, ScreenHeight / 2 + 130, ALLEGRO_ALIGN_CENTRE, "Exit");
 			}
 			else {
-				al_draw_text(font, color.menu, ScreenWidth / 2, ScreenHeight / 2 + 60, ALLEGRO_ALIGN_CENTRE, "Exit");
+				al_draw_text(font, color.menu, ScreenWidth / 2, ScreenHeight / 2 + 130, ALLEGRO_ALIGN_CENTRE, "Exit");
 			}
 		}
 		else if (validasi == 1) //resume
@@ -120,7 +123,7 @@ void GameMenu::main_menu(bool &menu, ALLEGRO_EVENT_QUEUE *queue, int& returnmenu
 		{
 			al_draw_text(font, color.menu, ScreenWidth / 2, ScreenHeight / 2 - 175, ALLEGRO_ALIGN_CENTRE, "Created by: ");
 			al_draw_text(font, color.menu, ScreenWidth / 2, ScreenHeight / 2 - 110, ALLEGRO_ALIGN_CENTRE, "1. Megandi");
-			al_draw_text(font, color.menu, ScreenWidth / 2, ScreenHeight / 2 - 40, ALLEGRO_ALIGN_CENTRE, "2. Adhitya");
+			al_draw_text(font, color.menu, ScreenWidth / 2, ScreenHeight / 2 - 40, ALLEGRO_ALIGN_CENTRE, "2. Adhytia");
 			al_draw_text(font, color.menu, ScreenWidth / 2, ScreenHeight / 2 + 30, ALLEGRO_ALIGN_CENTRE, "3. Cleo");
 			al_draw_text(font, color.menu, ScreenWidth / 2, ScreenHeight / 2 + 100, ALLEGRO_ALIGN_CENTRE, "4. Vicky");
 			al_draw_text(font, color.menu, ScreenWidth / 2, ScreenHeight / 2 + 165, ALLEGRO_ALIGN_CENTRE, "5. Daffa");
@@ -149,6 +152,8 @@ void GameMenu::main_menu(bool &menu, ALLEGRO_EVENT_QUEUE *queue, int& returnmenu
 			//al_draw_text(font, color.post, ScreenWidth / 3, ScreenHeight / 2 + 30, ALLEGRO_ALIGN_CENTRE, "SCORE");
 			al_draw_bitmap(algif_get_bitmap(book, al_get_time()), 170, 225, NULL);
 			al_draw_textf(font, color.enter, 400, 280, 0, "%d ", score);
+			al_draw_text(font, color.menu, ScreenWidth / 2, ScreenHeight / 2 + 100, ALLEGRO_ALIGN_CENTRE, "Total Score");
+			al_draw_textf(font, color.enter, 330, 420, 0, "%d ", high);
 		}
 
 		else if (validasi == 5)  //highscore

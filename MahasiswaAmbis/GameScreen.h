@@ -29,7 +29,6 @@ public:
 	void eventkey(ALLEGRO_EVENT events);
 	void init();
 	void showKoin(int x, int width, MahasiswaAmbis* ma);
-	void drawAllObject(vector<MahasiswaMusuh*> *musuh, vector<Gorengan*> *gr, vector<Kucing*> *kucing, vector<Buku*> *buku, vector<Koin*> *koin, int& level);
 	
 private:
 	ALLEGRO_BITMAP *background1;
@@ -45,6 +44,11 @@ private:
 	ALGIF_ANIMATION *gif_buku;
 	ALGIF_ANIMATION *gif_gorengan;
 	ALGIF_ANIMATION *gif_life;
+	ALLEGRO_BITMAP *tooltip;
+	ALLEGRO_BITMAP *tooltip2;
+	ALLEGRO_BITMAP *tooltip3;
+	ALLEGRO_BITMAP *tooltip4;
+	ALLEGRO_BITMAP *tooltip5;
 
 	const float FPS = 60.0;
 	const float frameFPS = 15.0;

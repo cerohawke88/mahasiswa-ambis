@@ -16,6 +16,11 @@ GameScreen::GameScreen()
 	gif_gorengan = algif_load_animation("gor.gif");
 	gif_buku = algif_load_animation("Book.gif");
 	gif_life = algif_load_animation("life.gif");
+	tooltip = al_load_bitmap("tooltip.png");
+	tooltip2 = al_load_bitmap("tooltip2.png");
+	tooltip3 = al_load_bitmap("tooltip3.png");
+	tooltip4 = al_load_bitmap("tooltip4.png");
+	tooltip5 = al_load_bitmap("tooltip5.png");
 }
 
 
@@ -88,90 +93,12 @@ void GameScreen::CameraUpdate(float *cameraPosition, float x, float y, int widht
 
 void GameScreen::draw(int level)
 {
-	if (level == 1) {
-		al_draw_bitmap(GameScreen::background1, 0, 0, NULL);
-	}
-	else {
-		al_draw_bitmap(GameScreen::background2, 0, 0, NULL);
-	}
-	
+	al_draw_bitmap(GameScreen::background, 0, 0, NULL);
 }
+
 
 
 void GameScreen::eventkey(ALLEGRO_EVENT events)
 {
 	al_wait_for_event(event_queue, &events);
-}
-
-void GameScreen::drawAllObject(vector<MahasiswaMusuh*> *musuh, vector<Gorengan*> *gr, vector<Kucing*> *kucing, vector<Buku*> *buku, vector<Koin*> *koin, int& level)
-{
-	if (level == 1) {
-		gr->at(0)->draw(1500, 250);
-		gr->at(1)->draw(2900, 150);
-
-		kucing->at(0)->draw(500, 415);
-		kucing->at(1)->draw(1100, 415);
-
-		kucing->at(2)->draw(2250, 415);
-		kucing->at(3)->draw(1950, 415);
-		kucing->at(4)->draw(2100, 415);
-
-		musuh->at(0)->draw(1380, 375);
-
-		buku->at(0)->draw(100, 300);
-		buku->at(1)->draw(140, 300);
-		buku->at(2)->draw(180, 300);
-		buku->at(3)->draw(1000, 270);
-		buku->at(4)->draw(1040, 270);
-		buku->at(5)->draw(1080, 270);
-		buku->at(6)->draw(2100, 200);
-		buku->at(7)->draw(2200, 200);
-		buku->at(8)->draw(2300, 200);
-		buku->at(9)->draw(2400, 200);
-		buku->at(10)->draw(3000, 250);
-		buku->at(11)->draw(3040, 250);
-		buku->at(12)->draw(3080, 250);
-		buku->at(13)->draw(3500, 300);
-		buku->at(14)->draw(3540, 300);
-
-		koin->at(0)->draw(1300, 300);
-		koin->at(1)->draw(1800, 300);
-		koin->at(2)->draw(3300, 300);
-		koin->at(3)->draw(400, 210);
-	}
-	else {
-		gr->at(0)->draw(1500, 250);
-		gr->at(1)->draw(2900, 150);
-
-		kucing->at(0)->draw(500, 415);
-		kucing->at(1)->draw(1100, 415);
-
-		kucing->at(2)->draw(2250, 415);
-		kucing->at(3)->draw(1950, 415);
-		kucing->at(4)->draw(2100, 415);
-
-		musuh->at(0)->draw(1380, 375);
-
-		buku->at(0)->draw(100, 400);
-		buku->at(1)->draw(140, 500);
-		buku->at(2)->draw(180, 100);
-		buku->at(3)->draw(1000, 270);
-		buku->at(4)->draw(1040, 270);
-		buku->at(5)->draw(1080, 270);
-		buku->at(6)->draw(2100, 200);
-		buku->at(7)->draw(2200, 200);
-		buku->at(8)->draw(2300, 200);
-		buku->at(9)->draw(2400, 200);
-		buku->at(10)->draw(3000, 250);
-		buku->at(11)->draw(3040, 250);
-		buku->at(12)->draw(3080, 250);
-		buku->at(13)->draw(3500, 300);
-		buku->at(14)->draw(3540, 300);
-
-		koin->at(0)->draw(1300, 300);
-		koin->at(1)->draw(1800, 300);
-		koin->at(2)->draw(3300, 300);
-		koin->at(3)->draw(400, 210);
-	}
-	
 }

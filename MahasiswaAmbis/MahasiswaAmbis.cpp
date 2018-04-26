@@ -89,14 +89,12 @@ float MahasiswaAmbis::getVel() {
 
 void MahasiswaAmbis::maju(vector<MahasiswaMusuh*> *musuh, bool& menu, int& validasi_menu, int& xcu, int& level)
 {
-	int cek;
-	if (level == 1) {
-		cek = 0;
-		if (this->x>=1350 && this->x <= 1450 && this->y>= 360) {
-			if (musuh->at(0)->getValidasi() == true) {
-				x -= 130;
-				if (getNyawa() > 0)
-				{
+	int cek = 0;
+	if (this->x>=1350 && this->x <= 1450 && this->y>= 360) {
+		if (musuh->at(0)->getValidasi() == true) {
+			x -= 130;
+			if (getNyawa() > 0)
+			{
 
 					minNyawa(1);
 
@@ -133,17 +131,15 @@ void MahasiswaAmbis::maju(vector<MahasiswaMusuh*> *musuh, bool& menu, int& valid
 
 void MahasiswaAmbis::mundur(vector<MahasiswaMusuh*> *musuh, bool& menu, int& validasi_menu, int& xcu, int& level)
 {
-	int cek;
-	if (level == 1) {
-		cek = 0;
-		if (this->x >= 1350 && this->x <= 1450 && this->y >= 360) {
-			if (musuh->at(0)->getValidasi() == true) {
-				x += 130;
-				if (getNyawa() > 0)
-				{
-					minNyawa(1);
-					cout << "NYAWA: " << getNyawa() << endl;
-				}
+	int cek = 0;
+	if (this->x >= 1350 && this->x <= 1450 && this->y>= 360) {
+		if (musuh->at(0)->getValidasi() == true) {
+			x += 130;
+			if (getNyawa() > 0)
+			{
+				minNyawa(1);
+				cout << "NYAWA: " << getNyawa() << endl;
+			}
 
 				else
 				{
@@ -750,5 +746,11 @@ float MahasiswaAmbis::getTotalscore4()
 
 float MahasiswaAmbis::highscore()
 {
-	return 0.0f;
+	bestscore = getScore() + getCoin( ) + (getNyawa() *2);
+	return bestscore;
+}
+
+float MahasiswaAmbis::getHighscore()
+{
+	return bestscore;
 }

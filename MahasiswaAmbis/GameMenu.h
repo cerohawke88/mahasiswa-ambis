@@ -33,6 +33,7 @@ private:
 	ALLEGRO_BITMAP * background_post;
 	ALLEGRO_BITMAP * background_menu;
 	ALLEGRO_BITMAP * background_gameover;
+	ALLEGRO_BITMAP * logo;
 	ALLEGRO_FONT * font;
 	ALGIF_ANIMATION *coin, *life, *book, *life150;
 	MahasiswaAmbis *ma;

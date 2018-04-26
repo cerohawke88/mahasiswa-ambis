@@ -73,5 +73,7 @@ public:
 	float getTotalscore3();
 	void totalScore4();
 	float getTotalscore4();
+
 	float highscore();
+	float getHighscore();
 };
