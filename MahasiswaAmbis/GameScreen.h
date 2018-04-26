@@ -29,7 +29,8 @@ public:
 	void eventkey(ALLEGRO_EVENT events);
 	void init();
 	void showKoin(int x, int width, MahasiswaAmbis* ma);
-	
+	void drawAllObject(vector<MahasiswaMusuh*> *musuh, vector<Gorengan*> *gr, vector<Kucing*> *kucing, vector<Buku*> *buku, vector<Koin*> *koin, int& level);
+
 private:
 	ALLEGRO_BITMAP *background1;
 	ALLEGRO_BITMAP *background2;

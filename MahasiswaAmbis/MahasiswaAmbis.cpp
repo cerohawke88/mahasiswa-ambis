@@ -89,18 +89,18 @@ float MahasiswaAmbis::getVel() {
 
 void MahasiswaAmbis::maju(vector<MahasiswaMusuh*> *musuh, bool& menu, int& validasi_menu, int& xcu, int& level)
 {
-	int cek = 0;
-	if (this->x>=1350 && this->x <= 1450 && this->y>= 360) {
-		if (musuh->at(0)->getValidasi() == true) {
-			x -= 130;
-			if (getNyawa() > 0)
-			{
+	int cek;
+	if (level == 1) {
+		cek = 0;
+		if (this->x >= 1350 && this->x <= 1450 && this->y >= 360) {
+			if (musuh->at(0)->getValidasi() == true) {
+				x -= 130;
+				if (getNyawa() > 0)
+				{
 
 					minNyawa(1);
-
 					cout << "NYAWA: " << getNyawa() << endl;
 				}
-
 				else
 				{
 					cout << "GAMEOVER\n";
@@ -110,7 +110,6 @@ void MahasiswaAmbis::maju(vector<MahasiswaMusuh*> *musuh, bool& menu, int& valid
 			else {
 				velocityX = moveSpeed;
 			}
-
 			if (cek == 1) {
 				menu = true;
 				validasi_menu = 2;
@@ -131,15 +130,17 @@ void MahasiswaAmbis::maju(vector<MahasiswaMusuh*> *musuh, bool& menu, int& valid
 
 void MahasiswaAmbis::mundur(vector<MahasiswaMusuh*> *musuh, bool& menu, int& validasi_menu, int& xcu, int& level)
 {
-	int cek = 0;
-	if (this->x >= 1350 && this->x <= 1450 && this->y>= 360) {
-		if (musuh->at(0)->getValidasi() == true) {
-			x += 130;
-			if (getNyawa() > 0)
-			{
-				minNyawa(1);
-				cout << "NYAWA: " << getNyawa() << endl;
-			}
+	int cek;
+	if (level == 1) {
+		cek = 0;
+		if (this->x >= 1350 && this->x <= 1450 && this->y >= 360) {
+			if (musuh->at(0)->getValidasi() == true) {
+				x += 130;
+				if (getNyawa() > 0)
+				{
+					minNyawa(1);
+					cout << "NYAWA: " << getNyawa() << endl;
+				}
 
 				else
 				{
