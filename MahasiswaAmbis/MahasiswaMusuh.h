@@ -31,6 +31,7 @@ public:
 	void cekLompat();
 	void setValidasi(bool x);
 	bool getValidasi();
+	void afterGO();
 private:
 	bool validasi;
 	ALGIF_ANIMATION *gif_mati;

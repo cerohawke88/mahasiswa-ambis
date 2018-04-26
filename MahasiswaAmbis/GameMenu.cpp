@@ -28,8 +28,14 @@ GameMenu::~GameMenu()
 }
 
 
-void GameMenu::main_menu(bool &menu, ALLEGRO_EVENT_QUEUE *queue, int& returnmenu, int validasi, MahasiswaAmbis* ma, SoundManager* sound)
+void GameMenu::main_menu(bool &menu, ALLEGRO_EVENT_QUEUE *queue, int& returnmenu, int validasi, MahasiswaAmbis* ma, SoundManager* sound, int& level)
 {
+	//initial
+	al_install_keyboard();
+	al_init_image_addon();
+	al_init_font_addon();
+	al_init_ttf_addon();
+	al_install_mouse();
 
 	int bekasgameover = 0;
 	int score, koin, nyawa;
@@ -125,7 +131,13 @@ void GameMenu::main_menu(bool &menu, ALLEGRO_EVENT_QUEUE *queue, int& returnmenu
 			sound->stopGameover();
 			sound->stopMenu();
 			sound->playComplete();
-			al_draw_text(font, color.enter, ScreenWidth / 2, ScreenHeight / 2 - 200, ALLEGRO_ALIGN_CENTRE, "STAGE COMPLETED!");
+			if (level == 2) {
+				al_draw_text(font, color.enter, ScreenWidth / 2, ScreenHeight / 2 - 200, ALLEGRO_ALIGN_CENTRE, "STAGE COMPLETED!");
+			}
+			else {
+				al_draw_text(font, color.enter, ScreenWidth / 2, ScreenHeight / 2 - 200, ALLEGRO_ALIGN_CENTRE, "GAME COMPLETED!");
+			}
+			
 
 			//al_draw_text(font, color.post, ScreenWidth / 3, ScreenHeight / 2 - 110, ALLEGRO_ALIGN_CENTRE, "COINS");
 			al_draw_bitmap(algif_get_bitmap(coin, al_get_time()), 170, 85, NULL);
@@ -153,7 +165,20 @@ void GameMenu::main_menu(bool &menu, ALLEGRO_EVENT_QUEUE *queue, int& returnmenu
 			case ALLEGRO_KEY_ENTER:
 				if (ev.keyboard.keycode == ALLEGRO_KEY_ENTER)
 				{
-					if (validasi == 2 || validasi == 4) {
+					if (validasi == 2) {
+						//gameover
+						menu = true;
+						validasi = 0;
+						bekasgameover = 1;
+					} 
+					else if (validasi == 4 && level != 3) {
+						//gameover
+						menu = false;
+						validasi = 0;
+						bekasgameover = 1;
+						sound->playMenu();
+					}
+					else if (validasi == 4 && level == 3) {
 						//gameover
 						menu = true;
 						validasi = 0;

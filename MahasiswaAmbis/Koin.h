@@ -28,6 +28,7 @@ public:
 	bool getValidasi();
 	//void draw();
 	void draw(int gorX, int gorY);
+	void afterGO();
 
 
 private:

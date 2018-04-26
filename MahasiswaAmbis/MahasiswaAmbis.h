@@ -30,7 +30,7 @@ public:
 	MahasiswaAmbis();
 	~MahasiswaAmbis();
 
-
+	void afterGO();
 	float getY();
 	float getX();
 	void setY(float x);
@@ -40,20 +40,20 @@ public:
 	bool getDoubleJump();
 	void doubleJump();
 	void lompat();
-	void maju(vector<MahasiswaMusuh*> *musuh, bool& menu, int& validasi_menu, int& xcu);
-	void mundur(vector<MahasiswaMusuh*> *musuh, bool& menu, int& validasi_menu, int& xcu);
-	void cekLompat(vector<MahasiswaMusuh*> *musuh);
+	void maju(vector<MahasiswaMusuh*> *musuh, bool& menu, int& validasi_menu, int& xcu, int& level);
+	void mundur(vector<MahasiswaMusuh*> *musuh, bool& menu, int& validasi_menu, int& xcu, int& level);
+	void cekLompat(vector<MahasiswaMusuh*> *musuh, int& level);
 	void setSourceX(float x);
 	void addSourceX(float x);
 	float getSourceX();
 	int getWidth();
 	int getMoveSpeed();
 	void drawReg(int);
-	void cekGorengan(vector<Gorengan*> *gr);
-	void cekKoin(vector<Koin*> *koin);
-	void cekBuku(vector<Buku*> *buku);
-	void cekMusuh(vector<MahasiswaMusuh*> *musuh, bool& menu, int& validasi_menu, int& xcu);
-	void cekKucing(vector<Kucing*> *kucing, bool& menu, int& validasi_menu, int& xcu);
+	void cekGorengan(vector<Gorengan*> *gr, int& level);
+	void cekKoin(vector<Koin*> *koin, int& level);
+	void cekBuku(vector<Buku*> *buku, int& level);
+	void cekMusuh(vector<MahasiswaMusuh*> *musuh, bool& menu, int& validasi_menu, int& xcu, int& level);
+	void cekKucing(vector<Kucing*> *kucing, bool& menu, int& validasi_menu, int& xcu, int& level);
 	void cekJatuh();
 	void cekFinish(ALLEGRO_EVENT_QUEUE *queue);
 	int getNyawa();

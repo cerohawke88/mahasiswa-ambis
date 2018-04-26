@@ -26,7 +26,7 @@ public:
 	GameMenu();
 	~GameMenu();
 
-	void main_menu(bool& menu, ALLEGRO_EVENT_QUEUE *queue, int& returnmenu, int validasi, MahasiswaAmbis* ma, SoundManager* sound);
+	void main_menu(bool& menu, ALLEGRO_EVENT_QUEUE *queue, int& returnmenu, int validasi, MahasiswaAmbis* ma, SoundManager* sound, int& level);
 	void post_game(bool& menu);
 
 private:

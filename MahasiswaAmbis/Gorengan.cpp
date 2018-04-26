@@ -11,6 +11,11 @@ Gorengan::Gorengan()
 	Gorengan::validasi = true;
 }
 
+void Gorengan::afterGO()
+{
+	Gorengan::validasi = true;
+}
+
 
 Gorengan::~Gorengan()
 {

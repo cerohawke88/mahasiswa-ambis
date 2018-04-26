@@ -18,6 +18,20 @@ MahasiswaMusuh::MahasiswaMusuh()
 	MahasiswaMusuh::validasi = true;
 }
 
+void MahasiswaMusuh::afterGO()
+{
+	moveSpeed = 2.5;
+	x = 10;
+	y = 402;
+	sourceX = 64;
+	sourceY = 0;
+	jump = false;
+	jumpSpeed = 15;
+	velocityX = velocityY = 0;
+	gravity = 1;
+	MahasiswaMusuh::validasi = true;
+}
+
 
 MahasiswaMusuh::~MahasiswaMusuh()
 {

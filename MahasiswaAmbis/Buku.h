@@ -29,6 +29,7 @@ public:
 	bool getValidasi();
 	//void draw();
 	void draw(int x, int y);
+	void afterGO();
 
 private:
 	bool validasi;

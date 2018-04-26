@@ -16,6 +16,11 @@ Koin::~Koin()
 {
 }
 
+void Koin::afterGO()
+{
+	Koin::validasi = true;
+}
+
 void Koin::drawReg() {
 	//al_draw_bitmap_region(image, al_get_bitmap_width(image)/4, al_get_bitmap_height(image), 64, 64, x, y, null);
 }

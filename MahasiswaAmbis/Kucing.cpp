@@ -13,6 +13,11 @@ Kucing::Kucing()
 	Kucing::validasi = true;
 }
 
+void Kucing::afterGO()
+{
+	Kucing::validasi = true;
+}
+
 
 Kucing::~Kucing()
 {

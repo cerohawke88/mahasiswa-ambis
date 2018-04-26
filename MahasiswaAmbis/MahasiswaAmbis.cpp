@@ -2,8 +2,6 @@
 #include "MahasiswaAmbis.h"
 #include "SoundManager.h"
 
-
-
 MahasiswaAmbis::MahasiswaAmbis()
 {
 	MahasiswaAmbis::image = al_load_bitmap("Mahasiswa.png");
@@ -22,7 +20,29 @@ MahasiswaAmbis::MahasiswaAmbis()
 	MahasiswaAmbis::score = 0;
 	MahasiswaAmbis::totalscorestage1 = 0;
 	MahasiswaAmbis::bestscore = 0;
+	MahasiswaAmbis::koin = 0;
 }
+
+void MahasiswaAmbis::afterGO()
+{
+	MahasiswaAmbis::moveSpeed = 5;
+	MahasiswaAmbis::x = 10;
+	MahasiswaAmbis::y = 10;
+	MahasiswaAmbis::sourceX = 64;
+	MahasiswaAmbis::sourceY = 0;
+	MahasiswaAmbis::jump = false;
+	MahasiswaAmbis::doublejump = false;
+	MahasiswaAmbis::jumpSpeed = 15;
+	MahasiswaAmbis::jumpSpeedDouble = 23;
+	MahasiswaAmbis::velocityX = MahasiswaAmbis::velocityY = 0;
+	MahasiswaAmbis::gravity = 1;
+	MahasiswaAmbis::nyawa = 3;
+	MahasiswaAmbis::score = 0;
+	MahasiswaAmbis::koin = 0;
+	MahasiswaAmbis::totalscorestage1 = 0;
+	MahasiswaAmbis::bestscore = 0;
+}
+
 
 void MahasiswaAmbis::drawReg(int n)
 {
@@ -67,28 +87,78 @@ float MahasiswaAmbis::getVel() {
 	return velocityX = 0;
 }
 
-void MahasiswaAmbis::maju(vector<MahasiswaMusuh*> *musuh, bool& menu, int& validasi_menu, int& xcu)
+void MahasiswaAmbis::maju(vector<MahasiswaMusuh*> *musuh, bool& menu, int& validasi_menu, int& xcu, int& level)
 {
-	int cek = 0;
-	if (this->x>=1350 && this->x <= 1450 && this->y>= 360) {
-		if (musuh->at(0)->getValidasi() == true) {
-			x -= 130;
-			if (getNyawa() > 0)
-			{
+	int cek;
+	if (level == 1) {
+		cek = 0;
+		if (this->x>=1350 && this->x <= 1450 && this->y>= 360) {
+			if (musuh->at(0)->getValidasi() == true) {
+				x -= 130;
+				if (getNyawa() > 0)
+				{
 
-				minNyawa(1);
+					minNyawa(1);
 
-				cout << "NYAWA: " << getNyawa() << endl;
+					cout << "NYAWA: " << getNyawa() << endl;
+				}
+
+				else
+				{
+					cout << "GAMEOVER\n";
+					cek = 1;
+				}
+			}
+			else {
+				velocityX = moveSpeed;
 			}
 
-			else
-			{
-				cout << "GAMEOVER\n";
-				cek = 1;
+			if (cek == 1) {
+				menu = true;
+				validasi_menu = 2;
+				xcu = 0;
 			}
 		}
 		else {
-			velocityX = moveSpeed;
+			if (this->x < 4000) {
+				velocityX = moveSpeed;
+				this->cekJatuh();
+			}
+		}
+	}
+	else if (level == 2) {
+		velocityX = moveSpeed;
+	}
+}
+
+void MahasiswaAmbis::mundur(vector<MahasiswaMusuh*> *musuh, bool& menu, int& validasi_menu, int& xcu, int& level)
+{
+	int cek;
+	if (level == 1) {
+		cek = 0;
+		if (this->x >= 1350 && this->x <= 1450 && this->y >= 360) {
+			if (musuh->at(0)->getValidasi() == true) {
+				x += 130;
+				if (getNyawa() > 0)
+				{
+					minNyawa(1);
+					cout << "NYAWA: " << getNyawa() << endl;
+				}
+
+				else
+				{
+					cout << "GAMEOVER\n";
+					cek = 1;
+				}
+			}
+			else {
+				velocityX = -moveSpeed;
+			}
+		}
+		else {
+			velocityX = -moveSpeed;
+			this->cekJatuh();
+
 		}
 
 		if (cek == 1) {
@@ -97,47 +167,8 @@ void MahasiswaAmbis::maju(vector<MahasiswaMusuh*> *musuh, bool& menu, int& valid
 			xcu = 0;
 		}
 	}
-	else {
-		if (this->x < 4000) {
-			velocityX = moveSpeed;
-			this->cekJatuh();
-		}
-	}
-
-}
-
-void MahasiswaAmbis::mundur(vector<MahasiswaMusuh*> *musuh, bool& menu, int& validasi_menu, int& xcu)
-{
-	int cek = 0;
-	if (this->x >= 1350 && this->x <= 1450 && this->y>= 360) {
-		if (musuh->at(0)->getValidasi() == true) {
-			x += 130;
-			if (getNyawa() > 0)
-			{
-				minNyawa(1);
-				cout << "NYAWA: " << getNyawa() << endl;
-			}
-
-			else
-			{
-				cout << "GAMEOVER\n";
-				cek = 1;
-			}
-		}
-		else {
-			velocityX = -moveSpeed;
-		}
-	}
-	else {
+	else if (level == 2) {
 		velocityX = -moveSpeed;
-		this->cekJatuh();
-		
-	}
-
-	if (cek == 1) {
-		menu = true;
-		validasi_menu = 2;
-		xcu = 0;
 	}
 }
 
@@ -147,7 +178,7 @@ void MahasiswaAmbis::cekJatuh()
 	
 }
 
-void MahasiswaAmbis::cekLompat(vector<MahasiswaMusuh*> *musuh)
+void MahasiswaAmbis::cekLompat(vector<MahasiswaMusuh*> *musuh, int& level)
 {
 	if (!jump)
 		velocityY += gravity;
@@ -157,47 +188,63 @@ void MahasiswaAmbis::cekLompat(vector<MahasiswaMusuh*> *musuh)
 	x += velocityX;
 	y += velocityY;
 
-	if (x > 328 && x < 440 && y >= 402) {
+	if (level == 1) {
+		if (x > 328 && x < 440 && y >= 402) {
 			y += 15;
 			cout << y << endl;
 			cout << "jatuh\n";
-	}
+		}
 		else if (x > 1711 && x < 1852 && y >= 402) {
-				y += 15;
-				cout << y << endl;
-				cout << "jatuh\n";
+			y += 15;
+			cout << y << endl;
+			cout << "jatuh\n";
 		}
 		else if (x > 2270 && x < 2450 && y >= 402) {
-				y += 15;
-				cout << y << endl;
-				cout << "jatuh\n";
+			y += 15;
+			cout << y << endl;
+			cout << "jatuh\n";
 		}
 		else if (x > 2850 && x < 2935 && y >= 402) {
-				y += 15;
-				cout << y << endl;
-				cout << "jatuh\n";
+			y += 15;
+			cout << y << endl;
+			cout << "jatuh\n";
 		}
 		else if (x > 3530 && x < 3690 && y >= 402) {
-				y += 15;
-				cout << y << endl;
-				cout << "jatuh\n";
+			y += 15;
+			cout << y << endl;
+			cout << "jatuh\n";
 		}
 		// injek pala musuh
 		else if (x > 1350 && x < 1450 && y >= 360) {
 			if (musuh->at(0)->getValidasi() == true) {
 				velocityY = -20;
 				y = 360 - 64;
-				
+
 			}
 			else if (musuh->at(0)->getValidasi() == false) {
 				jump = y + 64 >= 466;
 				doublejump = y + 64 >= 466;
-				
+
 			}
 			musuh->at(0)->setValidasi(false);
-
 		}
-	else {
+		else {
+			//cout << "hush" << endl;
+			jump = (y + 64 >= 466);
+			doublejump = (y + 64 >= 466);
+
+			if (jump) {
+				y = 466 - 64;
+				//sound.playJump();
+			}
+
+			if (doublejump) {
+				y = 466 - 64;
+				//sound.playJump();
+			}
+		}
+	}
+	else if(level == 2){
 		//cout << "hush" << endl;
 		jump = (y + 64 >= 466);
 		doublejump = (y + 64 >= 466);
@@ -246,370 +293,378 @@ float MahasiswaAmbis::getSourceX()
 	return MahasiswaAmbis::sourceX;
 }
 
-void MahasiswaAmbis::cekGorengan(vector<Gorengan*> *gr)
+void MahasiswaAmbis::cekGorengan(vector<Gorengan*> *gr, int& level)
 {
-	if (this->x>1490 && this->x<1520 && this->y> 220 && this->y< 280) {
-		cout << "gor1\n";
-		if (gr->at(0)->getValidasi() == true)
-		{
-			if (getCoin() >= 2)
+	if (level == 1) {
+		if (this->x > 1490 && this->x < 1520 && this->y> 220 && this->y < 280) {
+			cout << "gor1\n";
+			if (gr->at(0)->getValidasi() == true)
 			{
-				sound.playEat();
-				gr->at(0)->setValidasi(false);
-				plusNyawa(1); // +1 nyawa
-				minCoin(2); // -2 koin
-				cout << "DAPAT NYAWA " << getNyawa() << endl;
-				cout << gr->at(0)->getValidasi() << endl;
+				if (getCoin() >= 2)
+				{
+					sound.playEat();
+					gr->at(0)->setValidasi(false);
+					plusNyawa(1); // +1 nyawa
+					minCoin(2); // -2 koin
+					cout << "DAPAT NYAWA " << getNyawa() << endl;
+					cout << gr->at(0)->getValidasi() << endl;
+				}
+				else {
+					gr->at(0)->setValidasi(true);
+					cout << "Koin tidak cukup" << endl;
+				}
 			}
-			else {
-				gr->at(0)->setValidasi(true);
-				cout << "Koin tidak cukup" << endl;
-			}
+
 		}
-		
-	} else if (this->x>2890 && this->x<2920 && this->y> 120 && this->y< 180) {
-		cout << "gor2\n";
-		if (gr->at(1)->getValidasi() == true) {
-			if (getNyawa() < 3 && getCoin() >= 2)
-			{
-				sound.playEat();
-				plusNyawa(1); // +1 nyawa
-				minCoin(2); // -2 koin
-				gr->at(1)->setValidasi(false);
-				cout <<"NYAWA "<< getNyawa() << endl;
-			}
-			else {
-				gr->at(1)->setValidasi(true);
-				cout << "Koin tidak cukup" << endl;
+		else if (this->x > 2890 && this->x < 2920 && this->y> 120 && this->y < 180) {
+			cout << "gor2\n";
+			if (gr->at(1)->getValidasi() == true) {
+				if (getNyawa() < 3 && getCoin() >= 2)
+				{
+					sound.playEat();
+					plusNyawa(1); // +1 nyawa
+					minCoin(2); // -2 koin
+					gr->at(1)->setValidasi(false);
+					cout << "NYAWA " << getNyawa() << endl;
+				}
+				else {
+					gr->at(1)->setValidasi(true);
+					cout << "Koin tidak cukup" << endl;
+				}
 			}
 		}
 	}
 }
 
-void MahasiswaAmbis::cekKoin(vector<Koin*> *koin) 
+void MahasiswaAmbis::cekKoin(vector<Koin*> *koin, int& level)
 {
-	if (this->x>1290 && this->x<1315 && this->y> 270 && this->y< 330) {
-		if (koin->at(0)->getValidasi() == true) {
-			sound.playCoin();
-			plusCoin(1);
-			cout << "koin: " << getCoin() << endl;
+	if (level == 1) {
+		if (this->x > 1290 && this->x < 1315 && this->y> 270 && this->y < 330) {
+			if (koin->at(0)->getValidasi() == true) {
+				sound.playCoin();
+				plusCoin(1);
+				cout << "koin: " << getCoin() << endl;
+			}
+			koin->at(0)->setValidasi(false);
 		}
-		koin->at(0)->setValidasi(false);
-	}
-	else if (this->x>1790 && this->x<1815 && this->y> 270 && this->y< 330) {
-	
-		if (koin->at(1)->getValidasi() == true) {
-			sound.playCoin();
-			plusCoin(1);
-			cout << "koin: " << getCoin() << endl;
+		else if (this->x > 1790 && this->x < 1815 && this->y> 270 && this->y < 330) {
+
+			if (koin->at(1)->getValidasi() == true) {
+				sound.playCoin();
+				plusCoin(1);
+				cout << "koin: " << getCoin() << endl;
+			}
+			koin->at(1)->setValidasi(false);
 		}
-		koin->at(1)->setValidasi(false);
-	}
-	else if (this->x>3290 && this->x<3315 && this->y> 270 && this->y< 330) {
-		if (koin->at(2)->getValidasi() == true) {
-			sound.playCoin();
-			plusCoin(1);
-			cout << "koin: " << getCoin() << endl;
+		else if (this->x > 3290 && this->x < 3315 && this->y> 270 && this->y < 330) {
+			if (koin->at(2)->getValidasi() == true) {
+				sound.playCoin();
+				plusCoin(1);
+				cout << "koin: " << getCoin() << endl;
+			}
+			koin->at(2)->setValidasi(false);
 		}
-		koin->at(2)->setValidasi(false);
-	}
-	else if (this->x>390 && this->x<415 && this->y> 180 && this->y< 240) {
-		if (koin->at(3)->getValidasi() == true) {
-			sound.playCoin();
-			plusCoin(1);
-			cout << "koin: " << getCoin() << endl;
+		else if (this->x > 390 && this->x < 415 && this->y> 180 && this->y < 240) {
+			if (koin->at(3)->getValidasi() == true) {
+				sound.playCoin();
+				plusCoin(1);
+				cout << "koin: " << getCoin() << endl;
+			}
+			koin->at(3)->setValidasi(false);
 		}
-		koin->at(3)->setValidasi(false);
 	}
 
 }
 
-void MahasiswaAmbis::cekBuku(vector<Buku*> *buku)
+void MahasiswaAmbis::cekBuku(vector<Buku*> *buku, int& level)
 {
-	if (this->x>90 && this->x<115 && this->y> 270 && this->y< 330) {
-		cout << "buku\n";
-		if (buku->at(0)->getValidasi() == true) {
-			sound.playBook();
-			plusScore(4);
-			cout << "score: " << getScore() << endl;
-			cout << "score total : " << getTotalscore1() << endl;
+	if (level == 1) {
+		if (this->x > 90 && this->x < 115 && this->y> 270 && this->y < 330) {
+			cout << "buku\n";
+			if (buku->at(0)->getValidasi() == true) {
+				sound.playBook();
+				plusScore(4);
+				cout << "score: " << getScore() << endl;
+				cout << "score total : " << getTotalscore1() << endl;
+			}
+			buku->at(0)->setValidasi(false);
 		}
-		buku->at(0)->setValidasi(false);
-	}
-	else if (this->x>130 && this->x<155 && this->y> 270 && this->y< 330) {
-		cout << "buku\n";
-		if (buku->at(1)->getValidasi() == true) {
-			sound.playBook();
-			plusScore(4);
-			cout << "score" << getScore();
+		else if (this->x > 130 && this->x < 155 && this->y> 270 && this->y < 330) {
+			cout << "buku\n";
+			if (buku->at(1)->getValidasi() == true) {
+				sound.playBook();
+				plusScore(4);
+				cout << "score" << getScore();
+			}
+			buku->at(1)->setValidasi(false);
 		}
-		buku->at(1)->setValidasi(false);
-	}
-	else if (this->x>170 && this->x<195 && this->y> 270 && this->y< 330) {
-		cout << "buku\n";
-		if (buku->at(2)->getValidasi() == true) {
-			sound.playBook();
-			plusScore(4);
-			cout << "score" << getScore();
+		else if (this->x > 170 && this->x < 195 && this->y> 270 && this->y < 330) {
+			cout << "buku\n";
+			if (buku->at(2)->getValidasi() == true) {
+				sound.playBook();
+				plusScore(4);
+				cout << "score" << getScore();
+			}
+			buku->at(2)->setValidasi(false);
 		}
-		buku->at(2)->setValidasi(false);
-	}
-	else if (this->x>990 && this->x<1015 && this->y> 240 && this->y< 300) {
-		cout << "buku\n";
-		if (buku->at(3)->getValidasi() == true) {
-			sound.playBook();
-			plusScore(4);
-			cout << "score" << getScore();
+		else if (this->x > 990 && this->x < 1015 && this->y> 240 && this->y < 300) {
+			cout << "buku\n";
+			if (buku->at(3)->getValidasi() == true) {
+				sound.playBook();
+				plusScore(4);
+				cout << "score" << getScore();
+			}
+			buku->at(3)->setValidasi(false);
 		}
-		buku->at(3)->setValidasi(false);
-	}
-	else if (this->x>1030 && this->x<1055 && this->y> 240 && this->y< 300) {
-		cout << "buku\n";
-		if (buku->at(4)->getValidasi() == true) {
-			sound.playBook();
-			plusScore(4);
-			cout << "score" << getScore();
+		else if (this->x > 1030 && this->x < 1055 && this->y> 240 && this->y < 300) {
+			cout << "buku\n";
+			if (buku->at(4)->getValidasi() == true) {
+				sound.playBook();
+				plusScore(4);
+				cout << "score" << getScore();
+			}
+			buku->at(4)->setValidasi(false);
 		}
-		buku->at(4)->setValidasi(false);
-	}
-	else if (this->x>1070 && this->x<1095 && this->y> 240 && this->y< 300) {
-		cout << "buku\n";
-		if (buku->at(5)->getValidasi() == true) {
-			sound.playBook();
-			plusScore(4);
-			cout << "score" << getScore();
+		else if (this->x > 1070 && this->x < 1095 && this->y> 240 && this->y < 300) {
+			cout << "buku\n";
+			if (buku->at(5)->getValidasi() == true) {
+				sound.playBook();
+				plusScore(4);
+				cout << "score" << getScore();
+			}
+			buku->at(5)->setValidasi(false);
 		}
-		buku->at(5)->setValidasi(false);
-	}
-	else if (this->x>2090 && this->x<2115 && this->y> 170 && this->y< 230) {
-		cout << "buku\n";
-		if (buku->at(6)->getValidasi() == true) {
-			sound.playBook();
-			plusScore(4);
-			cout << "score" << getScore();
+		else if (this->x > 2090 && this->x < 2115 && this->y> 170 && this->y < 230) {
+			cout << "buku\n";
+			if (buku->at(6)->getValidasi() == true) {
+				sound.playBook();
+				plusScore(4);
+				cout << "score" << getScore();
+			}
+			buku->at(6)->setValidasi(false);
 		}
-		buku->at(6)->setValidasi(false);
-	}
-	else if (this->x>2190 && this->x<2215 && this->y> 170 && this->y< 230) {
-		cout << "buku\n";
-		if (buku->at(7)->getValidasi() == true) {
-			sound.playBook();
-			plusScore(4);
-			cout << "score" << getScore();
+		else if (this->x > 2190 && this->x < 2215 && this->y> 170 && this->y < 230) {
+			cout << "buku\n";
+			if (buku->at(7)->getValidasi() == true) {
+				sound.playBook();
+				plusScore(4);
+				cout << "score" << getScore();
+			}
+			buku->at(7)->setValidasi(false);
 		}
-		buku->at(7)->setValidasi(false);
-	}
-	else if (this->x>2270 && this->x<2315 && this->y> 170 && this->y< 230) {
-		cout << "buku\n";
-		if (buku->at(8)->getValidasi() == true) {
-			sound.playBook();
-			plusScore(4);
-			cout << "score" << getScore();
+		else if (this->x > 2270 && this->x < 2315 && this->y> 170 && this->y < 230) {
+			cout << "buku\n";
+			if (buku->at(8)->getValidasi() == true) {
+				sound.playBook();
+				plusScore(4);
+				cout << "score" << getScore();
+			}
+			buku->at(8)->setValidasi(false);
 		}
-		buku->at(8)->setValidasi(false);
-	}
-	else if (this->x>2390 && this->x<2415 && this->y> 170 && this->y< 230) {
-		cout << "buku\n";
-		if (buku->at(9)->getValidasi() == true) {
-			sound.playBook();
-			plusScore(4);
-			cout << "score" << getScore();
+		else if (this->x > 2390 && this->x < 2415 && this->y> 170 && this->y < 230) {
+			cout << "buku\n";
+			if (buku->at(9)->getValidasi() == true) {
+				sound.playBook();
+				plusScore(4);
+				cout << "score" << getScore();
+			}
+			buku->at(9)->setValidasi(false);
 		}
-		buku->at(9)->setValidasi(false);
-	}
-	else if (this->x>2990 && this->x<3015 && this->y> 220 && this->y< 280) {
-		cout << "buku\n";
-		if (buku->at(10)->getValidasi() == true) {
-			sound.playBook();
-			plusScore(4);
-			cout << "score" << getScore();
+		else if (this->x > 2990 && this->x < 3015 && this->y> 220 && this->y < 280) {
+			cout << "buku\n";
+			if (buku->at(10)->getValidasi() == true) {
+				sound.playBook();
+				plusScore(4);
+				cout << "score" << getScore();
+			}
+			buku->at(10)->setValidasi(false);
 		}
-		buku->at(10)->setValidasi(false);
-	}
-	else if (this->x>3030 && this->x<3055 && this->y> 220 && this->y< 280) {
-		cout << "buku\n";
-		if (buku->at(11)->getValidasi() == true) {
-			sound.playBook();
-			plusScore(4);
-			cout << "score" << getScore();
+		else if (this->x > 3030 && this->x < 3055 && this->y> 220 && this->y < 280) {
+			cout << "buku\n";
+			if (buku->at(11)->getValidasi() == true) {
+				sound.playBook();
+				plusScore(4);
+				cout << "score" << getScore();
+			}
+			buku->at(11)->setValidasi(false);
 		}
-		buku->at(11)->setValidasi(false);
-	}
-	else if (this->x>3070 && this->x<3095 && this->y> 220 && this->y< 280) {
-		cout << "buku\n";
-		if (buku->at(12)->getValidasi() == true) {
-			sound.playBook();
-			plusScore(4);
-			cout << "score" << getScore();
+		else if (this->x > 3070 && this->x < 3095 && this->y> 220 && this->y < 280) {
+			cout << "buku\n";
+			if (buku->at(12)->getValidasi() == true) {
+				sound.playBook();
+				plusScore(4);
+				cout << "score" << getScore();
+			}
+			buku->at(12)->setValidasi(false);
 		}
-		buku->at(12)->setValidasi(false);
-	}
-	else if (this->x>3490 && this->x<3515 && this->y> 270 && this->y< 330) {
-		cout << "buku\n";
-		if (buku->at(13)->getValidasi() == true) {
-			sound.playBook();
-			plusScore(4);
-			cout << "score" << getScore();
+		else if (this->x > 3490 && this->x < 3515 && this->y> 270 && this->y < 330) {
+			cout << "buku\n";
+			if (buku->at(13)->getValidasi() == true) {
+				sound.playBook();
+				plusScore(4);
+				cout << "score" << getScore();
+			}
+			buku->at(13)->setValidasi(false);
 		}
-		buku->at(13)->setValidasi(false);
-	}
-	else if (this->x>3530 && this->x<3555 && this->y> 270 && this->y< 330) {
-		cout << "buku\n";
-		if (buku->at(14)->getValidasi() == true) {
-			sound.playBook();
-			plusScore(4);
-			cout << "score" << getScore();
+		else if (this->x > 3530 && this->x < 3555 && this->y> 270 && this->y < 330) {
+			cout << "buku\n";
+			if (buku->at(14)->getValidasi() == true) {
+				sound.playBook();
+				plusScore(4);
+				cout << "score" << getScore();
 
+			}
+			buku->at(14)->setValidasi(false);
 		}
-		buku->at(14)->setValidasi(false);
-		
-
 	}
 
 }
 
-void MahasiswaAmbis::cekMusuh(vector<MahasiswaMusuh*> *musuh, bool& menu, int& validasi_menu, int& xcu)
+void MahasiswaAmbis::cekMusuh(vector<MahasiswaMusuh*> *musuh, bool& menu, int& validasi_menu, int& xcu, int& level)
 {
-	if (this->x>1350 && this->x<1435 && this->y> 351 && this->y< 479) {
-		
-		if (musuh->at(0)->getValidasi() == true) {
+	if (level == 1) {
+		if (this->x > 1350 && this->x < 1435 && this->y> 351 && this->y < 479) {
 
-			if (getNyawa() > 1)
-			{
+			if (musuh->at(0)->getValidasi() == true) {
 
-				minNyawa(1);
+				if (getNyawa() > 1)
+				{
 
-				cout << "NYAWA: " << getNyawa() << endl;
+					minNyawa(1);
+
+					cout << "NYAWA: " << getNyawa() << endl;
+				}
+
+				else
+				{
+					cout << "GAMEOVER\n";
+				}
+				//sound.playCat();
+				musuh->at(0)->setValidasi(false);
 			}
 
-			else
-			{
-				cout << "GAMEOVER\n";
-			}
-			//sound.playCat();
-			musuh->at(0)->setValidasi(false);
 		}
-
 	}
-
 }
 
-void MahasiswaAmbis::cekKucing(vector<Kucing*> *kucing, bool& menu, int& validasi_menu, int& xcu)
+void MahasiswaAmbis::cekKucing(vector<Kucing*> *kucing, bool& menu, int& validasi_menu, int& xcu, int& level)
 {
-	int cek = 0;
-	if (this->x>468 && this->x<535 && this->y> 351 && this->y< 479) { 
-		//else if (this->x > 535 && this->x < 536)
-			//x += moveSpeed;
-		if (kucing->at(0)->getValidasi() == true) {
+	if (level == 1) {
+		int cek = 0;
+		if (this->x > 468 && this->x < 535 && this->y> 351 && this->y < 479) {
+			//else if (this->x > 535 && this->x < 536)
+				//x += moveSpeed;
+			if (kucing->at(0)->getValidasi() == true) {
 
-			if (getNyawa() > 1)
-			{
-				minNyawa(1);
-				cout << "NYAWA: " << getNyawa() << endl;
+				if (getNyawa() > 1)
+				{
+					minNyawa(1);
+					cout << "NYAWA: " << getNyawa() << endl;
+				}
+
+				else
+				{
+					cout << "GAMEOVER\n";
+					cek = 1;
+				}
+				sound.playCat();
+				kucing->at(0)->setValidasi(false);
 			}
 
-			else
-			{
-				cout << "GAMEOVER\n";
-				cek = 1;
-			}
-			sound.playCat();
-			kucing->at(0)->setValidasi(false);
 		}
-		
-	} 
-	else if (this->x>1070 && this->x<1140 && this->y> 351 && this->y< 479) { 
-		if (kucing->at(0)->getValidasi() == true) {
+		else if (this->x > 1070 && this->x < 1140 && this->y> 351 && this->y < 479) {
+			if (kucing->at(0)->getValidasi() == true) {
 
-			if (getNyawa() > 1)
-			{
+				if (getNyawa() > 1)
+				{
 
-				minNyawa(1);
+					minNyawa(1);
 
-				cout << "NYAWA: " << getNyawa() << endl;
+					cout << "NYAWA: " << getNyawa() << endl;
+				}
+
+				else
+				{
+					cout << "GAMEOVER\n";
+					cek = 1;
+				}
+				sound.playCat();
+				kucing->at(0)->setValidasi(false);
 			}
 
-			else
-			{
-				cout << "GAMEOVER\n";
-				cek = 1;
-			}
-			sound.playCat();
-			kucing->at(0)->setValidasi(false);
 		}
-		
-	}
-	else if (this->x>1920 && this->x<1990 && this->y> 351 && this->y< 479) { 
-		if (kucing->at(0)->getValidasi() == true) {
+		else if (this->x > 1920 && this->x < 1990 && this->y> 351 && this->y < 479) {
+			if (kucing->at(0)->getValidasi() == true) {
 
-			if (getNyawa() > 1)
-			{
+				if (getNyawa() > 1)
+				{
 
-				minNyawa(1);
+					minNyawa(1);
 
-				cout << "NYAWA: " << getNyawa() << endl;
+					cout << "NYAWA: " << getNyawa() << endl;
+				}
+
+				else
+				{
+					cout << "GAMEOVER\n";
+					cek = 1;
+				}
+				sound.playCat();
+				kucing->at(0)->setValidasi(false);
 			}
 
-			else
-			{
-				cout << "GAMEOVER\n";
-				cek = 1;
-			}
-			sound.playCat();
-			kucing->at(0)->setValidasi(false);
 		}
-		
-	}
-	else if (this->x>2070 && this->x<2135 && this->y> 351 && this->y< 479) { 
-		if (kucing->at(0)->getValidasi() == true) {
+		else if (this->x > 2070 && this->x < 2135 && this->y> 351 && this->y < 479) {
+			if (kucing->at(0)->getValidasi() == true) {
 
-			if (getNyawa() > 1)
-			{
+				if (getNyawa() > 1)
+				{
 
-				minNyawa(1);
+					minNyawa(1);
 
-				cout << "NYAWA: " << getNyawa() << endl;
+					cout << "NYAWA: " << getNyawa() << endl;
+				}
+
+				else
+				{
+					cout << "GAMEOVER\n";
+					cek = 1;
+				}
+				sound.playCat();
+				kucing->at(0)->setValidasi(false);
 			}
 
-			else
-			{
-				cout << "GAMEOVER\n";
-				cek = 1;
-			}
-			sound.playCat();
-			kucing->at(0)->setValidasi(false);
 		}
-		
-	}
-	else if (this->x>2220 && this->x<2270 && this->y> 351 && this->y< 479) { 
-		if (kucing->at(0)->getValidasi() == true) {
+		else if (this->x > 2220 && this->x < 2270 && this->y> 351 && this->y < 479) {
+			if (kucing->at(0)->getValidasi() == true) {
 
-			if (getNyawa() > 1)
-			{
+				if (getNyawa() > 1)
+				{
 
-				minNyawa(1);
+					minNyawa(1);
 
-				cout << "NYAWA: " << getNyawa() << endl;
+					cout << "NYAWA: " << getNyawa() << endl;
+				}
+
+				else
+				{
+					cout << "GAMEOVER\n";
+					cek = 1;
+				}
+				sound.playCat();
+				kucing->at(0)->setValidasi(false);
 			}
 
-			else
-			{
-				cout << "GAMEOVER\n";
-				cek = 1;
-			}
-			sound.playCat();
-			kucing->at(0)->setValidasi(false);
 		}
-		
-	}
-	else {
-		kucing->at(0)->setValidasi(true);
-	}
+		else {
+			kucing->at(0)->setValidasi(true);
+		}
 
-	if (cek == 1) {
-		menu = true;
-		validasi_menu = 2;
-		xcu = 0;
+		if (cek == 1) {
+			menu = true;
+			validasi_menu = 2;
+			xcu = 0;
+		}
 	}
 
 }

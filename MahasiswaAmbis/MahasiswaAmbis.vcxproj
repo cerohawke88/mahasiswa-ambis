@@ -171,11 +171,13 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="algif.h" />
+    <ClInclude Include="AllegClass.h" />
     <ClInclude Include="Buku.h" />
     <ClInclude Include="GameManager.h" />
     <ClInclude Include="GameMenu.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="GameScreen.h" />
+    <ClInclude Include="GameSet.h" />
     <ClInclude Include="GedungKampus.h" />
     <ClInclude Include="Gorengan.h" />
     <ClInclude Include="InputManager.h" />
@@ -193,12 +195,14 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="algif.c" />
+    <ClCompile Include="AllegClass.cpp" />
     <ClCompile Include="bitmap.c" />
     <ClCompile Include="Buku.cpp" />
     <ClCompile Include="GameManager.cpp" />
     <ClCompile Include="GameMenu.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="GameScreen.cpp" />
+    <ClCompile Include="GameSet.cpp" />
     <ClCompile Include="GedungKampus.cpp" />
     <ClCompile Include="gif.c" />
     <ClCompile Include="Gorengan.cpp" />

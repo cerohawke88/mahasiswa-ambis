@@ -75,6 +75,12 @@
     <ClInclude Include="Saveload.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="AllegClass.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GameSet.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -144,6 +150,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Saveload.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AllegClass.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GameSet.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
