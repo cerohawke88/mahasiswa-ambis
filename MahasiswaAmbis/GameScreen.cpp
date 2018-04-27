@@ -172,38 +172,41 @@ void GameScreen::drawAllObject(vector<MahasiswaMusuh*> *musuh, vector<Gorengan*>
 		koin->at(2)->draw(3300, 300);
 		koin->at(3)->draw(400, 210);
 	}
-	else {
-		gr->at(0)->draw(1500, 250);
+	else if (level == 2){
+		gr->at(0)->draw(620, 210);
 		gr->at(1)->draw(2900, 150);
 
-		kucing->at(0)->draw(500, 415);
-		kucing->at(1)->draw(1100, 415);
+		kucing->at(0)->draw(620, 410);
+		kucing->at(1)->draw(745, 410);
+		kucing->at(2)->draw(900, 410);
+		kucing->at(3)->draw(1580, 410);
+		kucing->at(4)->draw(1785, 410);
+		
 
-		kucing->at(2)->draw(2250, 415);
-		kucing->at(3)->draw(1950, 415);
-		kucing->at(4)->draw(2100, 415);
+		musuh->at(0)->draw(1350, 370);
 
-		musuh->at(0)->draw(1380, 375);
-
-		buku->at(0)->draw(100, 400);
-		buku->at(1)->draw(140, 500);
-		buku->at(2)->draw(180, 100);
+		buku->at(0)->draw(100, 235);
+		buku->at(1)->draw(145, 220);
+		buku->at(2)->draw(185, 205);
 		buku->at(3)->draw(1000, 270);
 		buku->at(4)->draw(1040, 270);
 		buku->at(5)->draw(1080, 270);
-		buku->at(6)->draw(2100, 200);
-		buku->at(7)->draw(2200, 200);
-		buku->at(8)->draw(2300, 200);
+		buku->at(6)->draw(1485, 160);
+		buku->at(7)->draw(2100, 200);
+		buku->at(8)->draw(2200, 200);
+		buku->at(9)->draw(2300, 200);
+		buku->at(10)->draw(1660, 100);
+
+		/*
 		buku->at(9)->draw(2400, 200);
-		buku->at(10)->draw(3000, 250);
 		buku->at(11)->draw(3040, 250);
 		buku->at(12)->draw(3080, 250);
 		buku->at(13)->draw(3500, 300);
 		buku->at(14)->draw(3540, 300);
-
+		*/
 		koin->at(0)->draw(1300, 300);
 		koin->at(1)->draw(1800, 300);
-		koin->at(2)->draw(3300, 300);
-		koin->at(3)->draw(400, 210);
+		koin->at(2)->draw(900, 195);
+		koin->at(3)->draw(270, 210);
 	}
 }
