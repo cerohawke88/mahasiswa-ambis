@@ -134,7 +134,7 @@ void GameMenu::main_menu(bool &menu, ALLEGRO_EVENT_QUEUE *queue, int& returnmenu
 			sound->stopGameover();
 			sound->stopMenu();
 			sound->playComplete();
-			if (level == 2) {
+			if (level == 1) {
 				al_draw_text(font, color.enter, ScreenWidth / 2, ScreenHeight / 2 - 200, ALLEGRO_ALIGN_CENTRE, "STAGE COMPLETED!");
 			}
 			else {
