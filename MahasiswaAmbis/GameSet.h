@@ -23,6 +23,6 @@ public:
 	GameSet();
 	~GameSet();
 
-	void setValidasiTrue(vector<MahasiswaMusuh*> *musuh, vector<Gorengan*> *gr, vector<Kucing*> *kucing, vector<Buku*> *buku, vector<Koin*> *koin);
+	void setValidasiTrue(vector<MahasiswaMusuh*> *musuh, vector<Gorengan*> *gr, vector<Kucing*> *kucing, vector<Buku*> *buku, vector<Koin*> *koin, vector<Boss*> *boss);
 };
 

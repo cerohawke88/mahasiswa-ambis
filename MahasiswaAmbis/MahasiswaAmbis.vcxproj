@@ -172,6 +172,7 @@
   <ItemGroup>
     <ClInclude Include="algif.h" />
     <ClInclude Include="AllegClass.h" />
+    <ClInclude Include="Boss.h" />
     <ClInclude Include="Buku.h" />
     <ClInclude Include="GameManager.h" />
     <ClInclude Include="GameMenu.h" />
@@ -197,6 +198,7 @@
     <ClCompile Include="algif.c" />
     <ClCompile Include="AllegClass.cpp" />
     <ClCompile Include="bitmap.c" />
+    <ClCompile Include="Boss.cpp" />
     <ClCompile Include="Buku.cpp" />
     <ClCompile Include="GameManager.cpp" />
     <ClCompile Include="GameMenu.cpp" />

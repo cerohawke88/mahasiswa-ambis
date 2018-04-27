@@ -24,12 +24,12 @@ public:
 
 	COLOURS color;
 
-	void CameraUpdate(float *cameraPosition, float x, float y, int widht, int height);
+	void CameraUpdate(float *cameraPosition, float x, float y, int widht, int height, int level);
 	void draw(int level);
 	void eventkey(ALLEGRO_EVENT events);
 	void init();
-	void showKoin(int x, int width, MahasiswaAmbis* ma);
-	void drawAllObject(vector<MahasiswaMusuh*> *musuh, vector<Gorengan*> *gr, vector<Kucing*> *kucing, vector<Buku*> *buku, vector<Koin*> *koin, int& level);
+	void showKoin(int x, int width, MahasiswaAmbis* ma, int level);
+	void drawAllObject(vector<MahasiswaMusuh*> *musuh, vector<Gorengan*> *gr, vector<Kucing*> *kucing, vector<Buku*> *buku, vector<Koin*> *koin, int& level, vector<Boss*> *boss);
 
 private:
 	ALLEGRO_BITMAP *background1;

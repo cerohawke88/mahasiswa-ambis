@@ -7,6 +7,7 @@
 #include "Kucing.h"
 #include "MahasiswaMusuh.h"
 #include "PostGame.h"
+#include "Boss.h"
 #include <vector>
 #include <iostream>
 using namespace std;
@@ -42,7 +43,7 @@ public:
 	void lompat();
 	void maju(vector<MahasiswaMusuh*> *musuh, bool& menu, int& validasi_menu, int& xcu, int& level);
 	void mundur(vector<MahasiswaMusuh*> *musuh, bool& menu, int& validasi_menu, int& xcu, int& level);
-	void cekLompat(vector<MahasiswaMusuh*> *musuh, int& level);
+	void cekLompat(vector<MahasiswaMusuh*> *musuh, bool& menu, int& validasi_menu, int& xcu, int& level, vector<Boss*> *boss);
 	void setSourceX(float x);
 	void addSourceX(float x);
 	float getSourceX();

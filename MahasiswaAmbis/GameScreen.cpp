@@ -37,7 +37,7 @@ void GameScreen::init()
 	al_install_keyboard();
 }
 
-void GameScreen::showKoin(int x, int width, MahasiswaAmbis *ma)
+void GameScreen::showKoin(int x, int width, MahasiswaAmbis *ma, int level)
 {
 
 	int xx;
@@ -51,15 +51,25 @@ void GameScreen::showKoin(int x, int width, MahasiswaAmbis *ma)
 		xx = 100;
 	}
 
-	if (x > 3695) {
+	if (x > 3695 && level == 1) {
 		al_draw_bitmap(algif_get_bitmap(gif_koin, al_get_time()), 3515, 5, NULL);
-		al_draw_text(font, color.enter, 3575, 30, ALLEGRO_ALIGN_CENTRE, "");
+		al_draw_textf(font, color.enter, 3575, 30, ALLEGRO_ALIGN_CENTRE, "%d ", koin);
 
 		al_draw_bitmap(algif_get_bitmap(gif_buku, al_get_time()), 3605, 5, NULL);
-		al_draw_text(font, color.enter, 3665, 30, ALLEGRO_ALIGN_CENTRE, "");
+		al_draw_textf(font, color.enter, 3665, 30, ALLEGRO_ALIGN_CENTRE, "%d ", score);
 
-		al_draw_bitmap(algif_get_bitmap(gif_gorengan, al_get_time()), 3695, 20, NULL);
-		al_draw_text(font, color.enter, 3755, 30, ALLEGRO_ALIGN_CENTRE, "");
+		al_draw_bitmap(algif_get_bitmap(gif_life, al_get_time()), 3695, 20, NULL);
+		al_draw_textf(font, color.enter, 3755, 30, ALLEGRO_ALIGN_CENTRE, "%d ", nyawa);
+	} 
+	else if (x > 2670 && level == 2) {
+		al_draw_bitmap(algif_get_bitmap(gif_koin, al_get_time()), 2490, 5, NULL);
+		al_draw_textf(font, color.enter, 2550, 30, ALLEGRO_ALIGN_CENTRE, "%d ", koin);
+
+		al_draw_bitmap(algif_get_bitmap(gif_buku, al_get_time()), 2580, 5, NULL);
+		al_draw_textf(font, color.enter, 2640, 30, ALLEGRO_ALIGN_CENTRE, "%d ", score);
+
+		al_draw_bitmap(algif_get_bitmap(gif_life, al_get_time()), 2670, 20, NULL);
+		al_draw_textf(font, color.enter, 2750, 30, ALLEGRO_ALIGN_CENTRE, "%d ", nyawa);
 	}
 	else {
 		al_draw_bitmap(algif_get_bitmap(gif_koin, al_get_time()), xx - 60, 5, NULL);
@@ -75,7 +85,7 @@ void GameScreen::showKoin(int x, int width, MahasiswaAmbis *ma)
 	
 }
 
-void GameScreen::CameraUpdate(float *cameraPosition, float x, float y, int widht, int height)
+void GameScreen::CameraUpdate(float *cameraPosition, float x, float y, int widht, int height, int level)
 {
 	cameraPosition[0] = -(ScreenWidth / 2) + (x + widht / 2);
 	cameraPosition[1] = -(ScreenHeight / 2) + (y + height / 2);
@@ -86,9 +96,17 @@ void GameScreen::CameraUpdate(float *cameraPosition, float x, float y, int widht
 	if (cameraPosition[1] < 0) {
 		cameraPosition[1] = 0;
 	}
-	if (x > 3695) {
-		cameraPosition[0] = 4096-700;
+	if (level == 1) {
+		if (x > 3695) {
+			cameraPosition[0] = 4096 - 700;
+		}
 	}
+	else if (level == 2) {
+		if (x > 2670) {
+			cameraPosition[0] = 3072 - 700;
+		}
+	}
+	
 }
 
 void GameScreen::draw(int level)
@@ -107,7 +125,7 @@ void GameScreen::eventkey(ALLEGRO_EVENT events)
 }
 
 
-void GameScreen::drawAllObject(vector<MahasiswaMusuh*> *musuh, vector<Gorengan*> *gr, vector<Kucing*> *kucing, vector<Buku*> *buku, vector<Koin*> *koin, int& level)
+void GameScreen::drawAllObject(vector<MahasiswaMusuh*> *musuh, vector<Gorengan*> *gr, vector<Kucing*> *kucing, vector<Buku*> *buku, vector<Koin*> *koin, int& level, vector<Boss*> *boss)
 {
 	if (level == 1) {
 		gr->at(0)->draw(1500, 250);
@@ -144,6 +162,10 @@ void GameScreen::drawAllObject(vector<MahasiswaMusuh*> *musuh, vector<Gorengan*>
 		koin->at(3)->draw(400, 210);
 	}
 	else if (level == 2){
+		boss->at(0)->draw(1500, 250);
+		boss->at(1)->draw(2900, 150);
+
+
 		gr->at(0)->draw(620, 210);
 		gr->at(1)->draw(2900, 150);
 

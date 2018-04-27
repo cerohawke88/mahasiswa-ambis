@@ -95,7 +95,7 @@ void MahasiswaAmbis::maju(vector<MahasiswaMusuh*> *musuh, bool& menu, int& valid
 		if (this->x >= 1350 && this->x <= 1450 && this->y >= 360) {
 			if (musuh->at(0)->getValidasi() == true) {
 				x -= 130;
-				if (getNyawa() > 0)
+				if (getNyawa() > 1)
 				{
 
 					minNyawa(1);
@@ -136,7 +136,7 @@ void MahasiswaAmbis::mundur(vector<MahasiswaMusuh*> *musuh, bool& menu, int& val
 		if (this->x >= 1350 && this->x <= 1450 && this->y >= 360) {
 			if (musuh->at(0)->getValidasi() == true) {
 				x += 130;
-				if (getNyawa() > 0)
+				if (getNyawa() > 1)
 				{
 					minNyawa(1);
 					cout << "NYAWA: " << getNyawa() << endl;
@@ -175,7 +175,7 @@ void MahasiswaAmbis::cekJatuh()
 	
 }
 
-void MahasiswaAmbis::cekLompat(vector<MahasiswaMusuh*> *musuh, int& level)
+void MahasiswaAmbis::cekLompat(vector<MahasiswaMusuh*> *musuh, bool& menu, int& validasi_menu, int& xcu, int& level, vector<Boss*> *boss)
 {
 	if (!jump)
 		velocityY += gravity;
@@ -184,6 +184,10 @@ void MahasiswaAmbis::cekLompat(vector<MahasiswaMusuh*> *musuh, int& level)
 
 	x += velocityX;
 	y += velocityY;
+
+	int cek;
+	cek = 0;
+
 
 	if (level == 1) {
 		if (x > 328 && x < 440 && y >= 402) {
@@ -225,6 +229,7 @@ void MahasiswaAmbis::cekLompat(vector<MahasiswaMusuh*> *musuh, int& level)
 			}
 			musuh->at(0)->setValidasi(false);
 		}
+
 		else {
 			//cout << "hush" << endl;
 			jump = (y + 64 >= 466);
@@ -242,6 +247,56 @@ void MahasiswaAmbis::cekLompat(vector<MahasiswaMusuh*> *musuh, int& level)
 		}
 	}
 	else if (level == 2) {
+		//ini untuk boss level 2
+		if (this->x >= boss->at(0)->getXReal() && this->x <= boss->at(0)->getXReal() + 100 && this->y >= 360) {
+			if (boss->at(0)->getValidasi() == true) {
+				x -= 130;
+				if (getNyawa() > 1)
+				{
+
+					minNyawa(1);
+					cout << "NYAWA: " << getNyawa() << endl;
+				}
+				else
+				{
+					cout << "GAMEOVER\n";
+					cek = 1;
+				}
+			}
+			else {
+				velocityX = moveSpeed;
+			}
+			if (cek == 1) {
+				menu = true;
+				validasi_menu = 2;
+				xcu = 0;
+			}
+		}
+		else if (this->x >= boss->at(1)->getXReal() && this->x <= boss->at(1)->getXReal() + 100 && this->y >= 360) {
+			if (boss->at(1)->getValidasi() == true) {
+				x -= 130;
+				if (getNyawa() > 1)
+				{
+
+					minNyawa(1);
+					cout << "NYAWA: " << getNyawa() << endl;
+				}
+				else
+				{
+					cout << "GAMEOVER\n";
+					cek = 1;
+				}
+			}
+			else {
+				velocityX = moveSpeed;
+			}
+			if (cek == 1) {
+				menu = true;
+				validasi_menu = 2;
+				xcu = 0;
+			}
+		}
+
 
 		if (x > 245 && x < 325 && y >= 402) {
 			y += 15;
