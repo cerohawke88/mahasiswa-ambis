@@ -29,6 +29,11 @@ public:
 	void eventkey(ALLEGRO_EVENT events);
 	void init();
 	void showKoin(int x, int width, MahasiswaAmbis* ma);
+	void drawTooltip(int x, int y);
+	void drawTooltip2(int x, int y);
+	void drawTooltip3(int x, int y);
+	void drawTooltip4(int x, int y);
+	void drawTooltip5(int x, int y);
 	void drawAllObject(vector<MahasiswaMusuh*> *musuh, vector<Gorengan*> *gr, vector<Kucing*> *kucing, vector<Buku*> *buku, vector<Koin*> *koin, int& level);
 
 private:

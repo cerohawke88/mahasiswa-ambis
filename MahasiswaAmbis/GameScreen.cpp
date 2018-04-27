@@ -106,12 +106,41 @@ void GameScreen::eventkey(ALLEGRO_EVENT events)
 	al_wait_for_event(event_queue, &events);
 }
 
+void GameScreen::drawTooltip(int x, int y)
+{
+	al_draw_bitmap(tooltip, x, y, NULL);
+}
+
+void GameScreen::drawTooltip2(int x, int y)
+{
+	al_draw_bitmap(tooltip2, x, y, NULL);
+}
+
+void GameScreen::drawTooltip3(int x, int y)
+{
+	al_draw_bitmap(tooltip3, x, y, NULL);
+}
+
+void GameScreen::drawTooltip4(int x, int y)
+{
+	al_draw_bitmap(tooltip4, x, y, NULL);
+}
+
+void GameScreen::drawTooltip5(int x, int y)
+{
+	al_draw_bitmap(tooltip5, x, y, NULL);
+}
 
 void GameScreen::drawAllObject(vector<MahasiswaMusuh*> *musuh, vector<Gorengan*> *gr, vector<Kucing*> *kucing, vector<Buku*> *buku, vector<Koin*> *koin, int& level)
 {
 	if (level == 1) {
 		gr->at(0)->draw(1500, 250);
 		gr->at(1)->draw(2900, 150);
+
+		this->drawTooltip(550, 350);
+		this->drawTooltip2(1450, 325);
+		this->drawTooltip3(1540, 165);
+		this->drawTooltip4(140, 200);
 
 		kucing->at(0)->draw(500, 415);
 		kucing->at(1)->draw(1100, 415);
