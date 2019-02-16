@@ -124,7 +124,37 @@ void MahasiswaAmbis::maju(vector<MahasiswaMusuh*> *musuh, bool& menu, int& valid
 		}
 	}
 	else if (level == 2) {
-		velocityX = moveSpeed;
+		cek = 0;
+		if (this->x >= 1350 && this->x <= 1450 && this->y >= 360) {
+			if (musuh->at(0)->getValidasi() == true) {
+				x -= 130;
+				if (getNyawa() > 1)
+				{
+
+					minNyawa(1);
+					cout << "NYAWA: " << getNyawa() << endl;
+				}
+				else
+				{
+					cout << "GAMEOVER\n";
+					cek = 1;
+				}
+			}
+			else {
+				velocityX = moveSpeed;
+			}
+			if (cek == 1) {
+				menu = true;
+				validasi_menu = 2;
+				xcu = 0;
+			}
+		}
+		else {
+			if (this->x < 4000) {
+				velocityX = moveSpeed;
+				this->cekJatuh();
+			}
+		}
 	}
 }
 
@@ -165,7 +195,37 @@ void MahasiswaAmbis::mundur(vector<MahasiswaMusuh*> *musuh, bool& menu, int& val
 		}
 	}
 	else if (level == 2) {
-		velocityX = -moveSpeed;
+		cek = 0;
+		if (this->x >= 1350 && this->x <= 1450 && this->y >= 360) {
+			if (musuh->at(0)->getValidasi() == true) {
+				x += 130;
+				if (getNyawa() > 1)
+				{
+
+					minNyawa(1);
+					cout << "NYAWA: " << getNyawa() << endl;
+				}
+				else
+				{
+					cout << "GAMEOVER\n";
+					cek = 1;
+				}
+			}
+			else {
+				velocityX = -moveSpeed;
+			}
+			if (cek == 1) {
+				menu = true;
+				validasi_menu = 2;
+				xcu = 0;
+			}
+		}
+		else {
+			if (this->x < 4000) {
+				velocityX = -moveSpeed;
+				this->cekJatuh();
+			}
+		}
 	}
 }
 
@@ -248,7 +308,7 @@ void MahasiswaAmbis::cekLompat(vector<MahasiswaMusuh*> *musuh, bool& menu, int& 
 	}
 	else if (level == 2) {
 		//ini untuk boss level 2
-		if (this->x >= boss->at(0)->getXReal() && this->x <= boss->at(0)->getXReal() + 100 && this->y >= 360) {
+		if (this->x >= boss->at(0)->getXReal() && this->x <= boss->at(0)->getXReal() + 50 && this->y >= 360) {
 			if (boss->at(0)->getValidasi() == true) {
 				x -= 130;
 				if (getNyawa() > 1)
@@ -272,7 +332,7 @@ void MahasiswaAmbis::cekLompat(vector<MahasiswaMusuh*> *musuh, bool& menu, int& 
 				xcu = 0;
 			}
 		}
-		else if (this->x >= boss->at(1)->getXReal() && this->x <= boss->at(1)->getXReal() + 100 && this->y >= 360) {
+		else if (this->x >= boss->at(1)->getXReal() && this->x <= boss->at(1)->getXReal() + 50 && this->y >= 360) {
 			if (boss->at(1)->getValidasi() == true) {
 				x -= 130;
 				if (getNyawa() > 1)
@@ -308,16 +368,17 @@ void MahasiswaAmbis::cekLompat(vector<MahasiswaMusuh*> *musuh, bool& menu, int& 
 			cout << y << endl;
 			cout << "jatuh\n";
 		}
-		else if (x > 1910 && x < 535 && y >= 2060) {
+		else if (x > 1910 && x < 2080 && y >= 402) {
 			y += 15;
 			cout << y << endl;
 			cout << "jatuh\n";
 		}
-		else if (x > 2150 && x < 2255 && y >= 402) {
+		else if (x > 2145 && x < 2270 && y >= 402) {
 			y += 15;
 			cout << y << endl;
 			cout << "jatuh\n";
 		}
+		
 		else if (x > 1350 && x < 1450 && y >= 360) {
 			if (musuh->at(0)->getValidasi() == true) {
 				velocityY = -20;
@@ -332,7 +393,6 @@ void MahasiswaAmbis::cekLompat(vector<MahasiswaMusuh*> *musuh, bool& menu, int& 
 			musuh->at(0)->setValidasi(false);
 		}
 		else {
-			//cout << "hush" << endl;
 			jump = (y + 64 >= 466);
 			doublejump = (y + 64 >= 466);
 
@@ -874,7 +934,6 @@ void MahasiswaAmbis::cekMusuh(vector<MahasiswaMusuh*> *musuh, bool& menu, int& v
 				{
 					cout << "GAMEOVER\n";
 				}
-				//sound.playCat();
 				musuh->at(0)->setValidasi(false);
 			}
 
@@ -908,7 +967,7 @@ void MahasiswaAmbis::cekKucing(vector<Kucing*> *kucing, bool& menu, int& validas
 
 		}
 		else if (this->x > 1070 && this->x < 1140 && this->y> 351 && this->y < 479) {
-			if (kucing->at(0)->getValidasi() == true) {
+			if (kucing->at(1)->getValidasi() == true) {
 
 				if (getNyawa() > 1)
 				{
@@ -924,12 +983,12 @@ void MahasiswaAmbis::cekKucing(vector<Kucing*> *kucing, bool& menu, int& validas
 					cek = 1;
 				}
 				sound.playCat();
-				kucing->at(0)->setValidasi(false);
+				kucing->at(1)->setValidasi(false);
 			}
 
 		}
 		else if (this->x > 1920 && this->x < 1990 && this->y> 351 && this->y < 479) {
-			if (kucing->at(0)->getValidasi() == true) {
+			if (kucing->at(2)->getValidasi() == true) {
 
 				if (getNyawa() > 1)
 				{
@@ -945,12 +1004,12 @@ void MahasiswaAmbis::cekKucing(vector<Kucing*> *kucing, bool& menu, int& validas
 					cek = 1;
 				}
 				sound.playCat();
-				kucing->at(0)->setValidasi(false);
+				kucing->at(2)->setValidasi(false);
 			}
 
 		}
 		else if (this->x > 2070 && this->x < 2135 && this->y> 351 && this->y < 479) {
-			if (kucing->at(0)->getValidasi() == true) {
+			if (kucing->at(3)->getValidasi() == true) {
 
 				if (getNyawa() > 1)
 				{
@@ -966,12 +1025,12 @@ void MahasiswaAmbis::cekKucing(vector<Kucing*> *kucing, bool& menu, int& validas
 					cek = 1;
 				}
 				sound.playCat();
-				kucing->at(0)->setValidasi(false);
+				kucing->at(3)->setValidasi(false);
 			}
 
 		}
 		else if (this->x > 588 && this->x < 655 && this->y> 338 && this->y < 466) {
-			if (kucing->at(0)->getValidasi() == true) {
+			if (kucing->at(4)->getValidasi() == true) {
 
 				if (getNyawa() > 1)
 				{
@@ -987,12 +1046,16 @@ void MahasiswaAmbis::cekKucing(vector<Kucing*> *kucing, bool& menu, int& validas
 					cek = 1;
 				}
 				sound.playCat();
-				kucing->at(0)->setValidasi(false);
+				kucing->at(4)->setValidasi(false);
 			}
 
 		}
 		else {
 			kucing->at(0)->setValidasi(true);
+			kucing->at(1)->setValidasi(true);
+			kucing->at(2)->setValidasi(true);
+			kucing->at(3)->setValidasi(true);
+			kucing->at(4)->setValidasi(true);
 		}
 
 		if (cek == 1) {
@@ -1001,10 +1064,12 @@ void MahasiswaAmbis::cekKucing(vector<Kucing*> *kucing, bool& menu, int& validas
 			xcu = 0;
 		}
 	}
+
+
 	else if (level == 2)
 	{
 		int cek = 0;
-		if (this->x > 468 && this->x < 535 && this->y> 351 && this->y < 479) {
+		if (this->x > 595 && this->x < 660 && this->y> 351 && this->y < 479) {
 			if (kucing->at(0)->getValidasi() == true) {
 
 				if (getNyawa() > 1)
@@ -1023,7 +1088,7 @@ void MahasiswaAmbis::cekKucing(vector<Kucing*> *kucing, bool& menu, int& validas
 			}
 
 		}
-		else if (this->x > 713 && this->x < 780 && this->y> 338 && this->y < 466) {
+		else if (this->x > 713 && this->x < 785 && this->y> 338 && this->y < 466) {
 			if (kucing->at(1)->getValidasi() == true) {
 
 				if (getNyawa() > 1)
@@ -1065,7 +1130,7 @@ void MahasiswaAmbis::cekKucing(vector<Kucing*> *kucing, bool& menu, int& validas
 			}
 		}
 
-		else if (this->x > 1383 && this->x < 1450 && this->y> 251 && this->y < 379) {
+		else if (this->x > 1550 && this->x < 1620 && this->y> 251 && this->y < 379) {
 			if (kucing->at(3)->getValidasi() == true) {
 
 				if (getNyawa() > 1)
@@ -1085,7 +1150,7 @@ void MahasiswaAmbis::cekKucing(vector<Kucing*> *kucing, bool& menu, int& validas
 				kucing->at(3)->setValidasi(false);
 			}
 		}
-		else if (this->x > 1503 && this->x < 1570 && this->y> 251 && this->y < 379) {
+		else if (this->x > 1755 && this->x < 1820 && this->y> 338 && this->y < 466) {
 			if (kucing->at(4)->getValidasi() == true) {
 
 				if (getNyawa() > 1)
@@ -1104,6 +1169,20 @@ void MahasiswaAmbis::cekKucing(vector<Kucing*> *kucing, bool& menu, int& validas
 				sound.playCat();
 				kucing->at(4)->setValidasi(false);
 			}
+		}
+
+		else {
+			kucing->at(0)->setValidasi(true);
+			kucing->at(1)->setValidasi(true);
+			kucing->at(2)->setValidasi(true);
+			kucing->at(3)->setValidasi(true);
+			kucing->at(4)->setValidasi(true);
+		}
+
+		if (cek == 1) {
+			menu = true;
+			validasi_menu = 2;
+			xcu = 0;
 		}
 		
 	}
